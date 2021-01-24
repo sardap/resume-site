@@ -1,7 +1,5 @@
 FROM node:10 as builder
 
-RUN echo "FUCK YOU"
-
 WORKDIR /app
 
 COPY package*.json ./
