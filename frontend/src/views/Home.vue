@@ -81,7 +81,7 @@ import GBA from "../components/GBA.vue";
 import GB from "../components/GB.vue";
 import RepoInfo from "../components/RepoInfo.vue";
 
-import {hostingSite} from "../secret"
+import {hostingSite} from "@/secret"
 
 interface Info {
   repo: string;
