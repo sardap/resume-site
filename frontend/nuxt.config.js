@@ -1,0 +1,6 @@
+{
+  [
+    // Simple usage
+    "@nuxtjs/vuetify"
+  ];
+}
