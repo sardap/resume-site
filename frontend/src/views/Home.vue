@@ -22,7 +22,7 @@
           >
         </select>
       </div>
-      <GBA :key="wgmRom" :url="wgmRom" />
+      <GBA :key="wgmUpdateCount" :url="wgmRom" />
     </div>
     <hr/>
     <div>
@@ -121,10 +121,10 @@ interface Info {
   },
   methods: {
     selectVersion(event: { target: { value: string } }) {
-      this.wgmRom =
-        `https://gba.ninja/?autorun=${hostingSite}` +
-        `/wgm/${event.target.value}/walk-good-maybe.gba`;
-      console.log(this.wgmRom);
+		this.wgmRom =
+		`https://gba.ninja/?autorun=${hostingSite}` +
+			`/wgm/${event.target.value}/walk-good-maybe.gba`;
+		this.wgmUpdateCount++;
     },
     getVersionData() {
       fetch("https://api.github.com/repos/sardap/walk-good-maybe/releases")
@@ -146,6 +146,7 @@ interface Info {
 		versions: [{ name: "loading" }],
 		ecsRom: `${hostingSite}/gbm/micro_games.gb`,
 		hideHackThing: true,
+		wgmUpdateCount: 0,
 		gameboyMicroGameCollection: {
 			repo: "gameboy_micro_game_collection",
 			title: "Gameboy Micro Game Collection",

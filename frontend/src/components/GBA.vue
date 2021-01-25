@@ -1,9 +1,9 @@
 <template>
   <div>
-    <embed v-if="url !== false" :src="url" width="480" height="320" />
+    <embed :src="url" width="480" height="320" />
     <p>A: Key Z, B: Key X, Select: Key Backspace, Start: Enter</p>
     <p>Pause: ESC</p>
-    <br />
+    <br/>
   </div>
 </template>
 
