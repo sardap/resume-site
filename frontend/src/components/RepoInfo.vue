@@ -25,8 +25,8 @@
         </p>
       </div>
       <div class="parent info-line">
-        <p class="child inline-block-child">Last update:</p>
-        <p class="child inline-block-child">{{ lastUpdateTime }}</p>
+        <p class="child inline-block-child">Craeted Date:</p>
+        <p class="child inline-block-child">{{ createdDate }}</p>
       </div>
       <div v-if="starGazers > 0" class="parent">
         <p class="child inline-block-child">Stars:</p>
@@ -40,7 +40,14 @@
 import { Options, Vue } from "vue-class-component";
 import moment from "moment";
 
-const LangsBlockList = ["Makefile", "Shell", "CSS", "HTML", "ShaderLab"];
+const LangsBlockList = [
+	"Makefile",
+	"Shell",
+	"HLSL",
+	"CSS",
+	"HTML",
+	"ShaderLab"
+];
 
 @Options({
   props: {
@@ -56,7 +63,7 @@ const LangsBlockList = ["Makefile", "Shell", "CSS", "HTML", "ShaderLab"];
       fetch(`https://api.github.com/repos/sardap/${this.repo}`)
         .then(response => response.json())
         .then(apiRes => {
-          this.lastUpdateTime = moment(apiRes.updated_at)
+          this.createdDate = moment(apiRes.created_at)
             .local()
             .format("YYYY-MM-DD");
 

@@ -44,22 +44,46 @@
 	<hr/>
     <div>
       	<RepoInfo
-			:repo="sqaurePoltik.repo"
-			:title="sqaurePoltik.title"
-			:techs="sqaurePoltik.techs"
-		/>
-		<h3>What is it?</h3>
-		<p>A Bizzare Unity simlaotuon which was my first attempt and basic AI</p>
-  	</div>
-	<hr/>
-    <div>
-      	<RepoInfo
 			:repo="muhBot.repo"
 			:title="muhBot.title"
 			:techs="muhBot.techs"
 		/>
 		<h3>What is it?</h3>
-		<p>A Bizzare Unity simlaotuon which was my first attempt and basic AI</p>
+		<p>A Discord bot which is based on a stupid bot 
+			which uses google speech API</p>
+  	</div>
+	<hr/>
+    <div>
+      	<RepoInfo
+			:repo="hackathonThing.repo"
+			:title="hackathonThing.title"
+			:techs="hackathonThing.techs"
+		/>
+		<h3>What is it?</h3>
+		<p>You play as the eyes and the mouth and avoid getting 
+			touched by the figners assulting your face</p>
+		<button 
+			v-if="hideHackThing" v-on:click="hideHackThing = false">
+			Play!
+		</button>
+		<div v-if="!hideHackThing">
+			<embed 
+				src="./hackathon/index.html" 
+				width="500" height="350"
+			/>
+    		<p>Controls: left click eyes or mouth to select right click to move</p>
+    		<p>Note: the web version is bugged to not allow fail state</p>
+		</div>
+  	</div>
+	<hr/>
+    <div>
+      	<RepoInfo
+			:repo="sqaurePoltik.repo"
+			:title="sqaurePoltik.title"
+			:techs="sqaurePoltik.techs"
+		/>
+		<h3>What is it?</h3>
+		<p>A Bizzare Unity sim which was my first attempt and basic AI</p>
   	</div>
     <hr/>
     <div>
@@ -121,6 +145,7 @@ interface Info {
     return {
 		versions: [{ name: "loading" }],
 		ecsRom: `${hostingSite}/gbm/micro_games.gb`,
+		hideHackThing: true,
 		gameboyMicroGameCollection: {
 			repo: "gameboy_micro_game_collection",
 			title: "Gameboy Micro Game Collection",
@@ -136,10 +161,15 @@ interface Info {
 			title: "Muh Bot",
 			techs: ["Discord API", "Google speech API"]
 		},
+		hackathonThing: {
+			repo: "HackathonThing",
+			title: "Hackathon Thing",
+			techs: ["Unity"]
+		},
 		sqaurePoltik: {
 			repo: "SqaurePolitk",
 			title: "Sqaure Politk",
-			techs: ["Uinty"]
+			techs: ["Unity"]
 		},
 		walkGoodMaybe: {
 			repo: "walk-good-maybe",

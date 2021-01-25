@@ -11,9 +11,9 @@
 import { Options, Vue } from "vue-class-component";
 
 @Options({
-  props: {
-    url: String
-  }
+	props: {
+		url: String
+	}
 })
 export default class GBA extends Vue {
   url!: string;
