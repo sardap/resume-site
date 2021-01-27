@@ -26,3 +26,5 @@ pnpm-debug.log*
 secret.ts
 
 dist/
+
+hackathon/
