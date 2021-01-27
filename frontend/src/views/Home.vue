@@ -1,193 +1,155 @@
 <template>
   <div class="home">
     <div>
-      <RepoInfo
-        :repo="walkGoodMaybe.repo"
-        :title="walkGoodMaybe.title"
-        :techs="walkGoodMaybe.techs"
-      />
-      <h3>What is it?</h3>
-      <p>A basic endless runner homebrew GBA game</p>
-      <div class="parent">
-        <p class="child inline-block-child" style="padding: 5px;">Version:</p>
-        <select
-          class="child inline-block-child"
-          @change="selectVersion($event)"
-        >
-          <option
-            v-for="(version, index) in versions"
-            :key="index"
-            :value="version.name"
-            >{{ version.name }}</option
+      <img alt="Photo of Paul" src="./photos/face.png" />
+      <p>My name is paul I turn sleep deprivation into compiler errors</p>
+    </div>
+    <div></div>
+    <h2>About</h2>
+    <div class="wrapper">
+      <ul>
+        <li>Have been programming for {{ yearsProgramming }} Years</li>
+        <li>
+          Programming professionally for {{ yearsProfProgramming }} Year{{
+            yearsProfProgramming > 1 ? s : ""
+          }}.
+        </li>
+        <li>
+          Have been involed with 4 Papers
+          <a href="https://scholar.google.com.au/citations?user=QfnqhZ4AAAAJ"
+            >Google scholar</a
           >
-        </select>
-      </div>
-      <GBA :key="wgmUpdateCount" :url="wgmRom" />
+        </li>
+        <li>
+          Constaly work on
+          <router-link to="/projects">personal projects</router-link> which you
+          can play in this browser!
+        </li>
+      </ul>
     </div>
-    <hr/>
-    <div>
-      <RepoInfo
-        :repo="chessBot.repo"
-        :title="chessBot.title"
-        :techs="chessBot.techs"
-      />
-      <h3>What is it?</h3>
-      <p>
-        Play Chess via a Discord bot via messages!<br />Genrate playbacks of all
-        the moves like shown below
-      </p>
-      <img
-        src="https://raw.githubusercontent.com
-			/sardap/chessbot/main/examples/example.gif"
-      />
+    <h2>Key Skills</h2>
+
+    <h2>Work Experience</h2>
+    <div class="wrapper">
+      <table>
+        <tr>
+          <th v-for="(col, index) in workExpCol" :key="index">{{ col }}</th>
+        </tr>
+        <tr v-for="(row, index) in workExpRow" :key="index">
+          <td>
+            <a :href="row.companyLink">{{ row.comapny }}</a>
+          </td>
+          <td>{{ row.role }}</td>
+          <td>{{ row.responsibilities }}</td>
+          <td>{{ `${row.startDate.year()}-${row.startDate.month() + 1}` }}</td>
+          <td>
+            {{
+              row.endDate
+                ? `${row.endDate.year()}-${row.endDate.month() + 1}`
+                : "current"
+            }}
+          </td>
+        </tr>
+      </table>
     </div>
-	<hr/>
-    <div>
-      	<RepoInfo
-			:repo="muhBot.repo"
-			:title="muhBot.title"
-			:techs="muhBot.techs"
-		/>
-		<h3>What is it?</h3>
-		<p>A Discord bot which is based on a stupid bot 
-			which uses google speech API</p>
-  	</div>
-	<hr/>
-    <div>
-      	<RepoInfo
-			:repo="hackathonThing.repo"
-			:title="hackathonThing.title"
-			:techs="hackathonThing.techs"
-		/>
-		<h3>What is it?</h3>
-		<p>You play as the eyes and the mouth and avoid getting 
-			touched by the figners assulting your face</p>
-		<button 
-			v-if="hideHackThing" v-on:click="hideHackThing = false">
-			Play!
-		</button>
-		<div v-if="!hideHackThing">
-			<embed 
-				src="./hackathon/index.html" 
-				width="500" height="350"
-			/>
-    		<p>Controls: left click eyes or mouth to select right click to move</p>
-    		<p>Note: the web version is bugged to not allow fail state</p>
-		</div>
-  	</div>
-	<hr/>
-    <div>
-      	<RepoInfo
-			:repo="sqaurePoltik.repo"
-			:title="sqaurePoltik.title"
-			:techs="sqaurePoltik.techs"
-		/>
-		<h3>What is it?</h3>
-		<p>A Bizzare Unity sim which was my first attempt and basic AI</p>
-  	</div>
-    <hr/>
-    <div>
-      <RepoInfo
-        :repo="gameboyMicroGameCollection.repo"
-        :title="gameboyMicroGameCollection.title"
-        :techs="gameboyMicroGameCollection.techs"
-      />
-      <h3>What is it?</h3>
-      <p>I love wario ware so it's one of those</p>
-      <GB :key="ecsRom" :url="ecsRom" />
-    </div>
+    <h2>Education</h2>
   </div>
 </template>
 
 <script lang="ts">
+import moment from "moment";
 import { Options, Vue } from "vue-class-component";
-import GBA from "../components/GBA.vue";
-import GB from "../components/GB.vue";
-import RepoInfo from "../components/RepoInfo.vue";
-
-import {hostingSite} from "../secret"
-
-interface Info {
-  repo: string;
-  title: string;
-  techs: string[];
-}
 
 @Options({
-  components: {
-    GBA,
-    RepoInfo,
-    GB
-  },
-  methods: {
-    selectVersion(event: { target: { value: string } }) {
-		this.wgmRom =
-		`https://gba.ninja/?autorun=${hostingSite}` +
-			`/wgm/${event.target.value}/walk-good-maybe.gba`;
-		this.wgmUpdateCount++;
-    },
-    getVersionData() {
-      fetch("https://api.github.com/repos/sardap/walk-good-maybe/releases")
-        .then(response => response.json())
-        .then(apiRes => {
-          this.versions = [];
-          apiRes.forEach((i: { tag_name: string }) => {
-            this.versions.push({ name: i.tag_name });
-          });
-          this.selectVersion({ target: { value: this.versions[0].name } });
-        });
-    }
-  },
-  created() {
-    this.getVersionData();
-  },
+  components: {},
   data() {
     return {
-		versions: [{ name: "loading" }],
-		ecsRom: `${hostingSite}/gbm/micro_games.gb`,
-		hideHackThing: true,
-		wgmUpdateCount: 0,
-		gameboyMicroGameCollection: {
-			repo: "gameboy_micro_game_collection",
-			title: "Gameboy Micro Game Collection",
-			techs: ["GB"]
-		},
-		chessBot: {
-			repo: "chessbot",
-			title: "Chess Bot",
-			techs: ["Discord API", "Image generation"]
-		},
-		muhBot: {
-			repo: "muhbot",
-			title: "Muh Bot",
-			techs: ["Discord API", "Google speech API"]
-		},
-		hackathonThing: {
-			repo: "HackathonThing",
-			title: "Hackathon Thing",
-			techs: ["Unity"]
-		},
-		sqaurePoltik: {
-			repo: "SqaurePolitk",
-			title: "Sqaure Politk",
-			techs: ["Unity"]
-		},
-		walkGoodMaybe: {
-			repo: "walk-good-maybe",
-			title: "Walk Good Maybe",
-			techs: ["GBA"]
-		}
-	};
+      yearsProgramming: Math.floor(
+        moment
+          .duration(moment(new Date()).diff(moment("2016", "YYYY")))
+          .asYears()
+      ),
+      yearsProfProgramming: Math.floor(
+        moment
+          .duration(moment(new Date()).diff(moment("2020", "YYYY")))
+          .asYears()
+      ),
+      workExpCol: [
+        "Company",
+        "Role",
+        "Responsibilities",
+        "Start Date",
+        "End Date"
+      ],
+      workExpRow: [
+        {
+          comapny: "Telstra",
+          companyLink: "https://www.telstra.com.au/",
+          role: "Graduate Software Engineer",
+          responsibilities: "Good question",
+          startDate: moment("01-2020", "MM-YYYY"),
+          endDate: null
+        },
+        {
+          comapny: "Swinburne University of Technology",
+          companyLink: "https://www.swinburne.edu.au/",
+          role: "Research Intern",
+          responsibilities:
+            "Worked with other researchers on the following projects " +
+            "Programming fundamentals in Pascal, C and Ruby. Additionally" +
+            " worked in programming help desk where intro students could" +
+            " get additional 1 on 1 help.",
+          startDate: moment("02-2017", "MM-YYYY"),
+          endDate: moment("11-2019", "MM-YYYY")
+        },
+        {
+          comapny: "Swinburne University of Technology",
+          companyLink: "https://www.swinburne.edu.au/",
+          role: "Classroom Tutor / Laboratory demonstrator",
+          responsibilities:
+            "Was a classroom tutor for Intro to programming, Covering " +
+            "Programming fundamentals in Pascal, C and Ruby. Additionally" +
+            " worked in programming help desk where intro students could" +
+            " get additional 1 on 1 help.",
+          startDate: moment("02-2017", "MM-YYYY"),
+          endDate: moment("11-2019", "MM-YYYY")
+        }
+      ]
+    };
   }
 })
 export default class Home extends Vue {}
 </script>
 <style scoped>
-@import "../style/shared.css";
+div {
+  margin-block-end: 10px;
+}
 
-hr {
-	margin-left: 15%;	
-	margin-right: 15%;
-	margin-block-end: 5px;
+p {
+  margin: 2px;
+}
+
+.wrapper {
+  text-align: center;
+}
+
+ul {
+  display: inline-block;
+  text-align: left;
+}
+
+th {
+  padding-left: 9px;
+  padding-right: 9px;
+}
+
+tr {
+  padding-block-end: 10px;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
 }
 </style>

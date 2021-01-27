@@ -1,36 +1,40 @@
 <template>
   <div>
-    <a :href="repoLink"
-      ><h2>{{ title }}</h2></a
-    >
-    <div v-if="loaded !== false">
-      <div class="parent info-line">
-        <p class="child inline-block-child">Languages:</p>
-        <p
-          class="child inline-block-child"
-          v-for="(lang, index) in langs"
-          :key="index"
-        >
-          {{ index !== langs.length - 1 ? `${lang},` : lang }}
-        </p>
-      </div>
-      <div class="parent info-line">
-        <p class="child inline-block-child">Used Technologies:</p>
-        <p
-          class="child inline-block-child"
-          v-for="(tech, index) in techs"
-          :key="index"
-        >
-          {{ index !== techs.length - 1 ? `${tech},` : tech }}
-        </p>
-      </div>
-      <div class="parent info-line">
-        <p class="child inline-block-child">Craeted Date:</p>
-        <p class="child inline-block-child">{{ createdDate }}</p>
-      </div>
-      <div v-if="starGazers > 0" class="parent">
-        <p class="child inline-block-child">Stars:</p>
-        <p class="child inline-block-child">{{ starGazers }}</p>
+    <div>
+      <a :href="repoLink"
+        ><h2>{{ title }}</h2></a
+      >
+    </div>
+    <div class="border">
+      <div v-if="loaded !== false">
+        <div class="parent info-line">
+          <p class="child inline-block-child">Languages:</p>
+          <p
+            class="child inline-block-child"
+            v-for="(lang, index) in langs"
+            :key="index"
+          >
+            {{ index !== langs.length - 1 ? `${lang},` : lang }}
+          </p>
+        </div>
+        <div class="parent info-line">
+          <p class="child inline-block-child">Used Technologies:</p>
+          <p
+            class="child inline-block-child"
+            v-for="(tech, index) in techs"
+            :key="index"
+          >
+            {{ index !== techs.length - 1 ? `${tech},` : tech }}
+          </p>
+        </div>
+        <div class="parent info-line">
+          <p class="child inline-block-child">Craeted Date:</p>
+          <p class="child inline-block-child">{{ createdDate }}</p>
+        </div>
+        <div v-if="starGazers > 0" class="parent">
+          <p class="child inline-block-child">Stars:</p>
+          <p class="child inline-block-child">{{ starGazers }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -41,12 +45,12 @@ import { Options, Vue } from "vue-class-component";
 import moment from "moment";
 
 const LangsBlockList = [
-	"Makefile",
-	"Shell",
-	"HLSL",
-	"CSS",
-	"HTML",
-	"ShaderLab"
+  "Makefile",
+  "Shell",
+  "HLSL",
+  "CSS",
+  "HTML",
+  "ShaderLab"
 ];
 
 @Options({
@@ -100,12 +104,20 @@ export default class GBA extends Vue {}
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 @import "../style/shared.css";
-.info-line {
-}
-
 p {
   margin: 1px;
-  margin-block-end: 1em;
-  padding: 0px;
+}
+
+.info-line {
+  padding: 5px;
+}
+
+.border {
+  border-style: solid;
+  border-width: thin;
+  max-width: 25em;
+  margin: 0 auto;
+  padding-block-start: 1em;
+  padding-block-end: 1em;
 }
 </style>

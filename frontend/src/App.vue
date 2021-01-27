@@ -1,11 +1,14 @@
 <template>
-	<div>
-		<Header />
-		<router-view />
-		<div id="nav">
-			<router-link to="/">Home</router-link>
-		</div>
-	</div>
+  <div>
+    <Header />
+    <hr/>
+    <div id="nav">
+      <router-link to="/">home</router-link>
+      <router-link to="/projects">projects</router-link>
+    </div>
+    <hr/>
+    <router-view />
+  </div>
 </template>
 
 <script lang="ts">
@@ -13,32 +16,34 @@ import { Options, Vue } from "vue-class-component";
 import Header from "@/components/Header.vue";
 
 @Options({
-	components: {
-		Header
-	},
-	created() {
-		document.title = "Paul Sarda";
-	}  
+  components: {
+    Header
+  },
+  created() {
+    document.title = "Paul Sarda";
+  }
 })
 export default class App extends Vue {}
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Verdana, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #192129;
+  background-color: azure;
 }
 
 #nav {
-  padding: 30px;
+  padding: 3px;
 }
 
 #nav a {
   font-weight: bold;
   color: #2c3e50;
+  margin: 5px;
 }
 
 #nav a.router-link-exact-active {
