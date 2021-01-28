@@ -55,14 +55,22 @@ const LangsBlockList = [
     techs: {
       type: Array,
       required: true
-    }
+    },
+    createdDateP: String
   },
   methods: {
     getRepoInfo() {
       fetch(`https://api.github.com/repos/sardap/${this.repo}`)
         .then(response => response.json())
         .then(apiRes => {
-          this.createdDate = moment(apiRes.created_at)
+          let createdAt: string;
+          if (!this.createdDateP) {
+            createdAt = apiRes.created_at;
+          } else {
+            createdAt = this.createdDateP;
+          }
+
+          this.createdDate = moment(createdAt)
             .local()
             .format("YYYY-MM-DD");
 

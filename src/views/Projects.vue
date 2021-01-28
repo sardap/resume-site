@@ -132,7 +132,11 @@
         :techs="gameboyMicroGameCollection.techs"
       />
       <h3>What is it?</h3>
-      <p>I love wario ware so it's one of those</p>
+      <p>
+        I love wario ware so it's one of those, It's using Game boy development
+        kit and C99, not in ASSM. The code is some real special garbage but it's
+        fast which is what is imporant on the 4MHz CPU.
+      </p>
       <GB :key="ecsRom" :url="ecsRom" />
     </div>
     <hr />
@@ -144,6 +148,27 @@
       />
       <h3>What is it?</h3>
       <p>A Bizzare Unity sim which was my first attempt and basic AI</p>
+    </div>
+    <hr />
+    <div class="project-info">
+      <RepoInfo
+        :repo="temptris.repo"
+        :title="temptris.title"
+        :techs="temptris.techs"
+        createdDateP="2018-11-07"
+      />
+      <h3>What is it?</h3>
+      <p>
+        Have you ever been playing a block puzzle game, there was lighting
+        outside and you want the block game to reflect the real world weather?
+        No? Okay well this uses Mongogame(Modern XNA) plus OpenWeather to pull
+        real weather to create modifers on a pretty bad version of a block
+        puzzle game.
+      </p>
+      <video width="500" controls>
+        <source src="./videos/temptris.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
     </div>
   </div>
 </template>
@@ -240,6 +265,11 @@ interface Info {
         repo: "walk-good-maybe",
         title: "Walk Good Maybe",
         techs: ["GBA"]
+      },
+      temptris: {
+        repo: "Temptris",
+        title: "Temptris",
+        techs: ["Monogame", "Open Weather"]
       }
     };
   }
