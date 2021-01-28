@@ -2,7 +2,7 @@
   <div>
     <h1>Paul Sarda</h1>
     <a href="mailto:paul@sarda.dev">
-      <p>Email: paul@sarda.dev</p>
+      <p>paul@sarda.dev</p>
     </a>
     <a href="https://github.com/sardap?tab=repositories">
       <p>Github: https://github.com/sardap</p>

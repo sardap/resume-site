@@ -68,6 +68,55 @@
       </div>
     </div>
     <h2>Education</h2>
+    <div class="wrapper">
+      <h3 class="company">Swinburne University of Technology</h3>
+      <div class="workexp">
+        <div class="role">
+          <p>Course</p>
+          <p>Bachelor of computer science</p>
+        </div>
+        <div class="date">
+          <p>Awarded Date</p>
+          <p>2019</p>
+        </div>
+        <div class="date">
+          <p>GPA</p>
+          <p>3.76</p>
+        </div>
+        <p class="wrapper">Other key info</p>
+        <p class="responsibilities"></p>
+        <ul>
+          <li>SSEE Summer Scholarship 2017-2018 recipient</li>
+          <li>Achived 100 in Intro to Programming</li>
+          <li>Achived 100 in Object Oriented Programming</li>
+          <li>
+            Achived over 90% in
+            <ul>
+              <li>Final year project Semester 2</li>
+              <li>Languages in software development</li>
+              <li>Topics in Computer Science</li>
+              <li>Data Structures and Patterns</li>
+              <li>Fundamentals of Data Management</li>
+              <li>Creating Web Applications</li>
+              <li>Software Development for Mobile Devices</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="wrapper">
+      <h3 class="company">Swinburne University of Technology</h3>
+      <div class="workexp">
+        <div class="role">
+          <p>Course</p>
+          <p>Certificate IV in Integrated Technology Networking</p>
+        </div>
+        <div class="date">
+          <p>Awarded Date</p>
+          <p>2015</p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -89,13 +138,6 @@ import { Options, Vue } from "vue-class-component";
           .duration(moment(new Date()).diff(moment("2020", "YYYY")))
           .asYears()
       ),
-      workExpCol: [
-        "Company",
-        "Role",
-        "Responsibilities",
-        "Start Date",
-        "End Date"
-      ],
       workExpRow: [
         {
           comapny: "Telstra",
@@ -181,7 +223,7 @@ import { Options, Vue } from "vue-class-component";
               link: "https://ieeexplore.ieee.org/abstract/document/8887319/"
             }
           ],
-          startDate: moment("01-2018", "MM-YYYY"),
+          startDate: moment("01-2017", "MM-YYYY"),
           endDate: moment("11-2019", "MM-YYYY")
         },
         {

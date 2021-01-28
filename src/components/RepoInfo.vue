@@ -6,35 +6,30 @@
       >
     </div>
     <div class="border">
-      <div v-if="loaded !== false">
-        <div class="parent info-line">
-          <p class="child inline-block-child">Languages:</p>
-          <p
-            class="child inline-block-child"
-            v-for="(lang, index) in langs"
-            :key="index"
-          >
-            {{ index !== langs.length - 1 ? `${lang},` : lang }}
-          </p>
+      <div v-if="loadedBasic === true" id="card">
+        <div id="created-date">
+          <p class="card-header">Created Date</p>
+          <p>{{ createdDate }}</p>
         </div>
-        <div class="parent info-line">
-          <p class="child inline-block-child">Used Technologies:</p>
-          <p
-            class="child inline-block-child"
-            v-for="(tech, index) in techs"
-            :key="index"
-          >
-            {{ index !== techs.length - 1 ? `${tech},` : tech }}
-          </p>
+        <div id="technologies">
+          <p class="card-header">Technologies</p>
+          <p>{{ techs.join(", ") }}</p>
         </div>
-        <div class="parent info-line">
-          <p class="child inline-block-child">Craeted Date:</p>
-          <p class="child inline-block-child">{{ createdDate }}</p>
+        <div v-if="langs" :key="langs" id="languages">
+          <p class="card-header">Languages</p>
+          <p>{{ langs.join(", ") }}</p>
         </div>
-        <div v-if="starGazers > 0" class="parent">
-          <p class="child inline-block-child">Stars:</p>
-          <p class="child inline-block-child">{{ starGazers }}</p>
+        <div v-if="starGazers > 0">
+          <p class="card-header">Stars</p>
+          <p>{{ starGazers }}</p>
         </div>
+        <div v-if="commits" :key="commits">
+          <p class="card-header" style="margin-top: 10px;">Commits</p>
+          <p>{{ commits }}</p>
+        </div>
+      </div>
+      <div v-else-if="loaded === false">
+        pulling...
       </div>
     </div>
   </div>
@@ -72,6 +67,7 @@ const LangsBlockList = [
             .format("YYYY-MM-DD");
 
           this.starGazers = apiRes.stargazers_count;
+          this.loadedBasic = true;
 
           fetch(apiRes.languages_url)
             .then(response => response.json())
@@ -82,8 +78,17 @@ const LangsBlockList = [
                   this.langs.push(i);
                 }
               });
+            });
 
-              this.loaded = true;
+          fetch(apiRes.contributors_url)
+            .then(response => response.json())
+            .then(apiRes => {
+              for (let i = 0; i < apiRes.length; i++) {
+                if (apiRes[i].login === "sardap") {
+                  this.commits = apiRes[i].contributions;
+                  break;
+                }
+              }
             });
         });
     }
@@ -94,7 +99,9 @@ const LangsBlockList = [
   data() {
     return {
       repoLink: `https://github.com/sardap/${this.repo}`,
-      loaded: false
+      langs: [],
+      commits: 0,
+      loadedBasic: false
     };
   }
 })
@@ -112,12 +119,41 @@ p {
   padding: 5px;
 }
 
+#card {
+  max-width: 30em;
+}
+
+#created-date {
+  display: inline-block;
+  vertical-align: top;
+  width: 33%;
+}
+
+#technologies {
+  display: inline-block;
+  vertical-align: top;
+  width: 33%;
+}
+
+#languages {
+  display: inline-block;
+  vertical-align: top;
+  width: 33%;
+}
+
+.card-header {
+  font-weight: bold;
+}
+
 .border {
-  border-style: solid;
-  border-width: thin;
-  max-width: 25em;
+  max-width: 30em;
   margin: 0 auto;
   padding-block-start: 1em;
   padding-block-end: 1em;
+}
+
+.card-info {
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>

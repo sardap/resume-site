@@ -1,12 +1,11 @@
 <template>
   <div>
     <Header />
-    <hr/>
+    <hr />
     <div id="nav">
       <router-link to="/">home</router-link>
       <router-link to="/projects">projects</router-link>
     </div>
-    <hr/>
     <router-view />
   </div>
 </template>
