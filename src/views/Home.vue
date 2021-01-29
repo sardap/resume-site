@@ -5,9 +5,21 @@
       <p>My name is paul I turn sleep deprivation into compiler errors</p>
     </div>
     <div></div>
-    <h2>About</h2>
+    <h2>Key Points</h2>
     <div class="wrapper">
       <ul class="aboutul">
+        <li>
+          Languages In order of competency
+          <ul>
+            <li>Go</li>
+            <li>C#</li>
+            <li>C</li>
+            <li>Python</li>
+            <li>Typescript</li>
+            <li>Pascal</li>
+            <li>Java</li>
+          </ul>
+        </li>
         <li>Have been programming for {{ yearsProgramming }} Years</li>
         <li>
           Programming professionally for {{ yearsProfProgramming }} Year{{
@@ -27,8 +39,6 @@
         </li>
       </ul>
     </div>
-    <h2>Key Skills</h2>
-
     <h2>Work Experience</h2>
     <div class="wrapper" v-for="(row, index) in workExpRow" :key="index">
       <div class="workexp">

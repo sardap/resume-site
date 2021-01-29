@@ -170,6 +170,80 @@
         Your browser does not support the video tag.
       </video>
     </div>
+    <hr />
+    <div class="project-info">
+      <RepoInfo
+        :repo="shapesCanMoveAndSpeak.repo"
+        :title="shapesCanMoveAndSpeak.title"
+        :techs="shapesCanMoveAndSpeak.techs"
+        createdDateP="2017-04-04"
+      />
+      <h3>What is it?</h3>
+      <p>
+        The game is it spawns a bunch of shapes with gold mines. Each shape
+        cares about 3 things in a random amount Money, Age and size. They also
+        have 3 colours chosen randomly. The more a shape cares about one of the
+        3 things the more it can be influenced by another shape if that shape
+        has a greater amount of that thing. Example Shape A cares a lot about
+        age is 23 and is red. Shape B cares a lot about age as well is 45 and is
+        blue. when they are next to each other shape B will turn shape A blue
+        over time. Because shape A cares about age and shape B is older. Shapes
+        get money by being next to a gold mine. The bigger a shape is the faster
+        it will mine. The game ends when you close the program. Here is a gif of
+        it running it's bloody strange.
+      </p>
+      <img :src="shapesCanMoveAndSpeakImg" width="500" />
+    </div>
+    <hr />
+    <div class="project-info">
+      <RepoInfo
+        :repo="pascalBrainFuck.repo"
+        :title="pascalBrainFuck.title"
+        :techs="pascalBrainFuck.techs"
+      />
+      <h3>What is it?</h3>
+      <p>
+        Can interpret brainfuck code into Pascal or C which is then compilied by
+        fpc or gcc. Please keep in mind the date when looking at this code.
+        Below is some brainfuck code which prints "g'day".
+      </p>
+      <div class="code-block">
+        <p class="code-text">
+          ++++++++++[&gt;++++++++++&lt;-] Gets cell 1 to 100<br />
+          &gt;+++. adds 3 to cell 1 then prints cell 1 (g)<br />
+          &lt;++++++[&gt;&gt;++++++&lt;&lt;-]&gt;&gt;+++. makes cell 2 &#39;
+          then prints<br />
+          &lt;---. minus 3 from cell 1 prints (d)<br />
+          ---. minus 3 from cell 1 prints (a)<br />
+          &lt;+++++[&gt;+++++&lt;-]&gt;-. adds 24 to cell 1 then prints(y)<br />
+        </p>
+      </div>
+    </div>
+    <hr />
+    <div class="project-info">
+      <RepoInfo
+        :repo="numbersOrDie.repo"
+        :title="numbersOrDie.title"
+        :techs="numbersOrDie.techs"
+        createdDateP="2016-09-25"
+      />
+      <h3>What is it?</h3>
+      <p>
+        This is the first program created without anykind of direction. It's a
+        game where you everyone has a amount of 4 kinds of moeny. The more of a
+        kind of money there is the less it's worth. The player shoots any of
+        these four kinds of money. If they hit an enemy they will steal some of
+        that kind of money from the enemy. if they miss then that money is
+        destoyed this will brin up the value of the shot money vs the other
+        kinds of money becuase now there is less of it. Enemeies spawn with a
+        random amount of each of these kinds of money this also impacts the
+        value vs other kinds of money. Yes this is insane.
+      </p>
+      <video width="500" controls>
+        <source src="./videos/numbers_or_die.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
   </div>
 </template>
 
@@ -228,6 +302,9 @@ interface Info {
       chessImgColour: "./photos/chess_colour.png",
       chessImg: chessImg,
       activeChessImg: chessImg,
+      shapesCanMoveAndSpeakImg:
+        "https://github.com/sardap/ShapesCanMoveAndSpeak" +
+        "/raw/master/example/shapes_move_speak_1.gif",
       vibesImg:
         "https://github.com/sardap" +
         "/vibes/blob/master/examples/clear_skys.png?raw=true",
@@ -270,6 +347,21 @@ interface Info {
         repo: "Temptris",
         title: "Temptris",
         techs: ["Monogame", "Open Weather"]
+      },
+      pascalBrainFuck: {
+        repo: "PascalBrainFuck",
+        title: "Pascal Brain Fuck",
+        techs: ["Bad words"]
+      },
+      numbersOrDie: {
+        repo: "NumbersOrDie",
+        title: "Numbers or Die",
+        techs: ["Swingame"]
+      },
+      shapesCanMoveAndSpeak: {
+        repo: "ShapesCanMoveAndSpeak",
+        title: "Shapes can move and speak",
+        techs: ["Swingame"]
       }
     };
   }
@@ -289,6 +381,19 @@ hr {
 .project-info {
   display: inline-block;
   max-width: 35em;
+}
+
+.code-text {
+  padding-left: 20px;
+  padding-block-start: 20px;
+  padding-block-end: 20px;
+}
+
+.code-block {
+  font-family: "Courier New", Courier, monospace;
+  text-align: left;
+  background: #1e1e1e;
+  color: #5394c4;
 }
 
 #vibe-img {
