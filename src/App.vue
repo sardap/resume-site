@@ -1,22 +1,27 @@
 <template>
   <div>
     <Header />
-    <hr />
     <div id="nav">
       <router-link to="/">home</router-link>
       <router-link to="/projects">projects</router-link>
     </div>
+    <hr />
+    <div class="buffer" />
     <router-view />
+    <hr />
+    <Footer />
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import Header from "@/components/Header.vue";
+import Footer from "@/components/Footer.vue";
 
 @Options({
   components: {
-    Header
+    Header,
+    Footer
   },
   created() {
     document.title = "Paul Sarda";
@@ -26,6 +31,10 @@ export default class App extends Vue {}
 </script>
 
 <style>
+.buffer {
+  margin: 20px;
+}
+
 #app {
   font-family: Verdana, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

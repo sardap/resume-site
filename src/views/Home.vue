@@ -9,22 +9,56 @@
     <div class="wrapper">
       <ul class="aboutul">
         <li>
-          Languages In order of competency
+          Languages I have some level of competency in order of competency
           <ul>
             <li>Go</li>
             <li>C#</li>
             <li>C</li>
             <li>Python</li>
             <li>Typescript</li>
+            <li>C++</li>
             <li>Pascal</li>
             <li>Java</li>
+          </ul>
+        </li>
+        <li>
+          Technologies I have some level of competency in <b>no</b> sepical
+          order
+          <ul>
+            <li>
+              AWS
+              <ul>
+                <li>SQS</li>
+                <li>EC2</li>
+                <li>ECS</li>
+                <li>Route53</li>
+                <li>S3</li>
+                <li>Cloud formation</li>
+              </ul>
+            </li>
+            <li>Docker</li>
+            <li>Linux</li>
+            <li>WSDL</li>
+            <li>Creating REST APIS</li>
+            <li>
+              Used APIS
+              <ul>
+                <li>Discord</li>
+                <li>Spotify</li>
+                <li>Youtube API</li>
+                <li>Youtube Live API</li>
+                <li>Open Weather</li>
+              </ul>
+            </li>
+            <li>Unity</li>
+            <li>GBA development</li>
           </ul>
         </li>
         <li>Have been programming for {{ yearsProgramming }} Years</li>
         <li>
           Programming professionally for {{ yearsProfProgramming }} Year{{
             yearsProfProgramming > 1 ? s : ""
-          }}.
+          }}
         </li>
         <li>
           Have been involed with 4 Papers
@@ -169,7 +203,15 @@ import { Options, Vue } from "vue-class-component";
             " automation tools / dashboards to assist the team in" +
             " running said tools. Directly worked with Bamboo API," +
             " Jira API and Crowd API. AWS tools such as Lambda" +
-            " functions (in GO), EC2, Route53, ECS and Cloudwatch.",
+            " functions (in GO), EC2, Route53, ECS and Cloudwatch." +
+            " Rotation Two worked on adapters which talk directly to " +
+            " 3G and 4G network elements. These adatpers are writen in" +
+            " Typescript using the loopback 4 framework. With communication" +
+            " to the network elements being" +
+            " via wsdl, HTTP or a raw TCP connection sending a byte stream." +
+            " Giving me great expreince in talking to legacy systems from" +
+            " modern systems. Created and encahned bamboo plans to" +
+            " automaticity test and create these plans.",
           links: null,
           startDate: moment("01-2020", "MM-YYYY"),
           endDate: moment("02-2021", "MM-YYYY")

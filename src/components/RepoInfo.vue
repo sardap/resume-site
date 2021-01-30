@@ -45,7 +45,8 @@ const LangsBlockList = [
   "HLSL",
   "CSS",
   "HTML",
-  "ShaderLab"
+  "ShaderLab",
+  "Dockerfile"
 ];
 
 @Options({

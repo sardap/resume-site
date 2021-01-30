@@ -5,7 +5,7 @@
       <p>paul@sarda.dev</p>
     </a>
     <a href="https://github.com/sardap?tab=repositories">
-      <p>Github: https://github.com/sardap</p>
+      <p>https://github.com/sardap</p>
     </a>
   </div>
 </template>
@@ -16,4 +16,9 @@ import { Options, Vue } from "vue-class-component";
 @Options({})
 export default class Header extends Vue {}
 </script>
-<style scoped></style>
+
+<style scoped>
+div {
+  display: inline-block;
+}
+</style>

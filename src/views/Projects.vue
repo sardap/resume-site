@@ -152,6 +152,21 @@
     <hr />
     <div class="project-info">
       <RepoInfo
+        :repo="capstone.repo"
+        :title="capstone.title"
+        :techs="capstone.techs"
+      />
+      <h3>What is it?</h3>
+      <p>
+        This is the final year <b>group project</b> at uni. The objecteve was to
+        create an architecture, then implement part of the created architecture.
+        The goal was to allow people to sell their personal biometic data to
+        reserachers with as few middle men as possible.
+      </p>
+    </div>
+    <hr />
+    <div class="project-info">
+      <RepoInfo
         :repo="temptris.repo"
         :title="temptris.title"
         :techs="temptris.techs"
@@ -253,13 +268,7 @@ import GBA from "../components/GBA.vue";
 import GB from "../components/GB.vue";
 import RepoInfo from "../components/RepoInfo.vue";
 
-import { hostingSite } from "@/secret";
-
-interface Info {
-  repo: string;
-  title: string;
-  techs: string[];
-}
+const hostingSite = "https://wgm.sarda.dev/versions";
 
 @Options({
   components: {
@@ -271,7 +280,7 @@ interface Info {
     selectVersion(event: { target: { value: string } }) {
       this.wgmRom =
         `https://gba.ninja/?autorun=${hostingSite}` +
-        `/wgm/${event.target.value}/walk-good-maybe.gba`;
+        `/${event.target.value}/walk-good-maybe.gba`;
       this.wgmUpdateCount++;
     },
     getVersionData() {
@@ -316,17 +325,17 @@ interface Info {
       chessBot: {
         repo: "chessbot",
         title: "Chess Bot",
-        techs: ["Discord API", "Image generation", "redis"]
+        techs: ["Discord API", "Image generation", "redis", "Docker"]
       },
       muhBot: {
         repo: "muhbot",
         title: "Muh Bot",
-        techs: ["Discord API", "Google speech API", "redis"]
+        techs: ["Discord API", "Google speech API", "redis", "Docker"]
       },
       vibes: {
         repo: "vibes",
         title: "Vibes",
-        techs: ["Open Weather API", "Discord API", "React"]
+        techs: ["Open Weather API", "Discord API", "React", "Docker"]
       },
       hackathonThing: {
         repo: "HackathonThing",
@@ -342,6 +351,11 @@ interface Info {
         repo: "walk-good-maybe",
         title: "Walk Good Maybe",
         techs: ["GBA"]
+      },
+      capstone: {
+        repo: "Capstone-2019-Data-Sharing",
+        title: "Final year uni Project",
+        techs: ["Flask", "Blockchain", "Docker"]
       },
       temptris: {
         repo: "Temptris",
