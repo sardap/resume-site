@@ -1,7 +1,11 @@
 <template>
   <div class="home">
     <div>
-      <img alt="Photo of Paul" src="./photos/face.png" />
+      <img
+        alt="Photo of Paul"
+        :src="`./photos/${paulPhotoActive}`"
+        @click="photoClick"
+      />
       <p>My name is Paul I turn sleep deprivation into compiler errors</p>
     </div>
     <div></div>
@@ -158,6 +162,9 @@
 import moment from "moment";
 import { Options, Vue } from "vue-class-component";
 
+const paulPhoto = "face.png";
+const paulPhotoReal = "faceFunny.png";
+
 @Options({
   components: {},
   data() {
@@ -283,10 +290,19 @@ import { Options, Vue } from "vue-class-component";
           startDate: moment("01-2017", "MM-YYYY"),
           endDate: moment("11-2019", "MM-YYYY")
         }
-      ]
+      ],
+      photoClickCount: 0,
+      paulPhotoActive: paulPhoto
     };
   },
-  methods: {}
+  methods: {
+    photoClick() {
+      this.photoClickCount++;
+      if (this.photoClickCount > 50) {
+        this.paulPhotoActive = paulPhotoReal;
+      }
+    }
+  }
 })
 export default class Home extends Vue {}
 </script>
