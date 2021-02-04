@@ -2,7 +2,7 @@
   <div class="home">
     <div>
       <img alt="Photo of Paul" src="./photos/face.png" />
-      <p>My name is paul I turn sleep deprivation into compiler errors</p>
+      <p>My name is Paul I turn sleep deprivation into compiler errors</p>
     </div>
     <div></div>
     <h2>Key Points</h2>
@@ -22,7 +22,7 @@
           </ul>
         </li>
         <li>
-          Technologies I have some level of competency in <b>no</b> sepical
+          Technologies I have some level of competency in <b>no</b> special
           order
           <ul>
             <li>
@@ -38,18 +38,8 @@
             </li>
             <li>Docker</li>
             <li>Linux</li>
-            <li>WSDL</li>
+            <li>Reading and using WSDL's</li>
             <li>Creating REST APIS</li>
-            <li>
-              Used APIS
-              <ul>
-                <li>Discord</li>
-                <li>Spotify</li>
-                <li>Youtube API</li>
-                <li>Youtube Live API</li>
-                <li>Open Weather</li>
-              </ul>
-            </li>
             <li>Unity</li>
             <li>GBA development</li>
           </ul>
@@ -61,13 +51,13 @@
           }}
         </li>
         <li>
-          Have been involed with 4 Papers
+          Have been involved with 4 papers
           <a href="https://scholar.google.com.au/citations?user=QfnqhZ4AAAAJ"
             >Google scholar</a
           >
         </li>
         <li>
-          Constaly work on
+          Constantly work on
           <router-link to="/projects">personal projects</router-link> which you
           can play in this browser!
         </li>
@@ -117,7 +107,7 @@
       <div class="workexp">
         <div class="role">
           <p>Course</p>
-          <p>Bachelor of computer science</p>
+          <p>Bachelor of Computer Science</p>
         </div>
         <div class="date">
           <p>Awarded Date</p>
@@ -197,20 +187,20 @@ import { Options, Vue } from "vue-class-component";
           companyLink: "https://www.telstra.com.au/",
           role: "Graduate Software Engineer",
           responsibilities:
-            "12 Month Graduate Program inclduing two Rotations." +
+            "12 Months Graduate Program including two rotations." +
             " Rotation one: with team which runs Atlassian tools" +
-            " at telstra. Was a programmer who worked on varouis" +
+            " at Telstra. Was a programmer who worked on various" +
             " automation tools / dashboards to assist the team in" +
             " running said tools. Directly worked with Bamboo API," +
             " Jira API and Crowd API. AWS tools such as Lambda" +
             " functions (in GO), EC2, Route53, ECS and Cloudwatch." +
             " Rotation Two worked on adapters which talk directly to " +
-            " 3G and 4G network elements. These adatpers are writen in" +
+            " 3G and 4G network elements. These adatpers are written in" +
             " Typescript using the loopback 4 framework. With communication" +
             " to the network elements being" +
             " via wsdl, HTTP or a raw TCP connection sending a byte stream." +
-            " Giving me great expreince in talking to legacy systems from" +
-            " modern systems. Created and encahned bamboo plans to" +
+            " Giving me great experience in talking to legacy systems from" +
+            " modern systems. Created and enhanced bamboo plans to" +
             " automaticity test and create these plans.",
           links: null,
           startDate: moment("01-2020", "MM-YYYY"),
@@ -224,12 +214,12 @@ import { Options, Vue } from "vue-class-component";
             "Worked as part of a team as 3 with Cyber Electronic Warfare" +
             " Division" +
             " on creating a 4G simulation to allow better security testing." +
-            " Inclduing topology discovery" +
-            " Personaly wrote A freeDiameter plugin in C which allowed us to" +
-            " send pure dimater traffic more easily enabling us to test" +
+            " Including topology discovery" +
+            " Personally wrote A freeDiameter plugin in C which allowed us to" +
+            " send pure diameter traffic more easily enabling us to test" +
             " more." +
             " Simulation script in Python which would flood the network" +
-            " anyalse responses and woudl create a topogly of the Diameter" +
+            " analyse responses and would create a topogly of the Diameter" +
             " network based on those responses",
           links: [
             {
@@ -246,7 +236,7 @@ import { Options, Vue } from "vue-class-component";
           role: "Research Intern",
           responsibilities:
             "Worked with Dr Alan Colman and Dr Jabed Morshed" +
-            " on 4 Reserach papers Which can all be found on google scholar." +
+            " on 4 Research papers which can all be found on Google scholar." +
             " Primary author for one paper was mostly responsible for" +
             " assisting with the desgin, Proof of concepts implementations.",
           links: [
