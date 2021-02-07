@@ -325,7 +325,7 @@ import GBA from "../components/GBA.vue";
 import GB from "../components/GB.vue";
 import RepoInfo from "../components/RepoInfo.vue";
 
-const hostingSite = "https://wgm.sarda.dev/versions";
+const hostingSite = "https://wgm.sarda.dev";
 
 @Options({
   components: {
@@ -337,7 +337,7 @@ const hostingSite = "https://wgm.sarda.dev/versions";
     selectVersion(event: { target: { value: string } }) {
       this.wgmRom =
         `https://gba.ninja/?autorun=${hostingSite}` +
-        `/${event.target.value}/walk-good-maybe.gba`;
+        `/versions/${event.target.value}/walk-good-maybe.gba`;
       this.wgmUpdateCount++;
     },
     getVersionData() {
