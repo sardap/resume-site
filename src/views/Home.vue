@@ -13,39 +13,22 @@
     <div class="wrapper">
       <ul class="aboutul">
         <li>
-          Languages I have some level of competency in order of competency
-          <ul>
-            <li>Go</li>
-            <li>C#</li>
-            <li>C</li>
-            <li>Python</li>
-            <li>Typescript</li>
-            <li>C++</li>
-            <li>Pascal</li>
-            <li>Java</li>
-          </ul>
+          Languages I have some level of skill in:<br />
+          Go, C#, C, Python, Typescript, C++, Pascal and Java
         </li>
         <li>
-          Technologies I have some level of competency in <b>no</b> special
-          order
+          Technologies I have some level in proficiency order
           <ul>
             <li>
-              AWS
-              <ul>
-                <li>SQS</li>
-                <li>EC2</li>
-                <li>ECS</li>
-                <li>Route53</li>
-                <li>S3</li>
-                <li>Cloud formation</li>
-              </ul>
+              AWS including but not limted to: SQS, EC2, ECS, Route53, S3 and
+              Cloud formation.
             </li>
-            <li>Docker</li>
+            <li>Docker and Kubenestes</li>
+            <li>Databases: (Redis, Mongo, Postgres and SQL)</li>
             <li>Linux</li>
-            <li>Reading and using WSDL's</li>
-            <li>Creating REST APIS</li>
+            <li>WSDL's</li>
+            <li>REST APIS</li>
             <li>Unity</li>
-            <li>GBA development</li>
           </ul>
         </li>
         <li>Have been programming for {{ yearsProgramming }} Years</li>
@@ -125,10 +108,10 @@
         <p class="responsibilities"></p>
         <ul>
           <li>SSEE Summer Scholarship 2017-2018 recipient</li>
-          <li>Achived 100 in Intro to Programming</li>
-          <li>Achived 100 in Object Oriented Programming</li>
+          <li>Achieved 100 in Intro to Programming</li>
+          <li>Achieved 100 in Object Oriented Programming</li>
           <li>
-            Achived over 90% in
+            Achieved over 90% in
             <ul>
               <li>Final year project Semester 2</li>
               <li>Languages in software development</li>
@@ -216,7 +199,7 @@ const paulPhotoReal = "faceFunny.png";
         {
           comapny: "Defence Science and Technology Group",
           companyLink: "https://www.dst.defence.gov.au/",
-          role: "Graduate Software Engineer",
+          role: "Summer Vacation Intern",
           responsibilities:
             "Worked as part of a team as 3 with Cyber Electronic Warfare" +
             " Division" +

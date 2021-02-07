@@ -2,6 +2,19 @@
   <div class="projects">
     <div class="project-info">
       <RepoInfo
+        :repo="resumeSite.repo"
+        :title="resumeSite.title"
+        :techs="resumeSite.techs"
+      />
+      <h3>What is it?</h3>
+      <p>
+        Your looking at it. It may not look like Vue but it is. The goal is to
+        create a early 2000's style site.
+      </p>
+    </div>
+    <hr />
+    <div class="project-info">
+      <RepoInfo
         :repo="walkGoodMaybe.repo"
         :title="walkGoodMaybe.title"
         :techs="walkGoodMaybe.techs"
@@ -58,13 +71,30 @@
     <hr />
     <div class="project-info">
       <RepoInfo
+        :repo="pickUpBot.repo"
+        :title="pickUpBot.title"
+        :techs="pickUpBot.techs"
+      />
+      <h3>What is it?</h3>
+      <p>
+        A Discord bot which is like other music player bots. But it will only
+        play ska music. To achieve this it uses "<a
+          :href="`https://isitska.com`"
+          >is it ska?</a
+        >" to query wether or not a song is ska. Then will try it's best to find
+        the song on youtube and stream that to the given voice channel.
+      </p>
+    </div>
+    <hr />
+    <div class="project-info">
+      <RepoInfo
         :repo="muhBot.repo"
         :title="muhBot.title"
         :techs="muhBot.techs"
       />
       <h3>What is it?</h3>
       <p>
-        A Discord bot which is based on a stupid bot which when someone messages
+        A Discord bot which is based on a stupid joke that when someone messages
         a sentence ending with me it will respond with muh. eg "what time?" will
         respond with muh. It will also copy any foramting "what ti<b>mE</b>"
         "<b>muH</b>". Will track how many times you have been muhed per server.
@@ -80,6 +110,29 @@
         the fly to get to 15 seconds as fast as possible. Making the muh hit on
         time.
       </p>
+    </div>
+    <hr />
+    <div class="project-info">
+      <RepoInfo
+        :repo="isItSka.repo"
+        :title="isItSka.title"
+        :techs="isItSka.techs"
+      />
+      <h3>What is it?</h3>
+      <p>
+        I love ska music. This site was created to try out scikit by using
+        <b>MACHINE LEARNING</b> to attempt to calsiffy weather or not a song is
+        ska. This is done
+        <a :href="featuresDocLink"
+          >by getting each songs features using ths Spotify web api.</a
+        >
+        Followed by training a classifer by using a list of ska and not ska
+        tracks. With the machine learning features being the above mentioned
+        song features from the spotify api. This works pretty badly. I have
+        found a RandomForest classifier is working best.
+      </p>
+      <br />
+      <a href="https://isitska.com"><p>Pick it up here!</p></a>
     </div>
     <hr />
     <div class="project-info">
@@ -112,7 +165,11 @@
         to not touch your eyes during the COIVD-19 pandemic. The background is
         Goole Earth VR footage.
       </p>
-      <button v-if="hideHackThing" v-on:click="hideHackThing = false">
+      <button
+        class="play-button"
+        v-if="hideHackThing"
+        v-on:click="hideHackThing = false"
+      >
         Play!
       </button>
       <div v-if="!hideHackThing">
@@ -317,6 +374,14 @@ const hostingSite = "https://wgm.sarda.dev/versions";
       vibesImg:
         "https://github.com/sardap" +
         "/vibes/blob/master/examples/clear_skys.png?raw=true",
+      featuresDocLink:
+        "https://developer.spotify.com/documentation" +
+        "/web-api/reference/#endpoint-get-several-audio-features",
+      resumeSite: {
+        repo: "resume-site",
+        title: "Resume Site",
+        techs: [""]
+      },
       gameboyMicroGameCollection: {
         repo: "gameboy_micro_game_collection",
         title: "Gameboy Micro Game Collection",
@@ -327,10 +392,20 @@ const hostingSite = "https://wgm.sarda.dev/versions";
         title: "Chess Bot",
         techs: ["Discord API", "Image generation", "redis", "Docker"]
       },
+      pickUpBot: {
+        repo: "pickupbot",
+        title: "Pick Up bot",
+        techs: ["Discord API", "YouTube-api", "Docker"]
+      },
       muhBot: {
         repo: "muhbot",
         title: "Muh Bot",
         techs: ["Discord API", "Google speech API", "redis", "Docker"]
+      },
+      isItSka: {
+        repo: "IsItSka",
+        title: "Is it ska?",
+        techs: ["Spotify API", "scikit-learn", "Docker", "Flask"]
       },
       vibes: {
         repo: "vibes",
@@ -417,5 +492,10 @@ hr {
 #chess-img {
   max-width: 240px;
   max-height: 240px;
+}
+
+.play-button {
+  width: 100px;
+  height: 30px;
 }
 </style>
