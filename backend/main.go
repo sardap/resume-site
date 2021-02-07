@@ -188,5 +188,5 @@ func main() {
 	r.GET("/api/repocontr/:id", repoContrEndpoint)
 	r.GET("/api/reporele/:id", repoRelesesEndpoint)
 
-	r.Run(fmt.Sprintf(":%s", "8000"))
+	r.Run()
 }
