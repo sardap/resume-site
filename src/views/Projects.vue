@@ -326,6 +326,7 @@ import GB from "../components/GB.vue";
 import RepoInfo from "../components/RepoInfo.vue";
 
 const hostingSite = "https://wgm.sarda.dev";
+const backendSite = "https://backend.sarda.dev";
 
 @Options({
   components: {
@@ -341,7 +342,7 @@ const hostingSite = "https://wgm.sarda.dev";
       this.wgmUpdateCount++;
     },
     getVersionData() {
-      fetch("https://api.github.com/repos/sardap/walk-good-maybe/releases")
+      fetch(`${backendSite}/api/reporele/walk-good-maybe`)
         .then(response => response.json())
         .then(apiRes => {
           this.versions = [];
@@ -380,7 +381,7 @@ const hostingSite = "https://wgm.sarda.dev";
       resumeSite: {
         repo: "resume-site",
         title: "Resume Site",
-        techs: [""]
+        techs: ["Github API"]
       },
       gameboyMicroGameCollection: {
         repo: "gameboy_micro_game_collection",

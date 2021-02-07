@@ -28,7 +28,7 @@
           <p>{{ commits }}</p>
         </div>
       </div>
-      <div v-else-if="loaded === false">
+      <div v-else-if="loadedBasic === false">
         pulling...
       </div>
     </div>
@@ -48,6 +48,7 @@ const LangsBlockList = [
   "ShaderLab",
   "Dockerfile"
 ];
+const backendSite = "https://backend.sarda.dev";
 
 @Options({
   props: {
@@ -61,7 +62,7 @@ const LangsBlockList = [
   },
   methods: {
     getRepoInfo() {
-      fetch(`https://api.github.com/repos/sardap/${this.repo}`)
+      fetch(`${backendSite}/api/repo/${this.repo}`)
         .then(response => response.json())
         .then(apiRes => {
           let createdAt: string;
@@ -78,7 +79,7 @@ const LangsBlockList = [
           this.starGazers = apiRes.stargazers_count;
           this.loadedBasic = true;
 
-          fetch(apiRes.languages_url)
+          fetch(`${backendSite}/api/repolang/${this.repo}`)
             .then(response => response.json())
             .then(apiRes => {
               this.langs = [];
@@ -89,7 +90,7 @@ const LangsBlockList = [
               });
             });
 
-          fetch(apiRes.contributors_url)
+          fetch(`${backendSite}/api/repocontr/${this.repo}`)
             .then(response => response.json())
             .then(apiRes => {
               for (let i = 0; i < apiRes.length; i++) {
