@@ -6,7 +6,7 @@
         :src="`./photos/${paulPhotoActive}`"
         @click="photoClick"
       />
-      <p>My name is Paul I turn sleep deprivation into compiler errors</p>
+      <p>My name is Paul backend Software Developer.</p>
     </div>
     <div></div>
     <h2>Key Points</h2>
@@ -31,6 +31,10 @@
             <li>Unity</li>
           </ul>
         </li>
+        <li>
+          Awarded Bachelor of Computer Science from Swinburne University in
+          2019.
+        </li>
         <li>Have been programming for {{ yearsProgramming }} Years</li>
         <li>
           Programming professionally for {{ yearsProfProgramming }} Year{{
@@ -38,15 +42,15 @@
           }}
         </li>
         <li>
-          Have been involved with 4 papers
+          Published researcher through involvement with 4 papers
           <a href="https://scholar.google.com.au/citations?user=QfnqhZ4AAAAJ"
             >Google scholar</a
           >
         </li>
         <li>
           Constantly work on
-          <router-link to="/projects">personal projects</router-link> which you
-          can play in this browser!
+          <router-link to="/projects">personal projects</router-link> some you
+          see in this browser!
         </li>
       </ul>
     </div>
@@ -177,21 +181,21 @@ const paulPhotoReal = "faceFunny.png";
           companyLink: "https://www.telstra.com.au/",
           role: "Graduate Software Engineer",
           responsibilities:
-            "12 Months Graduate Program including two rotations." +
-            " Rotation one: with team which runs Atlassian tools" +
-            " at Telstra. Was a programmer who worked on various" +
-            " automation tools / dashboards to assist the team in" +
-            " running said tools. Directly worked with Bamboo API," +
-            " Jira API and Crowd API. AWS tools such as Lambda" +
-            " functions (in GO), EC2, Route53, ECS and Cloudwatch." +
-            " Rotation Two worked on adapters which talk directly to " +
-            " 3G and 4G network elements. These adapters are written in" +
-            " Typescript using the loopback 4 framework. With communication" +
-            " to the network elements being" +
-            " via wsdl, HTTP or a raw TCP connection sending a byte stream." +
-            " Giving me great experience in talking to legacy systems from" +
-            " modern systems. Created and enhanced bamboo plans to" +
-            " automaticity test and create these plans.",
+            "12-Months Graduate Program including two rotations:" +
+            " Rotation one: Agile tools team member. Worked on" +
+            " various automation tools / dashboards including which" +
+            " involved using Bamboo API," +
+            " Jira API and Crowd API and the following AWS tools including" +
+            " Lambda functions (in GO), EC2, Route53, ECS and Cloudwatch." +
+            " Rotation Two: Worked on Adapters which talk directly to" +
+            " 2G, 3G and 4G network elements. Adapters are written in" +
+            " Typescript using the loopback 4 framework, with" +
+            " communication to the network elements being via wsdl," +
+            " HTTP or a raw TCP connection sending a byte stream." +
+            " Responsible for creating and enhancing bamboo plans," +
+            " including automaticity testing. This work provided with" +
+            " great experience in talking to legacy systems from modern" +
+            " systems.",
           links: null,
           startDate: moment("01-2020", "MM-YYYY"),
           endDate: moment("02-2021", "MM-YYYY")
@@ -201,16 +205,16 @@ const paulPhotoReal = "faceFunny.png";
           companyLink: "https://www.dst.defence.gov.au/",
           role: "Summer Vacation Intern",
           responsibilities:
-            "Worked as part of a team as 3 with Cyber Electronic Warfare" +
-            " Division" +
-            " on creating a 4G simulation to allow better security testing." +
-            " Including topology discovery" +
-            " Personally wrote A freeDiameter plugin in C which allowed us to" +
-            " send pure diameter traffic more easily enabling us to test" +
-            " more." +
-            " Simulation script in Python which would flood the network" +
-            " analyse responses and would create a topology of the Diameter" +
-            " network based on those responses",
+            "Cyber Electronic Warfare Division. Worked as part of a team of" +
+            " 3 to create a 4G simulation allowing" +
+            " for better security testing." +
+            " Included topology discovery. Personally wrote a free Diameter" +
+            " Plugin in C, allowing us to send pure diameter" +
+            " traffic more easily" +
+            " and enabling us to test more. Simulation script was written in" +
+            " Python which would flood the network, analyse responses, and" +
+            " then create a topology of the Diameter network based on those" +
+            " responses.",
           links: [
             {
               text: "presentation on the topic",
@@ -225,10 +229,13 @@ const paulPhotoReal = "faceFunny.png";
           companyLink: "https://www.swinburne.edu.au/",
           role: "Research Intern",
           responsibilities:
-            "Worked with Dr Alan Colman and Dr Jabed Morshed" +
-            " on 4 Research papers which can all be found on Google scholar." +
-            " Primary author for one paper was mostly responsible for" +
-            " assisting with the design, Proof of concepts implementations.",
+            "Worked with Dr Alan Colman and Dr Jabed Morshed on four Research" +
+            " papers (Google scholar) on Block Chain, one of" +
+            " which I was primary author." +
+            " Papers were presented at the 2018 17th IEEE International" +
+            " Conference On Trust, Security And Privacy In Computing And" +
+            " Communications and the 12th IEEE International Conference" +
+            " On Big Data Science And Engineering (TrustCom/BigDataSE).",
           links: [
             {
               text:
@@ -265,7 +272,7 @@ const paulPhotoReal = "faceFunny.png";
           responsibilities:
             "Introduction to Programming tought in Pascal, C and" +
             " ruby for Higher-Ed students, Responsible" +
-            " for lesson plan additions, curriculum delivery over 2-hour" +
+            " for lesson plan curriculum delivery over 2-hour" +
             " period to up to 25 students, work assessment, and scrutinising" +
             " tests. Also includes HelpDesk consultation assisting students" +
             " one-on-one.",
