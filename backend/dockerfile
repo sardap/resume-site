@@ -1,0 +1,15 @@
+FROM golang:latest as builder
+
+WORKDIR /app
+COPY go.mod .
+COPY go.sum .
+RUN go mod download
+COPY . .
+RUN GOOS=linux GOARCH=amd64 go build -o main .
+
+# Backend
+FROM scratch
+
+COPY --from=builder /app/main /go/bin/hello
+
+ENTRYPOINT ["/go/bin/main"]
