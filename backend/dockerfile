@@ -5,13 +5,15 @@ COPY go.mod .
 COPY go.sum .
 RUN go mod download
 COPY . .
-RUN GOOS=linux GOARCH=amd64 go build -o main .
+RUN go build -o main .
+
+ENTRYPOINT [ "/app/main" ]
 
 # Backend
-FROM scratch
+# FROM scratch
 
-COPY --from=builder /app/main /go/bin/main
+# COPY --from=builder /app/main /go/bin/main
 
-EXPOSE 8080
+# EXPOSE 8080
 
-ENTRYPOINT ["/go/bin/main"]
+# ENTRYPOINT ["/go/bin/main"]
