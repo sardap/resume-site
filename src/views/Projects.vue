@@ -22,10 +22,10 @@
       <h3>What is it?</h3>
       <p>
         A basic endless runner homebrew Game Boy Advance game. Play it right
-        here in the browser! GBA development is diffuclt it has a incredibly
+        here in the browser! GBA development is difficult it has a incredibly
         slow CPU at 16MHz no FPU (particularly hard to deal with for game dev).
         No real helper functions just setting an address in VRAM and performing
-        bitwise operations on registers to set diffrent modes. Check out the
+        bitwise operations on registers to set different modes. Check out the
         code it's crap but it's mine.
       </p>
       <p>Note: browser GBA emulator has some emulation inaccuracy</p>
@@ -57,7 +57,7 @@
         Play Chess via a Discord bot via messages! Send move commands, Try
         playing vs the very bad AI, Create a Gif of all the moves so far in your
         game! Do silly customisation stuff like change the colours of the pieces
-        to whatever you want hover over img to see.
+        to whatever you want hover over image to see.
       </p>
       <img
         @mouseover="
@@ -81,8 +81,8 @@
         play ska music. To achieve this it uses "<a
           :href="`https://isitska.com`"
           >is it ska?</a
-        >" to query wether or not a song is ska. Then will try it's best to find
-        the song on youtube and stream that to the given voice channel.
+        >" to query whether or not a song is ska. Then will try it's best to
+        find the song on YouTube and stream that to the given voice channel.
       </p>
     </div>
     <hr />
@@ -96,14 +96,14 @@
       <p>
         A Discord bot which is based on a stupid joke that when someone messages
         a sentence ending with me it will respond with muh. eg "what time?" will
-        respond with muh. It will also copy any foramting "what ti<b>mE</b>"
+        respond with muh. It will also copy any formatting "what ti<b>mE</b>"
         "<b>muH</b>". Will track how many times you have been muhed per server.
       </p>
       <p>
         Google Speech API it can join a voice channel and when someone says me
         it will use Google speech to text API to respond with muh! This was
         difficult since the way discord audio is received in constant stream
-        from all parties. foricing you to split the audio into separate buckets
+        from all parties. forcing you to split the audio into separate buckets
         based on the speaker (merging the audio here is a no go). Which then
         causes issues with speed since we need at least 15 seconds of audio for
         the google speech request. So you need to concat the audio streams on
@@ -121,14 +121,14 @@
       <h3>What is it?</h3>
       <p>
         I love ska music. This site was created to try out scikit by using
-        <b>MACHINE LEARNING</b> to attempt to calsiffy weather or not a song is
+        <b>MACHINE LEARNING</b> to attempt to classify weather or not a song is
         ska. This is done
         <a :href="featuresDocLink"
-          >by getting each songs features using ths Spotify web api.</a
+          >by getting each songs features using the Spotify web API.</a
         >
-        Followed by training a classifer by using a list of ska and not ska
+        Followed by training a classifier by using a list of ska and not ska
         tracks. With the machine learning features being the above mentioned
-        song features from the spotify api. This works pretty badly. I have
+        song features from the Spotify API. This works pretty badly. I have
         found a RandomForest classifier is working best.
       </p>
       <br />
@@ -157,13 +157,13 @@
       <h3>What is it?</h3>
       <p>
         You play as the eyes and the mouth and avoid getting touched by the
-        fingers assulting your face.
+        fingers assaulting your face.
       </p>
       <p>
         This was made over a 24 hour period using unity. Then fixed in 2021 to
         run in Unity WebGL. This might not seem it but it's a product of trying
         to not touch your eyes during the COIVD-19 pandemic. The background is
-        Goole Earth VR footage.
+        Google Earth VR footage.
       </p>
       <button
         class="play-button"
@@ -190,7 +190,7 @@
       />
       <h3>What is it?</h3>
       <p>
-        I love wario ware so it's one of those, It's using Game boy development
+        I love Wario ware so it's one of those, It's using Game boy development
         kit and C99, not in ASSM. The code is some real special garbage but it's
         fast which is what is important on the 4MHz CPU.
       </p>
@@ -204,7 +204,7 @@
         :techs="sqaurePoltik.techs"
       />
       <h3>What is it?</h3>
-      <p>A Bizzare Unity sim which was my first attempt and basic AI</p>
+      <p>A Bizarre Unity sim which was my first attempt and basic AI</p>
     </div>
     <hr />
     <div class="project-info">
@@ -217,7 +217,7 @@
       <p>
         This is the final year <b>group project</b> at uni. The objective was to
         create an architecture, then implement part of the created architecture.
-        The goal was to allow people to sell their personal biometic data to
+        The goal was to allow people to sell their personal biometric data to
         researchers with as few middle men as possible.
       </p>
     </div>
@@ -275,8 +275,8 @@
       />
       <h3>What is it?</h3>
       <p>
-        Can interpret brainfuck code into Pascal or C which is then compilied by
-        fpc or gcc. Please keep in mind the date when looking at this code.
+        Can interpret brainfuck code into Pascal or C which is then compiled by
+        FPC or gcc. Please keep in mind the date when looking at this code.
         Below is some brainfuck code which prints "g'day".
       </p>
       <div class="code-block">
@@ -307,7 +307,7 @@
         these four kinds of money. If they hit an enemy, they will steal some of
         that kind of money from the enemy. If they miss, then that money is
         destroyed this will bring up the value of the shot money vs the other
-        kinds of money because now there is less of it. Enemeies spawn with a
+        kinds of money because now there is less of it. Enemies spawn with a
         random amount of each of these kinds of money this also impacts the
         value vs other kinds of money. Yes this is insane.
       </p>

@@ -20,10 +20,10 @@
           Technologies I have some level in proficiency order
           <ul>
             <li>
-              AWS including but not limted to: SQS, EC2, ECS, Route53, S3 and
+              AWS including but not limited to: SQS, EC2, ECS, Route53, S3 and
               Cloud formation.
             </li>
-            <li>Docker and Kubenestes</li>
+            <li>Docker and Kubernetes</li>
             <li>Databases: (Redis, Mongo, Postgres and SQL)</li>
             <li>Linux</li>
             <li>WSDL's</li>
@@ -54,7 +54,7 @@
     <div class="wrapper" v-for="(row, index) in workExpRow" :key="index">
       <div class="workexp">
         <h3 class="company">
-          <a :href="row.companyLink">{{ row.comapny }}</a>
+          <a :href="row.companyLink">{{ row.company }}</a>
         </h3>
         <div class="role">
           <p>Role</p>
@@ -164,7 +164,7 @@ const paulPhotoReal = "faceFunny.png";
       ),
       workExpRow: [
         {
-          comapny: "Telstra",
+          company: "Telstra",
           companyLink: "https://www.telstra.com.au/",
           role: "Software Engineer",
           responsibilities: "Good question",
@@ -173,7 +173,7 @@ const paulPhotoReal = "faceFunny.png";
           endDate: null
         },
         {
-          comapny: "Telstra",
+          company: "Telstra",
           companyLink: "https://www.telstra.com.au/",
           role: "Graduate Software Engineer",
           responsibilities:
@@ -185,7 +185,7 @@ const paulPhotoReal = "faceFunny.png";
             " Jira API and Crowd API. AWS tools such as Lambda" +
             " functions (in GO), EC2, Route53, ECS and Cloudwatch." +
             " Rotation Two worked on adapters which talk directly to " +
-            " 3G and 4G network elements. These adatpers are written in" +
+            " 3G and 4G network elements. These adapters are written in" +
             " Typescript using the loopback 4 framework. With communication" +
             " to the network elements being" +
             " via wsdl, HTTP or a raw TCP connection sending a byte stream." +
@@ -197,7 +197,7 @@ const paulPhotoReal = "faceFunny.png";
           endDate: moment("02-2021", "MM-YYYY")
         },
         {
-          comapny: "Defence Science and Technology Group",
+          company: "Defence Science and Technology Group",
           companyLink: "https://www.dst.defence.gov.au/",
           role: "Summer Vacation Intern",
           responsibilities:
@@ -209,7 +209,7 @@ const paulPhotoReal = "faceFunny.png";
             " send pure diameter traffic more easily enabling us to test" +
             " more." +
             " Simulation script in Python which would flood the network" +
-            " analyse responses and would create a topogly of the Diameter" +
+            " analyse responses and would create a topology of the Diameter" +
             " network based on those responses",
           links: [
             {
@@ -221,14 +221,14 @@ const paulPhotoReal = "faceFunny.png";
           endDate: moment("02-2019", "MM-YYYY")
         },
         {
-          comapny: "Swinburne University of Technology",
+          company: "Swinburne University of Technology",
           companyLink: "https://www.swinburne.edu.au/",
           role: "Research Intern",
           responsibilities:
             "Worked with Dr Alan Colman and Dr Jabed Morshed" +
             " on 4 Research papers which can all be found on Google scholar." +
             " Primary author for one paper was mostly responsible for" +
-            " assisting with the desgin, Proof of concepts implementations.",
+            " assisting with the design, Proof of concepts implementations.",
           links: [
             {
               text:
@@ -259,7 +259,7 @@ const paulPhotoReal = "faceFunny.png";
           endDate: moment("11-2019", "MM-YYYY")
         },
         {
-          comapny: "Swinburne University of Technology",
+          company: "Swinburne University of Technology",
           companyLink: "https://www.swinburne.edu.au/",
           role: "Classroom Tutor / Laboratory demonstrator",
           responsibilities:
