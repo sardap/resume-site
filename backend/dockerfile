@@ -10,6 +10,8 @@ RUN GOOS=linux GOARCH=amd64 go build -o main .
 # Backend
 FROM scratch
 
-COPY --from=builder /app/main /go/bin/hello
+COPY --from=builder /app/main /go/bin/main
+
+EXPOSE 8080
 
 ENTRYPOINT ["/go/bin/main"]
