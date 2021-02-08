@@ -199,16 +199,6 @@
     <hr />
     <div class="project-info">
       <RepoInfo
-        :repo="sqaurePoltik.repo"
-        :title="sqaurePoltik.title"
-        :techs="sqaurePoltik.techs"
-      />
-      <h3>What is it?</h3>
-      <p>A Bizarre Unity sim which was my first attempt and basic AI</p>
-    </div>
-    <hr />
-    <div class="project-info">
-      <RepoInfo
         :repo="capstone.repo"
         :title="capstone.title"
         :techs="capstone.techs"
@@ -416,11 +406,6 @@ const backendSite = "https://backend.sarda.dev";
       hackathonThing: {
         repo: "HackathonThing",
         title: "Hackathon Thing",
-        techs: ["Unity"]
-      },
-      sqaurePoltik: {
-        repo: "SqaurePolitk",
-        title: "Sqaure Politk",
         techs: ["Unity"]
       },
       walkGoodMaybe: {
