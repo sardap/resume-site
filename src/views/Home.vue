@@ -6,7 +6,7 @@
         :src="`./photos/${paulPhotoActive}`"
         @click="photoClick"
       />
-      <p>My name is Paul backend Software Developer.</p>
+      <p>Backend Software Developer.</p>
     </div>
     <div></div>
     <h2>Key Points</h2>
@@ -61,11 +61,11 @@
           <a :href="row.companyLink">{{ row.company }}</a>
         </h3>
         <div class="role">
-          <p>Role</p>
+          <p><b>Role</b></p>
           <p>{{ row.role }}</p>
         </div>
         <div class="date">
-          <p>End Date</p>
+          <p><b>End Date</b></p>
           <p>
             {{
               row.endDate
@@ -76,7 +76,7 @@
           </p>
         </div>
         <div class="date">
-          <p>Start Date</p>
+          <p><b>Start Date</b></p>
           <p>
             {{ row.startDate.year() }}-{{
               `${row.startDate.month() + 1}`.padStart(2, "0")
@@ -149,8 +149,9 @@
 import moment from "moment";
 import { Options, Vue } from "vue-class-component";
 
-const paulPhoto = "face.png";
-const paulPhotoReal = "faceFunny.png";
+const paulPhotoFormal = "faceFormal.png";
+const paulPhotoReal = "faceReal.png";
+const paulPhotoFunny = "faceFunny.png";
 
 @Options({
   components: {},
@@ -282,7 +283,7 @@ const paulPhotoReal = "faceFunny.png";
         }
       ],
       photoClickCount: 0,
-      paulPhotoActive: paulPhoto
+      paulPhotoActive: paulPhotoFormal
     };
   },
   methods: {
@@ -290,6 +291,8 @@ const paulPhotoReal = "faceFunny.png";
       this.photoClickCount++;
       if (this.photoClickCount > 50) {
         this.paulPhotoActive = paulPhotoReal;
+      } else if (this.photoClickCount > 25) {
+        this.paulPhotoActive = paulPhotoFunny;
       }
     }
   }
