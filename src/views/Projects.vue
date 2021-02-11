@@ -8,8 +8,8 @@
       />
       <h3>What is it?</h3>
       <p>
-        Your looking at it. It may not look like Vue but it is. The goal is to
-        create a early 2000's style site.
+        You are looking at it. The goal was to create a early 2000s site using
+        modern javascript frameworks.
       </p>
     </div>
     <hr />
@@ -26,7 +26,7 @@
         slow CPU at 16MHz no FPU (particularly hard to deal with for game dev).
         No real helper functions just setting an address in VRAM and performing
         bitwise operations on registers to set different modes. Check out the
-        code it's crap but it's mine.
+        code please keep mind GBA programming is fairly funky.
       </p>
       <p>Note: browser GBA emulator has some emulation inaccuracy</p>
       <div class="parent">
@@ -190,7 +190,7 @@
       />
       <h3>What is it?</h3>
       <p>
-        I love Wario ware so it's one of those, It's using Game boy development
+        I love WarioWare so it's one of those, It's using Game boy development
         kit and C99, not in ASSM. The code is some real special garbage but it's
         fast which is what is important on the 4MHz CPU.
       </p>
@@ -375,7 +375,7 @@ const backendSite = "https://backend.sarda.dev";
       },
       gameboyMicroGameCollection: {
         repo: "gameboy_micro_game_collection",
-        title: "Gameboy Micro Game Collection",
+        title: "Gameboy: Micro Game Collection",
         techs: ["GB"]
       },
       chessBot: {

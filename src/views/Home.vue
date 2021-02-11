@@ -14,7 +14,7 @@
       <ul class="aboutul">
         <li>
           Languages I have some level of skill in:<br />
-          Go, C#, C, Python, Typescript, C++, Pascal and Java
+          Go, C#, C, Python, Typescript, javascript, C++, Pascal and Java
         </li>
         <li>
           Technologies I have some level in proficiency order
@@ -112,7 +112,7 @@
         <p class="responsibilities"></p>
         <ul>
           <li>SSEE Summer Scholarship 2017-2018 recipient</li>
-          <li>Achieved 100 in Intro to Programming</li>
+          <li>Achieved 100 in Introduction to Programming</li>
           <li>Achieved 100 in Object Oriented Programming</li>
           <li>
             Achieved over 90% in
@@ -210,7 +210,7 @@ const paulPhotoFunny = "faceFunny.png";
             " 3 to create a 4G simulation allowing" +
             " for better security testing." +
             " Included topology discovery. Personally wrote a free Diameter" +
-            " Plugin in C, allowing us to send pure diameter" +
+            " plugin in C, allowing us to send pure Diameter" +
             " traffic more easily" +
             " and enabling us to test more. Simulation script was written in" +
             " Python which would flood the network, analyse responses, and" +
@@ -231,7 +231,7 @@ const paulPhotoFunny = "faceFunny.png";
           role: "Research Intern",
           responsibilities:
             "Worked with Dr Alan Colman and Dr Jabed Morshed on four Research" +
-            " papers (Google scholar) on Block Chain, one of" +
+            " papers on BlockChain, one of" +
             " which I was primary author." +
             " Papers were presented at the 2018 17th IEEE International" +
             " Conference On Trust, Security And Privacy In Computing And" +
@@ -258,7 +258,7 @@ const paulPhotoFunny = "faceFunny.png";
             },
             {
               text:
-                "Continuous Authorization in Subject-Driven Data Sharing" +
+                "Continuous authorization in Subject-Driven data sharing" +
                 " Using Wearable Devices",
               link: "https://ieeexplore.ieee.org/abstract/document/8887319/"
             }
@@ -274,7 +274,7 @@ const paulPhotoFunny = "faceFunny.png";
             "Introduction to Programming tought in Pascal, C and" +
             " ruby for Higher-Ed students, Responsible" +
             " for lesson plan curriculum delivery over 2-hour" +
-            " period to up to 25 students, work assessment, and scrutinising" +
+            " period to up to 25 students, work assessment, and proctoring" +
             " tests. Also includes HelpDesk consultation assisting students" +
             " one-on-one.",
           links: null,
