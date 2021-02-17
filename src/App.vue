@@ -2,8 +2,8 @@
   <div>
     <Header />
     <div id="nav">
-      <router-link to="/">home</router-link>
-      <router-link to="/projects">projects</router-link>
+      <router-link to="/">Home</router-link>
+      <router-link to="/projects">Personal Projects</router-link>
     </div>
     <hr />
     <div class="buffer" />

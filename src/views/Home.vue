@@ -14,7 +14,7 @@
       <ul class="aboutul">
         <li>
           Languages I have some level of skill in:<br />
-          Go, C#, C, Python, Typescript, javascript, C++, Pascal and Java
+          Go, C#, C, Python, Typescript, Javascript, C++, Pascal and Java
         </li>
         <li>
           Technologies I have some level in proficiency order
@@ -26,7 +26,7 @@
             <li>Docker and Kubernetes</li>
             <li>Databases: (Redis, Mongo, Postgres and SQL)</li>
             <li>Linux</li>
-            <li>WSDL's</li>
+            <li>WSDL's and SOAP interfaces</li>
             <li>REST APIS</li>
             <li>Unity</li>
           </ul>
@@ -171,15 +171,6 @@ const paulPhotoFunny = "faceFunny.png";
         {
           company: "Telstra",
           companyLink: "https://www.telstra.com.au/",
-          role: "Software Engineer",
-          responsibilities: "Good question",
-          links: null,
-          startDate: moment("02-2020", "MM-YYYY"),
-          endDate: null
-        },
-        {
-          company: "Telstra",
-          companyLink: "https://www.telstra.com.au/",
           role: "Graduate Software Engineer",
           responsibilities:
             "12-Months Graduate Program including two rotations:" +
@@ -199,7 +190,7 @@ const paulPhotoFunny = "faceFunny.png";
             " systems.",
           links: null,
           startDate: moment("01-2020", "MM-YYYY"),
-          endDate: moment("02-2021", "MM-YYYY")
+          endDate: null
         },
         {
           company: "Defence Science and Technology Group",
