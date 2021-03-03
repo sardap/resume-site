@@ -1,5 +1,9 @@
 FROM golang:latest as builder
 
+RUN mkdir /assets
+
+ENV STATIC_FILES=/assets
+
 WORKDIR /app
 
 COPY go.mod .

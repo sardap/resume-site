@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"net/http"
 	"os"
 	"time"
 
@@ -187,6 +188,7 @@ func main() {
 	r.GET("/api/repolang/:id", repoLangsEndpoint)
 	r.GET("/api/repocontr/:id", repoContrEndpoint)
 	r.GET("/api/reporele/:id", repoRelesesEndpoint)
+	r.StaticFS("/assets", http.Dir(os.Getenv("STATIC_FILES")))
 
 	r.Run()
 }

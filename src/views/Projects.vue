@@ -315,8 +315,8 @@ import GBA from "../components/GBA.vue";
 import GB from "../components/GB.vue";
 import RepoInfo from "../components/RepoInfo.vue";
 
-const hostingSite = "https://wgm.sarda.dev";
 const backendSite = "https://backend.sarda.dev";
+const hostingSite = "https://backend.sarda.dev/assets";
 
 @Options({
   components: {
