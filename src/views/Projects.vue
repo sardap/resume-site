@@ -184,21 +184,6 @@
     <hr />
     <div class="project-info">
       <RepoInfo
-        :repo="gameboyMicroGameCollection.repo"
-        :title="gameboyMicroGameCollection.title"
-        :techs="gameboyMicroGameCollection.techs"
-      />
-      <h3>What is it?</h3>
-      <p>
-        I love WarioWare so it's one of those, It's using Game boy development
-        kit and C99, not in ASSM. The code is some real special garbage but it's
-        fast which is what is important on the 4MHz CPU.
-      </p>
-      <GB :key="ecsRom" :url="ecsRom" />
-    </div>
-    <hr />
-    <div class="project-info">
-      <RepoInfo
         :repo="capstone.repo"
         :title="capstone.title"
         :techs="capstone.techs"
@@ -372,11 +357,6 @@ const hostingSite = "https://backend.sarda.dev/assets";
         repo: "resume-site",
         title: "Resume Site",
         techs: ["Github API"]
-      },
-      gameboyMicroGameCollection: {
-        repo: "gameboy_micro_game_collection",
-        title: "Gameboy: Micro Game Collection",
-        techs: ["GB"]
       },
       chessBot: {
         repo: "chessbot",
