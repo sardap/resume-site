@@ -16,10 +16,8 @@ import (
 )
 
 var (
-	client   *github.Client
-	cache    *ttlcache.Cache
-	notFound = ttlcache.ErrNotFound
-	isClosed = ttlcache.ErrClosed
+	client *github.Client
+	cache  *ttlcache.Cache
 )
 
 func requestRepoInfo(repo string) (*github.Repository, error) {
@@ -147,17 +145,13 @@ func loaderFunction(key string) (data interface{}, ttl time.Duration, err error)
 	switch key[:4] {
 	case "repo":
 		result, resErr = requestRepoInfo(key[5:])
-		break
 	case "lang":
 		result, resErr = requestRepoLang(key[5:])
-		break
 	case "cont":
 		result, resErr = requestRepoCont(key[5:])
-		break
 	case "rele":
 		result, resErr = requestRepoReleses(key[5:])
 		newTTL = time.Duration(15) * time.Minute
-		break
 	}
 
 	return result, newTTL, resErr
