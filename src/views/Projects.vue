@@ -2,6 +2,33 @@
   <div class="projects">
     <div class="project-info">
       <RepoInfo
+        :repo="walkGoodMaybeHD.repo"
+        :title="walkGoodMaybeHD.title"
+        :techs="walkGoodMaybeHD.techs"
+      />
+      <h3>What is it?</h3>
+      <p>
+        Walk good maybe remade in golang using ECS.
+      </p>
+      <div class="parent">
+        <p class="child inline-block-child" style="padding: 5px;">Version:</p>
+        <select
+          class="child inline-block-child"
+          @change="selectVersionWgmHd($event)"
+        >
+          <option
+            v-for="(version, index) in versionsWgmHd"
+            :key="index"
+            :value="version.name"
+            >{{ version.name }}</option
+          >
+        </select>
+      </div>
+      <WgmHd :key="wgmHdUpdateCount" :url="wgmhdWasm" />
+    </div>
+    <hr />
+    <div class="project-info">
+      <RepoInfo
         :repo="resumeSite.repo"
         :title="resumeSite.title"
         :techs="resumeSite.techs"
@@ -33,10 +60,10 @@
         <p class="child inline-block-child" style="padding: 5px;">Version:</p>
         <select
           class="child inline-block-child"
-          @change="selectVersion($event)"
+          @change="selectVersionWgm($event)"
         >
           <option
-            v-for="(version, index) in versions"
+            v-for="(version, index) in versionsWgm"
             :key="index"
             :value="version.name"
             >{{ version.name }}</option
@@ -299,6 +326,7 @@ import { Options, Vue } from "vue-class-component";
 import GBA from "../components/GBA.vue";
 import GB from "../components/GB.vue";
 import RepoInfo from "../components/RepoInfo.vue";
+import WgmHd from "../components/WgmHd.vue";
 
 const backendSite = "https://backend.sarda.dev";
 const hostingSite = "https://backend.sarda.dev/assets";
@@ -307,29 +335,53 @@ const hostingSite = "https://backend.sarda.dev/assets";
   components: {
     GBA,
     RepoInfo,
-    GB
+    GB,
+    WgmHd
   },
   methods: {
-    selectVersion(event: { target: { value: string } }) {
+    selectVersionWgm(event: { target: { value: string } }) {
       this.wgmRom =
         `https://gba.ninja/?autorun=${hostingSite}` +
         `/versions/${event.target.value}/walk-good-maybe.gba`;
       this.wgmUpdateCount++;
     },
-    getVersionData() {
+    selectVersionWgmHd(event: { target: { value: string } }) {
+      this.wgmhdWasm =
+        `./wgmhd/main.html?url=` +
+        `${hostingSite}/wgmhd/versions/${event.target.value}` +
+        `/walk-good-maybe-hd.wasm`;
+      this.wgmHdUpdateCount++;
+    },
+    getVersionDataWgm() {
       fetch(`${backendSite}/api/reporele/walk-good-maybe`)
         .then(response => response.json())
         .then(apiRes => {
-          this.versions = [];
+          this.versionsWgm = [];
           apiRes.forEach((i: { tag_name: string }) => {
-            this.versions.push({ name: i.tag_name });
+            this.versionsWgm.push({ name: i.tag_name });
           });
-          this.selectVersion({ target: { value: this.versions[0].name } });
+          this.selectVersionWgm({
+            target: { value: this.versionsWgm[0].name }
+          });
+        });
+    },
+    getVersionDataWgmHd() {
+      fetch(`${backendSite}/api/reporele/walk-good-maybe-hd`)
+        .then(response => response.json())
+        .then(apiRes => {
+          this.versionsWgmHd = [];
+          apiRes.forEach((i: { tag_name: string }) => {
+            this.versionsWgmHd.push({ name: i.tag_name });
+          });
+          this.selectVersionWgmHd({
+            target: { value: this.versionsWgmHd[0].name }
+          });
         });
     }
   },
   created() {
-    this.getVersionData();
+    this.getVersionDataWgmHd();
+    this.getVersionDataWgm();
   },
   data() {
     const chessImg =
@@ -337,10 +389,13 @@ const hostingSite = "https://backend.sarda.dev/assets";
       "/sardap/chessbot/main/examples/example.gif";
 
     return {
-      versions: [{ name: "loading" }],
-      ecsRom: `${hostingSite}/gbm/micro_games.gb`,
+      wgmhdWasm: "",
+      wgmRom: "",
+      versionsWgm: [{ name: "loading" }],
+      versionsWgmHd: [{ name: "loading" }],
       hideHackThing: true,
       wgmUpdateCount: 0,
+      wgmHdUpdateCount: 0,
       chessImgColour: "./photos/chess_colour.png",
       chessImg: chessImg,
       activeChessImg: chessImg,
@@ -353,6 +408,11 @@ const hostingSite = "https://backend.sarda.dev/assets";
       featuresDocLink:
         "https://developer.spotify.com/documentation" +
         "/web-api/reference/#endpoint-get-several-audio-features",
+      walkGoodMaybeHD: {
+        repo: "go-walk-good-maybe-HD",
+        title: "Go Walk Good Maybe HD",
+        techs: ["Docker", "ECS", "jennifer (go code gen)"]
+      },
       resumeSite: {
         repo: "resume-site",
         title: "Resume Site",
