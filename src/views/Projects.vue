@@ -2,16 +2,30 @@
   <div class="projects">
     <div class="project-info">
       <RepoInfo
+        :repo="tigtbifhimva.repo"
+        :title="tigtbifhimva.title"
+        :techs="tigtbifhimva.techs"
+      />
+      <h3>What is it?</h3>
+      <p>
+        An API which will return the time in Melbourne Victoria Australia in
+        four hours. Written in Rust and
+        <a :href="`https://tigtbifhimva.sarda.dev/`"
+          >Featuring a website explaining the API.</a
+        >
+      </p>
+    </div>
+    <hr />
+    <div class="project-info">
+      <RepoInfo
         :repo="walkGoodMaybeHD.repo"
         :title="walkGoodMaybeHD.title"
         :techs="walkGoodMaybeHD.techs"
       />
       <h3>What is it?</h3>
-      <p>
-        Walk good maybe remade in golang using ECS.
-      </p>
+      <p>Walk good maybe remade in golang using ECS.</p>
       <div class="parent">
-        <p class="child inline-block-child" style="padding: 5px;">Version:</p>
+        <p class="child inline-block-child" style="padding: 5px">Version:</p>
         <select
           class="child inline-block-child"
           @change="selectVersionWgmHd($event)"
@@ -20,8 +34,9 @@
             v-for="(version, index) in versionsWgmHd"
             :key="index"
             :value="version.name"
-            >{{ version.name }}</option
           >
+            {{ version.name }}
+          </option>
         </select>
       </div>
       <WgmHd :key="wgmHdUpdateCount" :url="wgmhdWasm" />
@@ -55,9 +70,12 @@
         bitwise operations on registers to set different modes. Check out the
         code please keep mind GBA programming is fairly funky.
       </p>
-      <p>Note: browser GBA emulator has some emulation inaccuracy</p>
+      <p>
+        Note: browser GBA emulator has some emulation inaccuracy use MGBA for
+        best experience
+      </p>
       <div class="parent">
-        <p class="child inline-block-child" style="padding: 5px;">Version:</p>
+        <p class="child inline-block-child" style="padding: 5px">Version:</p>
         <select
           class="child inline-block-child"
           @change="selectVersionWgm($event)"
@@ -66,8 +84,9 @@
             v-for="(version, index) in versionsWgm"
             :key="index"
             :value="version.name"
-            >{{ version.name }}</option
           >
+            {{ version.name }}
+          </option>
         </select>
       </div>
       <GBA :key="wgmUpdateCount" :url="wgmRom" />
@@ -336,7 +355,7 @@ const hostingSite = "https://backend.sarda.dev/assets";
     GBA,
     RepoInfo,
     GB,
-    WgmHd
+    WgmHd,
   },
   methods: {
     selectVersionWgm(event: { target: { value: string } }) {
@@ -354,30 +373,30 @@ const hostingSite = "https://backend.sarda.dev/assets";
     },
     getVersionDataWgm() {
       fetch(`${backendSite}/api/reporele/walk-good-maybe`)
-        .then(response => response.json())
-        .then(apiRes => {
+        .then((response) => response.json())
+        .then((apiRes) => {
           this.versionsWgm = [];
           apiRes.forEach((i: { tag_name: string }) => {
             this.versionsWgm.push({ name: i.tag_name });
           });
           this.selectVersionWgm({
-            target: { value: this.versionsWgm[0].name }
+            target: { value: this.versionsWgm[0].name },
           });
         });
     },
     getVersionDataWgmHd() {
       fetch(`${backendSite}/api/reporele/walk-good-maybe-hd`)
-        .then(response => response.json())
-        .then(apiRes => {
+        .then((response) => response.json())
+        .then((apiRes) => {
           this.versionsWgmHd = [];
           apiRes.forEach((i: { tag_name: string }) => {
             this.versionsWgmHd.push({ name: i.tag_name });
           });
           this.selectVersionWgmHd({
-            target: { value: this.versionsWgmHd[0].name }
+            target: { value: this.versionsWgmHd[0].name },
           });
         });
-    }
+    },
   },
   created() {
     this.getVersionDataWgmHd();
@@ -408,78 +427,84 @@ const hostingSite = "https://backend.sarda.dev/assets";
       featuresDocLink:
         "https://developer.spotify.com/documentation" +
         "/web-api/reference/#endpoint-get-several-audio-features",
+      tigtbifhimva: {
+        repo: "TIGTBIFHIMVA",
+        title:
+          "Time It's Going To Be In Four Hours In Melbourne Victoria Australia",
+        techs: ["Docker", "REST (warp)"],
+      },
       walkGoodMaybeHD: {
         repo: "go-walk-good-maybe-HD",
         title: "Go Walk Good Maybe HD",
-        techs: ["Docker", "ECS", "jennifer (go code gen)"]
+        techs: ["Docker", "ECS", "jennifer (go code gen)"],
       },
       resumeSite: {
         repo: "resume-site",
         title: "Resume Site",
-        techs: ["Github API"]
+        techs: ["Github API"],
       },
       chessBot: {
         repo: "chessbot",
         title: "Chess Bot",
-        techs: ["Discord API", "Image generation", "redis", "Docker"]
+        techs: ["Discord API", "Image generation", "redis", "Docker"],
       },
       pickUpBot: {
         repo: "pickupbot",
         title: "Pick Up bot",
-        techs: ["Discord API", "YouTube-api", "Docker"]
+        techs: ["Discord API", "YouTube-api", "Docker"],
       },
       muhBot: {
         repo: "muhbot",
         title: "Muh Bot",
-        techs: ["Discord API", "Google speech API", "redis", "Docker"]
+        techs: ["Discord API", "Google speech API", "redis", "Docker"],
       },
       isItSka: {
         repo: "IsItSka",
         title: "Is it ska?",
-        techs: ["Spotify API", "scikit-learn", "Docker", "Flask"]
+        techs: ["Spotify API", "scikit-learn", "Docker", "Flask"],
       },
       vibes: {
         repo: "vibes",
         title: "Vibes",
-        techs: ["Open Weather API", "Discord API", "React", "Docker"]
+        techs: ["Open Weather API", "Discord API", "React", "Docker"],
       },
       hackathonThing: {
         repo: "HackathonThing",
         title: "Hackathon Thing",
-        techs: ["Unity"]
+        techs: ["Unity"],
       },
       walkGoodMaybe: {
         repo: "walk-good-maybe",
         title: "Walk Good Maybe",
-        techs: ["GBA"]
+        techs: ["GBA"],
       },
       capstone: {
         repo: "Capstone-2019-Data-Sharing",
         title: "Final year uni Project",
-        techs: ["Flask", "Blockchain", "Docker"]
+        techs: ["Flask", "Blockchain", "Docker"],
       },
       temptris: {
         repo: "Temptris",
         title: "Temptris",
-        techs: ["Monogame", "Open Weather"]
+        techs: ["Monogame", "Open Weather"],
       },
       pascalBrainFuck: {
         repo: "PascalBrainFuck",
         title: "Pascal Brain Fuck",
-        techs: ["Bad words"]
+        techs: ["Bad words"],
       },
       numbersOrDie: {
         repo: "NumbersOrDie",
         title: "Numbers or Die",
-        techs: ["Swingame"]
+        techs: ["Swingame"],
       },
       shapesCanMoveAndSpeak: {
         repo: "ShapesCanMoveAndSpeak",
         title: "Shapes can move and speak",
-        techs: ["Swingame"]
-      }
+        techs: ["Swingame"],
+      },
     };
-  }
+  },
 })
 export default class Projects extends Vue {}
 </script>
