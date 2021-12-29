@@ -1,6 +1,18 @@
 <template>
   <div class="projects">
     <div class="project-info">
+      <RepoInfo :repo="tune.repo" :title="tune.title" :techs="tune.techs" />
+      <h3>What is it?</h3>
+      <p>
+        Tune Neutral is a web app that will create a mood playlist based on your
+        liked music to get you back into the middle. Feeling too happy it will
+        create a playlist featuring sad music. This is done using the Spotify
+        Web API track feature endpoint.
+        <a :href="`https://tune.sarda.dev/`">Check it out here</a>
+      </p>
+    </div>
+    <hr />
+    <div class="project-info">
       <RepoInfo
         :repo="tigtbifhimva.repo"
         :title="tigtbifhimva.title"
@@ -427,6 +439,11 @@ const hostingSite = "https://backend.sarda.dev/assets";
       featuresDocLink:
         "https://developer.spotify.com/documentation" +
         "/web-api/reference/#endpoint-get-several-audio-features",
+      tune: {
+        repo: "TuneNeutral",
+        title: "Tune Neutral",
+        techs: ["Docker", "REST (gin)", "Spotify web API", "Badger DB"],
+      },
       tigtbifhimva: {
         repo: "TIGTBIFHIMVA",
         title:
