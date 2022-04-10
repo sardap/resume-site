@@ -444,7 +444,7 @@ const hostingSite = "https://backend.sarda.dev/assets";
         });
     },
     getVersionStmUrl() {
-      fetch(`${backendSite}/api/reporele/stm`)
+      fetch(`${backendSite}/api/reporele/stop-the-mail`)
         .then((response) => response.json())
         .then((apiRes) => {
           this.versionsStm = [];
