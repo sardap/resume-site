@@ -416,6 +416,7 @@ const hostingSite = "https://backend.sarda.dev/assets";
         `${hostingSite}/stm/versions/${event.target.value}` +
         `/stop-the-mail.nds`;
       this.stmUrlUpdateCount++;
+      console.log(`STM-URL:${this.stmUrl}`);
     },
     getVersionDataWgm() {
       fetch(`${backendSite}/api/reporele/walk-good-maybe`)
