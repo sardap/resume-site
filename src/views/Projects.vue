@@ -1,6 +1,31 @@
 <template>
   <div class="projects">
     <div class="project-info">
+      <RepoInfo :repo="stm.repo" :title="stm.title" :techs="stm.techs" />
+      <h3>What is it?</h3>
+      <p>
+        Stop the mail is a tower defense game for the Nintendo DS written in C++
+        20.
+      </p>
+      <div class="parent">
+        <p class="child inline-block-child" style="padding: 5px">Version:</p>
+        <select
+          class="child inline-block-child"
+          @change="selectVersionStm($event)"
+        >
+          <option
+            v-for="(version, index) in versionsStm"
+            :key="index"
+            :value="version.name"
+          >
+            {{ version.name }}
+          </option>
+        </select>
+      </div>
+      <DS :url="stmUrl" />
+    </div>
+    <hr />
+    <div class="project-info">
       <RepoInfo :repo="tune.repo" :title="tune.title" :techs="tune.techs" />
       <h3>What is it?</h3>
       <p>
@@ -358,6 +383,7 @@ import GBA from "../components/GBA.vue";
 import GB from "../components/GB.vue";
 import RepoInfo from "../components/RepoInfo.vue";
 import WgmHd from "../components/WgmHd.vue";
+import DS from "../components/DS.vue";
 
 const backendSite = "https://backend.sarda.dev";
 const hostingSite = "https://backend.sarda.dev/assets";
@@ -368,6 +394,7 @@ const hostingSite = "https://backend.sarda.dev/assets";
     RepoInfo,
     GB,
     WgmHd,
+    DS,
   },
   methods: {
     selectVersionWgm(event: { target: { value: string } }) {
@@ -382,6 +409,13 @@ const hostingSite = "https://backend.sarda.dev/assets";
         `${hostingSite}/wgmhd/versions/${event.target.value}` +
         `/walk-good-maybe-hd.wasm`;
       this.wgmHdUpdateCount++;
+    },
+    selectVersionStm(event: { target: { value: string } }) {
+      this.stmUrl =
+        `./desmond/main.html?url=` +
+        `${hostingSite}/stm/versions/${event.target.value}` +
+        `/stop-the-mail.nds`;
+      this.stmUrlUpdateCount++;
     },
     getVersionDataWgm() {
       fetch(`${backendSite}/api/reporele/walk-good-maybe`)
@@ -409,10 +443,24 @@ const hostingSite = "https://backend.sarda.dev/assets";
           });
         });
     },
+    getVersionStmUrl() {
+      fetch(`${backendSite}/api/reporele/stm`)
+        .then((response) => response.json())
+        .then((apiRes) => {
+          this.versionsStm = [];
+          apiRes.forEach((i: { tag_name: string }) => {
+            this.versionsStm.push({ name: i.tag_name });
+          });
+          this.selectVersionStm({
+            target: { value: this.versionsStm[0].name },
+          });
+        });
+    },
   },
   created() {
     this.getVersionDataWgmHd();
     this.getVersionDataWgm();
+    this.getVersionStmUrl();
   },
   data() {
     const chessImg =
@@ -422,8 +470,10 @@ const hostingSite = "https://backend.sarda.dev/assets";
     return {
       wgmhdWasm: "",
       wgmRom: "",
+      stmUrl: "",
       versionsWgm: [{ name: "loading" }],
       versionsWgmHd: [{ name: "loading" }],
+      versionsStm: [{ name: "loading" }],
       hideHackThing: true,
       wgmUpdateCount: 0,
       wgmHdUpdateCount: 0,
@@ -439,6 +489,11 @@ const hostingSite = "https://backend.sarda.dev/assets";
       featuresDocLink:
         "https://developer.spotify.com/documentation" +
         "/web-api/reference/#endpoint-get-several-audio-features",
+      stm: {
+        repo: "stop-the-mail",
+        title: "STOP THE MAIL",
+        techs: ["DS"],
+      },
       tune: {
         repo: "TuneNeutral",
         title: "Tune Neutral",
