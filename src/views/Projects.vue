@@ -1,6 +1,22 @@
 <template>
   <div class="projects">
     <div class="project-info">
+      <RepoInfo
+        :repo="kiryuEverywhere.repo"
+        :title="kiryuEverywhere.title"
+        :techs="kiryuEverywhere.techs"
+      />
+      <h3>What is it?</h3>
+      <p>
+        Kiryu Everywhere is a quiz game where you are given four screenshots 
+        of a single location and you must select where on the map this 
+        location is. It refreshes everyday. 
+        <a href="https://sardap.github.io/kiryueverywhere/">
+          check it out here
+        </a> 
+      </p>
+    </div>
+    <div class="project-info">
       <RepoInfo :repo="stm.repo" :title="stm.title" :techs="stm.techs" />
       <h3>What is it?</h3>
       <p>
@@ -388,13 +404,19 @@ import DS from "../components/DS.vue";
 const backendSite = "https://backend.sarda.dev";
 const hostingSite = "https://backend.sarda.dev/assets";
 
+interface RepoEntry {
+  repo: string;
+  title: string;
+  techs: string[];
+}
+
 @Options({
   components: {
     GBA,
     RepoInfo,
     GB,
     WgmHd,
-    DS,
+    DS
   },
   methods: {
     selectVersionWgm(event: { target: { value: string } }) {
@@ -420,43 +442,43 @@ const hostingSite = "https://backend.sarda.dev/assets";
     },
     getVersionDataWgm() {
       fetch(`${backendSite}/api/reporele/walk-good-maybe`)
-        .then((response) => response.json())
-        .then((apiRes) => {
+        .then(response => response.json())
+        .then(apiRes => {
           this.versionsWgm = [];
           apiRes.forEach((i: { tag_name: string }) => {
             this.versionsWgm.push({ name: i.tag_name });
           });
           this.selectVersionWgm({
-            target: { value: this.versionsWgm[0].name },
+            target: { value: this.versionsWgm[0].name }
           });
         });
     },
     getVersionDataWgmHd() {
       fetch(`${backendSite}/api/reporele/walk-good-maybe-hd`)
-        .then((response) => response.json())
-        .then((apiRes) => {
+        .then(response => response.json())
+        .then(apiRes => {
           this.versionsWgmHd = [];
           apiRes.forEach((i: { tag_name: string }) => {
             this.versionsWgmHd.push({ name: i.tag_name });
           });
           this.selectVersionWgmHd({
-            target: { value: this.versionsWgmHd[0].name },
+            target: { value: this.versionsWgmHd[0].name }
           });
         });
     },
     getVersionStmUrl() {
       fetch(`${backendSite}/api/reporele/stop-the-mail`)
-        .then((response) => response.json())
-        .then((apiRes) => {
+        .then(response => response.json())
+        .then(apiRes => {
           this.versionsStm = [];
           apiRes.forEach((i: { tag_name: string }) => {
             this.versionsStm.push({ name: i.tag_name });
           });
           this.selectVersionStm({
-            target: { value: this.versionsStm[0].name },
+            target: { value: this.versionsStm[0].name }
           });
         });
-    },
+    }
   },
   created() {
     this.getVersionDataWgmHd();
@@ -490,96 +512,103 @@ const hostingSite = "https://backend.sarda.dev/assets";
       featuresDocLink:
         "https://developer.spotify.com/documentation" +
         "/web-api/reference/#endpoint-get-several-audio-features",
+      kiryuEverywhere: {
+        repo: "kiryueverywhere",
+        title: "KIRYU EVERYWHERE",
+        techs: ["github actions?"]
+      },
       stm: {
         repo: "stop-the-mail",
         title: "STOP THE MAIL",
-        techs: ["DS"],
+        techs: ["DS"]
       },
       tune: {
         repo: "TuneNeutral",
         title: "Tune Neutral",
-        techs: ["Docker", "REST (gin)", "Spotify web API", "Badger DB"],
+        techs: ["Docker", "REST (gin)", "Spotify web API", "Badger DB"]
       },
       tigtbifhimva: {
         repo: "TIGTBIFHIMVA",
         title:
           "Time It's Going To Be In Four Hours In Melbourne Victoria Australia",
-        techs: ["Docker", "REST (warp)"],
+        techs: ["Docker", "REST (warp)"]
       },
       walkGoodMaybeHD: {
         repo: "go-walk-good-maybe-HD",
         title: "Go Walk Good Maybe HD",
-        techs: ["Docker", "ECS", "jennifer (go code gen)"],
+        techs: ["Docker", "ECS", "jennifer (go code gen)"]
       },
       resumeSite: {
         repo: "resume-site",
         title: "Resume Site",
-        techs: ["Github API"],
+        techs: ["Github API"]
       },
       chessBot: {
         repo: "chessbot",
         title: "Chess Bot",
-        techs: ["Discord API", "Image generation", "redis", "Docker"],
+        techs: ["Discord API", "Image generation", "redis", "Docker"]
       },
       pickUpBot: {
         repo: "pickupbot",
         title: "Pick Up bot",
-        techs: ["Discord API", "YouTube-api", "Docker"],
+        techs: ["Discord API", "YouTube-api", "Docker"]
       },
       muhBot: {
         repo: "muhbot",
         title: "Muh Bot",
-        techs: ["Discord API", "Google speech API", "redis", "Docker"],
+        techs: ["Discord API", "Google speech API", "redis", "Docker"]
       },
       isItSka: {
         repo: "IsItSka",
         title: "Is it ska?",
-        techs: ["Spotify API", "scikit-learn", "Docker", "Flask"],
+        techs: ["Spotify API", "scikit-learn", "Docker", "Flask"]
       },
       vibes: {
         repo: "vibes",
         title: "Vibes",
-        techs: ["Open Weather API", "Discord API", "React", "Docker"],
+        techs: ["Open Weather API", "Discord API", "React", "Docker"]
       },
       hackathonThing: {
         repo: "HackathonThing",
         title: "Hackathon Thing",
-        techs: ["Unity"],
+        techs: ["Unity"]
       },
       walkGoodMaybe: {
         repo: "walk-good-maybe",
         title: "Walk Good Maybe",
-        techs: ["GBA"],
+        techs: ["GBA"]
       },
       capstone: {
         repo: "Capstone-2019-Data-Sharing",
         title: "Final year uni Project",
-        techs: ["Flask", "Blockchain", "Docker"],
+        techs: ["Flask", "Blockchain", "Docker"]
       },
       temptris: {
         repo: "Temptris",
         title: "Temptris",
-        techs: ["Monogame", "Open Weather"],
+        techs: ["Monogame", "Open Weather"]
       },
       pascalBrainFuck: {
         repo: "PascalBrainFuck",
         title: "Pascal Brain Fuck",
-        techs: ["Bad words"],
+        techs: ["Bad words"]
       },
       numbersOrDie: {
         repo: "NumbersOrDie",
         title: "Numbers or Die",
-        techs: ["Swingame"],
+        techs: ["Swingame"]
       },
       shapesCanMoveAndSpeak: {
         repo: "ShapesCanMoveAndSpeak",
         title: "Shapes can move and speak",
-        techs: ["Swingame"],
-      },
+        techs: ["Swingame"]
+      }
     };
-  },
+  }
 })
-export default class Projects extends Vue {}
+export default class Projects extends Vue {
+  kiryuEverywhere: RepoEntry;
+}
 </script>
 <style scoped>
 @import "../style/shared.css";

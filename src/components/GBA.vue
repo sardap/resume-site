@@ -20,7 +20,7 @@ import { Options, Vue } from "vue-class-component";
 
 @Options({
   props: {
-    url: String,
+    url: String
   },
   data() {
     const showGba = window.innerWidth > 500;
@@ -31,9 +31,9 @@ import { Options, Vue } from "vue-class-component";
 
     return {
       link: link,
-      showGba: showGba,
+      showGba: showGba
     };
-  },
+  }
 })
 export default class GBA extends Vue {
   url!: string;

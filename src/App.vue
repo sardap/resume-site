@@ -41,7 +41,7 @@ export default class App extends Vue {}
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #192129;
-  background-color: #BDFFFF;
+  background-color: #bdffff;
 }
 
 #nav {
