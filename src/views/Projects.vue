@@ -16,6 +16,7 @@
         </a> 
       </p>
     </div>
+    <hr />
     <div class="project-info">
       <RepoInfo :repo="stm.repo" :title="stm.title" :techs="stm.techs" />
       <h3>What is it?</h3>
