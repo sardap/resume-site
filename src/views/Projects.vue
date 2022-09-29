@@ -520,6 +520,7 @@ interface RepoEntry {
     this.getVersionDataWgmHd();
     this.getVersionDataWgm();
     this.getVersionStmUrl();
+    this.selectVersionJiraGBA({ target: { value: "jira-atlas-blue" } });
   },
   data() {
     const chessImg =
@@ -529,6 +530,7 @@ interface RepoEntry {
     return {
       wgmhdWasm: "",
       wgmRom: "",
+      jiraGbaRom: "",
       stmUrl: "",
       versionsWgm: [{ name: "loading" }],
       versionsWgmHd: [{ name: "loading" }],
