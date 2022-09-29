@@ -26,7 +26,7 @@
           </option>
         </select>
       </div>
-      <GBA :key="jiraGBAUpdateCount" :url="wgmRom" />
+      <GBA :key="jiraGBAUpdateCount" :url="jiraGbaRom" />
     </div>
     <hr />
     <div class="project-info">
@@ -450,7 +450,7 @@ interface RepoEntry {
   },
   methods: {
     selectVersionJiraGBA(event: { target: { value: string } }) {
-      this.wgmRom =
+      this.jiraGbaRom =
         `https://gba.ninja/?autorun=${hostingSite}` +
         `/jiragba/${event.target.value}.gba`;
       this.jiraGBAUpdateCount++;
