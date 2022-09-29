@@ -2,18 +2,47 @@
   <div class="projects">
     <div class="project-info">
       <RepoInfo
+        :repo="jiraGba.repo"
+        :title="jiraGba.title"
+        :techs="jiraGba.techs"
+      />
+      <h3>What is it?</h3>
+      <p>
+        For <a href="https://www.atlassian.com/company/shipit">Ship-it 55</a> I
+        made smaller Jira on the GBA.
+      </p>
+      <div class="parent">
+        <p class="child inline-block-child" style="padding: 5px">Version:</p>
+        <select
+          class="child inline-block-child"
+          @change="selectVersionJiraGBA($event)"
+        >
+          <option
+            v-for="(version, index) in versionsJiraGBA"
+            :key="index"
+            :value="version.name"
+          >
+            {{ version.name }}
+          </option>
+        </select>
+      </div>
+      <GBA :key="jiraGBAUpdateCount" :url="wgmRom" />
+    </div>
+    <hr />
+    <div class="project-info">
+      <RepoInfo
         :repo="kiryuEverywhere.repo"
         :title="kiryuEverywhere.title"
         :techs="kiryuEverywhere.techs"
       />
       <h3>What is it?</h3>
       <p>
-        Kiryu Everywhere is a quiz game where you are given four screenshots 
-        of a single location and you must select where on the map this 
-        location is. It refreshes everyday. 
+        Kiryu Everywhere is a quiz game where you are given four screenshots of
+        a single location and you must select where on the map this location is.
+        It refreshes everyday.
         <a href="https://sardap.github.io/kiryueverywhere/">
           check it out here
-        </a> 
+        </a>
       </p>
     </div>
     <hr />
@@ -420,6 +449,12 @@ interface RepoEntry {
     DS
   },
   methods: {
+    selectVersionJiraGBA(event: { target: { value: string } }) {
+      this.wgmRom =
+        `https://gba.ninja/?autorun=${hostingSite}` +
+        `/jiragba/${event.target.value}.gba`;
+      this.jiraGBAUpdateCount++;
+    },
     selectVersionWgm(event: { target: { value: string } }) {
       this.wgmRom =
         `https://gba.ninja/?autorun=${hostingSite}` +
@@ -498,7 +533,12 @@ interface RepoEntry {
       versionsWgm: [{ name: "loading" }],
       versionsWgmHd: [{ name: "loading" }],
       versionsStm: [{ name: "loading" }],
+      versionsJiraGBA: [
+        { name: "jira-atlas-blue" },
+        { name: "jira-charlie-red" }
+      ],
       hideHackThing: true,
+      jiraGBAUpdateCount: 0,
       wgmUpdateCount: 0,
       wgmHdUpdateCount: 0,
       chessImgColour: "./photos/chess_colour.png",
@@ -513,6 +553,11 @@ interface RepoEntry {
       featuresDocLink:
         "https://developer.spotify.com/documentation" +
         "/web-api/reference/#endpoint-get-several-audio-features",
+      jiraGba: {
+        repo: "jira-gba",
+        title: "Jira gba",
+        techs: ["gba"]
+      },
       kiryuEverywhere: {
         repo: "kiryueverywhere",
         title: "KIRYU EVERYWHERE",
