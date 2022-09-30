@@ -169,11 +169,44 @@ const paulPhotoFunny = "faceFunny.png";
       ),
       workExpRow: [
         {
+          company: "Atlassian",
+          companyLink: "https://www.atlassian.com/",
+          role: "Software Engineer",
+          responsibilities:
+            "Working with the Reliability Process Group creating automation's" +
+            " for company incidents including" +
+            " incident ticket creation, Sending automated slack messages," +
+            " etc. Utilising Python, Jira API," +
+            " Confluence API, Slack API and AWS.",
+          links: null,
+          startDate: moment("03-2022", "MM-YYYY"),
+          endDate: null
+        },
+        {
+          company: "BAE Systems",
+          companyLink: "https://www.baesystems.com/en/home",
+          role: "Software Engineer",
+          responsibilities:
+            "Worked on a SADM Responsibilities included:" +
+            " developing SADM in C++ 20 using EnTT, Creating" +
+            " testing automation tools in python" +
+            " and Dockerizing SADM.",
+          links: [
+            {
+              text: "SADM",
+              link: "https://www.baesystems.com/en-aus/what-we-do/sadm"
+            }
+          ],
+          startDate: moment("07-2021", "MM-YYYY"),
+          endDate: moment("03-2022", "MM-YYYY")
+        },
+        {
           company: "Telstra",
           companyLink: "https://www.telstra.com.au/",
-          role: "Graduate Software Engineer",
+          role: "Software Engineer",
           responsibilities:
-            "12-Months Graduate Program including two rotations:" +
+            "12-Months Graduate Program followed by joining the network" +
+            " software team including two rotations:" +
             " Rotation one: Agile tools team member. Worked on" +
             " various automation tools / dashboards including which" +
             " involved using Bamboo API," +
@@ -185,12 +218,12 @@ const paulPhotoFunny = "faceFunny.png";
             " communication to the network elements being via wsdl," +
             " HTTP or a raw TCP connection sending a byte stream." +
             " Responsible for creating and enhancing bamboo plans," +
-            " including automaticity testing. This work provided with" +
+            " including automatically testing. This work provided with" +
             " great experience in talking to legacy systems from modern" +
             " systems.",
           links: null,
           startDate: moment("01-2020", "MM-YYYY"),
-          endDate: null
+          endDate: moment("07-2021", "MM-YYYY")
         },
         {
           company: "Defence Science and Technology Group",
