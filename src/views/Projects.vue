@@ -2,6 +2,34 @@
   <div class="projects">
     <div class="project-info">
       <RepoInfo
+        :repo="marchGoodMaybe.repo"
+        :title="marchGoodMaybe.title"
+        :techs="marchGoodMaybe.techs"
+      />
+      <h3>What is it?</h3>
+      <p>
+        Im not sure yet
+      </p>
+      <div class="parent">
+        <p class="child inline-block-child" style="padding: 5px">Version:</p>
+        <select
+          class="child inline-block-child"
+          @change="selectVersionMgm($event)"
+        >
+          <option
+            v-for="(version, index) in versionsMgm"
+            :key="index"
+            :value="version.name"
+          >
+            {{ version.name }}
+          </option>
+        </select>
+      </div>
+      <GBA :key="mgmUpdateCount" :url="mgmRom" />
+    </div>
+    <hr />
+    <div class="project-info">
+      <RepoInfo
         :repo="jiraGba.repo"
         :title="jiraGba.title"
         :techs="jiraGba.techs"
@@ -449,6 +477,12 @@ interface RepoEntry {
     DS
   },
   methods: {
+    selectVersionMgm(event: { target: { value: string } }) {
+      this.mgmRom =
+        `https://gba.ninja/?autorun=${hostingSite}` +
+        `/versions/${event.target.value}/march_good_maybe.gba`;
+      this.mgmUpdateCount++;
+    },
     selectVersionJiraGBA(event: { target: { value: string } }) {
       this.jiraGbaRom =
         `https://gba.ninja/?autorun=${hostingSite}` +
@@ -475,6 +509,19 @@ interface RepoEntry {
         `/stop-the-mail.nds`;
       this.stmUrlUpdateCount++;
       console.log(`STM-URL:${this.stmUrl}`);
+    },
+    getVersionDataMgm() {
+      fetch(`${backendSite}/api/reporele/march_good_maybe`)
+        .then(response => response.json())
+        .then(apiRes => {
+          this.versionsMgm = [];
+          apiRes.forEach((i: { tag_name: string }) => {
+            this.versionsMgm.push({ name: i.tag_name });
+          });
+          this.selectVersionMgm({
+            target: { value: this.versionsMgm[0].name }
+          });
+        });
     },
     getVersionDataWgm() {
       fetch(`${backendSite}/api/reporele/walk-good-maybe`)
@@ -519,6 +566,7 @@ interface RepoEntry {
   created() {
     this.getVersionDataWgmHd();
     this.getVersionDataWgm();
+    this.getVersionDataMgm();
     this.getVersionStmUrl();
     this.selectVersionJiraGBA({ target: { value: "jira-atlas-blue" } });
   },
@@ -532,6 +580,7 @@ interface RepoEntry {
       wgmRom: "",
       jiraGbaRom: "",
       stmUrl: "",
+      versionsMgm: [{ name: "loading" }],
       versionsWgm: [{ name: "loading" }],
       versionsWgmHd: [{ name: "loading" }],
       versionsStm: [{ name: "loading" }],
@@ -555,6 +604,11 @@ interface RepoEntry {
       featuresDocLink:
         "https://developer.spotify.com/documentation" +
         "/web-api/reference/#endpoint-get-several-audio-features",
+      marchGoodMaybe: {
+        repo: "march_good_maybe",
+        title: "March Good Maybe",
+        techs: ["gba", "c++20"]
+      },
       jiraGba: {
         repo: "jira-gba",
         title: "Jira gba",
