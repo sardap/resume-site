@@ -480,7 +480,7 @@ interface RepoEntry {
     selectVersionMgm(event: { target: { value: string } }) {
       this.mgmRom =
         `https://gba.ninja/?autorun=${hostingSite}` +
-        `/versions/${event.target.value}/march_good_maybe.gba`;
+        `/march_good_maybe/versions/${event.target.value}/march_good_maybe.gba`;
       this.mgmUpdateCount++;
     },
     selectVersionJiraGBA(event: { target: { value: string } }) {
