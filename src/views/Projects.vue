@@ -30,35 +30,6 @@
     <hr />
     <div class="project-info">
       <RepoInfo
-        :repo="jiraGba.repo"
-        :title="jiraGba.title"
-        :techs="jiraGba.techs"
-      />
-      <h3>What is it?</h3>
-      <p>
-        For <a href="https://www.atlassian.com/company/shipit">Ship-it 55</a> I
-        made smaller Jira on the GBA.
-      </p>
-      <div class="parent">
-        <p class="child inline-block-child" style="padding: 5px">Version:</p>
-        <select
-          class="child inline-block-child"
-          @change="selectVersionJiraGBA($event)"
-        >
-          <option
-            v-for="(version, index) in versionsJiraGBA"
-            :key="index"
-            :value="version.name"
-          >
-            {{ version.name }}
-          </option>
-        </select>
-      </div>
-      <GBA :key="jiraGBAUpdateCount" :url="jiraGbaRom" />
-    </div>
-    <hr />
-    <div class="project-info">
-      <RepoInfo
         :repo="kiryuEverywhere.repo"
         :title="kiryuEverywhere.title"
         :techs="kiryuEverywhere.techs"
