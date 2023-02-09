@@ -5,7 +5,7 @@ go 1.18
 require (
 	github.com/ReneKroon/ttlcache/v2 v2.3.0
 	github.com/gin-contrib/cors v1.3.1
-	github.com/gin-gonic/gin v1.7.3
+	github.com/gin-gonic/gin v1.7.7
 	github.com/google/go-github v17.0.0+incompatible
 	golang.org/x/oauth2 v0.0.0-20210201163806-010130855d6c
 )
