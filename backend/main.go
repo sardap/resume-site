@@ -11,7 +11,7 @@ import (
 	"github.com/ReneKroon/ttlcache/v2"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"github.com/google/go-github/github"
+	"github.com/google/go-github/v50/github"
 	"golang.org/x/oauth2"
 )
 
@@ -51,7 +51,7 @@ func requestRepoCont(repo string) ([]*github.Contributor, error) {
 	return result, nil
 }
 
-func requestRepoReleses(repo string) ([]*github.RepositoryRelease, error) {
+func requestRepoReleases(repo string) ([]*github.RepositoryRelease, error) {
 	result, _, err := client.Repositories.ListReleases(
 		context.TODO(), "sardap", repo, nil,
 	)
@@ -150,7 +150,7 @@ func loaderFunction(key string) (data interface{}, ttl time.Duration, err error)
 	case "cont":
 		result, resErr = requestRepoCont(key[5:])
 	case "rele":
-		result, resErr = requestRepoReleses(key[5:])
+		result, resErr = requestRepoReleases(key[5:])
 		newTTL = time.Duration(15) * time.Minute
 	}
 
