@@ -12,7 +12,7 @@ module.exports = {
   rules: {
     "no-console": "off",
     "no-debugger": "off",
-    "vue/max-len": "error"
+    "vue/max-len": "off"
   },
 
   extends: [
