@@ -30,7 +30,6 @@ function PhotoClick() {
     }
 }
 
-
 interface WorkLink {
     name: string;
     link: string;
