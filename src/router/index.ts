@@ -1,23 +1,20 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-import Projects from "../views/Projects.vue";
-import Home from "../views/Home.vue";
+import { createRouter, createWebHistory } from 'vue-router'
 
-const routes: Array<RouteRecordRaw> = [
-  {
-    path: "/projects",
-    name: "Projects",
-    component: Projects
-  },
-  {
-    path: "/",
-    name: "Home",
-    component: Home
-  }
-];
 
 const router = createRouter({
-  history: createWebHashHistory(),
-  routes
-});
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
+    {
+      path: '/',
+      name: 'About Me',
+      component: () => import('../views/AboutMe.vue')
+    },
+    {
+      path: '/personal-projects',
+      name: 'Personal Projects',
+      component: () => import('../views/PersonalProjects.vue')
+    }
+  ]
+})
 
-export default router;
+export default router

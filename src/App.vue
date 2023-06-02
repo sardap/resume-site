@@ -1,60 +1,23 @@
-<template>
-  <div>
-    <Header />
-    <div id="nav">
-      <router-link to="/">Home</router-link>
-      <router-link to="/projects">Personal Projects</router-link>
-    </div>
-    <hr />
-    <div class="buffer" />
-    <router-view />
-    <hr />
-    <Footer />
-  </div>
-</template>
+<script setup lang="ts">
+import { RouterView } from 'vue-router'
+import ResumeHeader from './components/ResumeHeader.vue'
+import ResumeFooter from './components/ResumeFooter.vue';
 
-<script lang="ts">
-import { Options, Vue } from "vue-class-component";
-import Header from "@/components/Header.vue";
-import Footer from "@/components/Footer.vue";
+document.title = "PAUL SARDA";
 
-@Options({
-  components: {
-    Header,
-    Footer
-  },
-  created() {
-    document.title = "Paul Sarda";
-  }
-})
-export default class App extends Vue {}
 </script>
 
-<style>
-.buffer {
-  margin: 20px;
-}
+<template>
+  <ResumeHeader />
+  <hr />
+  <RouterView />
+  <hr />
+  <ResumeFooter />
+</template>
 
-#app {
-  font-family: Verdana, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #192129;
-  background-color: #bdffff;
-}
-
-#nav {
-  padding: 3px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-  margin: 5px;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+<style scoped>
+.logo {
+  display: block;
+  margin: 0 auto 2rem;
 }
 </style>

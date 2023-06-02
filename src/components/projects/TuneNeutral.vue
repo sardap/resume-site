@@ -1,0 +1,44 @@
+<script setup lang="ts">
+import { getLanguages } from '@/backend';
+import RepoInfo from '@/components/RepoInfo.vue';
+import { Technologies, type ProjectFilter } from '@/consts';
+import { onMounted, ref, type PropType } from 'vue';
+import ProjectInfo from '../ProjectInfo.vue';
+
+const repo = "TuneNeutral";
+const title = "Tune Neutral";
+const techs = [Technologies.Docker, Technologies.Rest, Technologies.RestGin, Technologies.SpotifyWebApi, Technologies.BadgerDB];
+
+defineProps({
+    filter: {
+        type: Object as PropType<ProjectFilter>,
+        required: true
+    },
+});
+
+const languages = ref<string[]>([]);
+
+onMounted(async () => {
+    languages.value = await getLanguages(repo);
+});
+
+
+</script>
+
+<template>
+    <ProjectInfo :key="languages.length" :filter="filter" :good="true" :languages="languages" :technologies="techs">
+        <RepoInfo :repo="repo" :title="title" :techs="techs" :languages="languages" />
+        <h3>What is it?</h3>
+        <p>
+            Tune Neutral is a web app that will create a mood playlist based on your
+            liked music to get you back into the middle. Feeling too happy it will
+            create a playlist featuring sad music. This is done using the Spotify
+            Web API track feature endpoint.
+            <a :href="`https://tune.sarda.dev/`">Check it out here</a>
+        </p>
+    </ProjectInfo>
+</template>
+
+<style scoped>
+@import "@/assets/main.css";
+</style>
