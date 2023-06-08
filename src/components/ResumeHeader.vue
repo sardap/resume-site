@@ -11,6 +11,7 @@ import { RouterLink } from 'vue-router'
             <nav>
                 <RouterLink to="/">Work History</RouterLink>
                 <RouterLink to="/personal-projects">Personal Projects</RouterLink>
+                <RouterLink to="/contributions">Contributions</RouterLink>
             </nav>
         </div>
     </header>

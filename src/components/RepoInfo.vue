@@ -2,6 +2,7 @@
 import moment from "moment";
 import { onMounted, ref, type PropType } from "vue";
 import { Technologies, backendSite } from "@/consts";
+import { getCommits, getRepo } from "@/backend";
 
 const props = defineProps({
   repo: {
@@ -36,35 +37,22 @@ const starGazers = ref<number | null>(null);
 const commits = ref<number | null>(null);
 
 const getRepoInfo = async () => {
-  {
-    const response = await fetch(`${backendSite}/api/repo/${props.repo}`);
-    const apiRes = await response.json();
+  const repo = await getRepo(props.repo);
 
-    let createdAt: string;
-    if (!props.createdDate) {
-      createdAt = apiRes.created_at;
-    } else {
-      createdAt = props.createdDate;
-    }
-
-    createdDate.value = moment(createdAt)
-      .local()
-      .format("YYYY-MM-DD");
-
-    starGazers.value = apiRes.stargazers_count;
+  let createdAt: string;
+  if (!props.createdDate) {
+    createdAt = repo.created_at;
+  } else {
+    createdAt = props.createdDate;
   }
 
-  {
-    const response = await fetch(`${backendSite}/api/repocontr/${props.repo}`);
-    const apiRes = await response.json();
+  createdDate.value = moment(createdAt)
+    .local()
+    .format("YYYY-MM-DD");
 
-    for (let i = 0; i < apiRes.length; i++) {
-      if (apiRes[i].login === "sardap") {
-        commits.value = apiRes[i].contributions;
-        break;
-      }
-    }
-  }
+  starGazers.value = repo.stargazers_count;
+
+  commits.value = await getCommits(props.repo);
 }
 </script>
 
@@ -74,9 +62,23 @@ const getRepoInfo = async () => {
       <h2><a :href="`https://github.com/sardap/${repo}`" target="_blank">{{ title }}</a></h2>
       <a :href="`#${repo.replace(` `, `_`)}`">Copy Link to this section</a>
     </div>
+    <table>
+      <tr>
+        <th>Created Date</th>
+        <th>Languages</th>
+        <th>Technologies</th>
+      </tr>
+      <tr>
+        <td v-if="createdDate">{{ createdDate }}</td>
+        <td v-else>Loading...</td>
+        <td v-if="languages.length > 0">{{ languages.join(", ") }}</td>
+        <td v-else>Loading...</td>
+        <td>{{ techs.map(i => i.toString()).join(", ") }}</td>
+      </tr>
+    </table>
     <div class="border">
       <div id="card">
-        <div id="created-date">
+        <!-- <div id="created-date">
           <p class="card-header">Created Date</p>
           <p v-if="createdDate">{{ createdDate }}</p>
           <p v-else>Loading...</p>
@@ -89,7 +91,7 @@ const getRepoInfo = async () => {
         <div id="technologies">
           <p class="card-header">Technologies</p>
           <p>{{ techs.map(i => i.toString()).join(", ") }}</p>
-        </div>
+        </div> -->
         <div v-if="starGazers && starGazers > 0">
           <p class="card-header">Stars</p>
           <p>{{ starGazers }}</p>
@@ -106,6 +108,16 @@ const getRepoInfo = async () => {
 
 
 <style scoped>
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+th {
+  padding-right: 0px;
+  font-weight: bold;
+}
+
 p {
   margin: 1px;
 }

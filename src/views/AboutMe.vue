@@ -275,23 +275,26 @@ function getWorkingLength(work: WorkHistory): string {
         <table>
             <tr>
                 <th>Role</th>
-                <th></th>
                 <th>Languages</th>
                 <th>Technologies</th>
-                <th></th>
-                <th>Start</th>
-                <th>End</th>
-                <!-- <th>Length</th> -->
             </tr>
             <tr>
                 <td>{{ work.role }}</td>
-                <td></td>
                 <td>{{ work.languages.join(', ') }}</td>
                 <td>{{ work.technologies.join(', ') }}</td>
-                <td></td>
+            </tr>
+            <tr>
+                <br />
+            </tr>
+            <tr>
+                <th>Start</th>
+                <th>End</th>
+                <th>Length</th>
+            </tr>
+            <tr>
                 <td>{{ work.startDate.format("YYYY-MM") }}</td>
                 <td>{{ work.endDate ? work.endDate.format("YYYY-MM") : `Current` }}</td>
-                <!-- <td>{{ getWorkingLength(work) }}</td> -->
+                <td>{{ getWorkingLength(work) }}</td>
             </tr>
         </table>
         <br />
@@ -361,6 +364,7 @@ th {
 
 table {
     width: 100%;
+    table-layout: fixed;
 }
 
 .work-divider {
