@@ -2,33 +2,29 @@
 import RepoInfo from '@/components/RepoInfo.vue';
 import { hostingSite, backendSite, Technologies, type ProjectFilter } from "@/consts";
 import DS from "@/components/embedded/DS.vue";
-import { onMounted, ref, type PropType } from 'vue';
-import { getLanguages } from '@/backend';
+import { type PropType } from 'vue';
+import { type CompleteRepo } from '@/backend';
 import ProjectInfo from '../ProjectInfo.vue';
 
+const title = "STOP THE MAIL";
+const techs = [Technologies.DS, Technologies.CPP20];
+
 defineProps({
+    complete: {
+        type: Object as PropType<CompleteRepo>,
+        required: true
+    },
     filter: {
         type: Object as PropType<ProjectFilter>,
         required: true
     },
 });
 
-
-const repo = "stop-the-mail";
-const title = "STOP THE MAIL";
-const techs = [Technologies.DS, Technologies.CPP20];
-
-const languages = ref<string[]>([]);
-
-onMounted(async () => {
-    languages.value = await getLanguages(repo);
-});
-
 </script>
 
 <template>
-    <ProjectInfo :key="languages.length" :filter="filter" :good="false" :languages="languages" :technologies="techs">
-        <RepoInfo :repo="repo" :title="title" :techs="techs" :languages="languages" />
+    <ProjectInfo :filter="filter" :good="true" :languages="complete.langs" :technologies="techs">
+        <RepoInfo :complete="complete" :title="title" :techs="techs" />
         <h3>What is it?</h3>
         <p>
             Stop the mail is a tower defense game for the Nintendo DS written in C++

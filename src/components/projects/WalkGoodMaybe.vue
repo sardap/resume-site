@@ -1,33 +1,30 @@
 <script setup lang="ts">
-import { getLanguages } from '@/backend';
+import { type CompleteRepo } from '@/backend';
 import RepoInfo from '@/components/RepoInfo.vue';
 import GBA from "@/components/embedded/GBA.vue";
 import { hostingSite, backendSite, Technologies, type ProjectFilter } from "@/consts";
-import { onMounted, ref, type PropType } from 'vue';
+import { type PropType } from 'vue';
 import ProjectInfo from '../ProjectInfo.vue';
 
-const repo = "walk-good-maybe";
 const title = "Walk Good Maybe";
 const techs = [Technologies.GBA];
 
 defineProps({
+    complete: {
+        type: Object as PropType<CompleteRepo>,
+        required: true
+    },
     filter: {
         type: Object as PropType<ProjectFilter>,
         required: true
     },
 });
 
-const languages = ref<string[]>([]);
-
-onMounted(async () => {
-    languages.value = await getLanguages(repo);
-});
-
 </script>
 
 <template>
-    <ProjectInfo :key="languages.length" :filter="filter" :good="true" :languages="languages" :technologies="techs">
-        <RepoInfo :repo="repo" :title="title" :techs="techs" :languages="languages" />
+    <ProjectInfo :filter="filter" :good="true" :languages="complete.langs" :technologies="techs">
+        <RepoInfo :complete="complete" :title="title" :techs="techs" />
         <h3>What is it?</h3>
         <p>
             A basic endless runner homebrew Game Boy Advance game. Play it right

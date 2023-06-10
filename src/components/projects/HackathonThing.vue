@@ -2,35 +2,29 @@
 import RepoInfo from '@/components/RepoInfo.vue';
 import { Technologies, type ProjectFilter } from '@/consts';
 import ProjectInfo from '../ProjectInfo.vue';
-import { ref, type PropType, onMounted } from 'vue';
-import { getLanguages } from '@/backend';
+import { ref, type PropType } from 'vue';
+import { type CompleteRepo } from '@/backend';
 
-const repo = "HackathonThing";
+const play = ref(false);
 const title = "Hackathon Thing";
 const techs = [Technologies.Unity, Technologies.ECS];
 
 defineProps({
+    complete: {
+        type: Object as PropType<CompleteRepo>,
+        required: true
+    },
     filter: {
         type: Object as PropType<ProjectFilter>,
         required: true
     },
 });
 
-
-const languages = ref<string[]>([]);
-
-onMounted(async () => {
-    languages.value = await getLanguages(repo);
-});
-
-const play = ref(false);
-
-
 </script>
 
 <template>
-    <ProjectInfo :key="languages.length" :filter="filter" :good="false" :languages="languages" :technologies="techs">
-        <RepoInfo :repo="repo" :title="title" :techs="techs" :languages="languages" />
+    <ProjectInfo :filter="filter" :good="true" :languages="complete.langs" :technologies="techs">
+        <RepoInfo :complete="complete" :title="title" :techs="techs" />
         <h3>What is it?</h3>
         <p>
             You play as the eyes and the mouth and avoid getting touched by the

@@ -4,9 +4,10 @@ import { Technologies, type ProjectFilter } from '@/consts';
 import ProjectInfo from '../ProjectInfo.vue';
 import { type PropType } from 'vue';
 import { type CompleteRepo } from '@/backend';
+import Voties from '../embedded/Voties.vue';
 
-const title = "Final year uni Project";
-const techs = [Technologies.Flask, Technologies.Docker, Technologies.Rest];
+const title = "Voties";
+const techs = [Technologies.ECS];
 
 defineProps({
     complete: {
@@ -26,11 +27,9 @@ defineProps({
         <RepoInfo :complete="complete" :title="title" :techs="techs" />
         <h3>What is it?</h3>
         <p>
-            This is the final year <b>group project</b> at uni. The objective was to
-            create an architecture, then implement part of the created architecture.
-            The goal was to allow people to sell their personal biometric data to
-            researchers with as few middle men as possible.
+            Walk good maybe remade in golang using ECS.
         </p>
+        <Voties />
     </ProjectInfo>
 </template>
 

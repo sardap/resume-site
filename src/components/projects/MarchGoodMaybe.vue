@@ -1,32 +1,30 @@
 <script setup lang="ts">
-import { getLanguages } from '@/backend';
+import { type CompleteRepo } from '@/backend';
 import RepoInfo from '@/components/RepoInfo.vue';
 import GBA from "@/components/embedded/GBA.vue";
 import { hostingSite, backendSite, Technologies, type ProjectFilter } from "@/consts";
-import { onMounted, ref, type PropType } from 'vue';
+import { type PropType } from 'vue';
 import ProjectInfo from '../ProjectInfo.vue';
 
+const title = "March Good Maybe";
+const techs = [Technologies.GBA, Technologies.CPP20, Technologies.ECS];
+
 defineProps({
+    complete: {
+        type: Object as PropType<CompleteRepo>,
+        required: true
+    },
     filter: {
         type: Object as PropType<ProjectFilter>,
         required: true
     },
 });
 
-const repo = "march_good_maybe";
-const title = "March Good Maybe";
-const techs = [Technologies.GBA, Technologies.CPP20, Technologies.ECS];
-
-const languages = ref<string[]>([]);
-
-onMounted(async () => {
-    languages.value = await getLanguages(repo);
-});
 </script>
 
 <template>
-    <ProjectInfo :key="languages.length" :filter="filter" :good="false" :languages="languages" :technologies="techs">
-        <RepoInfo :repo="repo" :title="title" :techs="techs" :languages="languages" />
+    <ProjectInfo :filter="filter" :good="true" :languages="complete.langs" :technologies="techs">
+        <RepoInfo :complete="complete" :title="title" :techs="techs" />
         <h3>What is it?</h3>
         <p>
             Im not sure yet

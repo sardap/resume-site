@@ -34,10 +34,10 @@ function updateVersion() {
 }
 
 onMounted(async () => {
-    await getVersionsDataMgm();
+    await getVersions();
 });
 
-async function getVersionsDataMgm() {
+async function getVersions() {
     const response = await fetch(props.versionUrl);
     const apiRes: { tag_name: string }[] = await response.json();
     for (let i = 0; i < apiRes.length; i++) {

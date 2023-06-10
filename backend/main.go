@@ -62,6 +62,63 @@ func requestRepoReleases(repo string) ([]*github.RepositoryRelease, error) {
 	return result, nil
 }
 
+type PublicRepo struct {
+	Name            string    `json:"name"`
+	CreatedDate     time.Time `json:"created_at"`
+	StargazersCount int       `json:"stargazers_count"`
+}
+
+type CompleteRepo struct {
+	Repo  PublicRepo `json:"repo"`
+	Langs []string   `json:"langs"`
+	Contr int        `json:"commits"`
+}
+
+func completeInfo(reposStr string) (map[string]*CompleteRepo, error) {
+	repos, _, err := client.Repositories.List(context.TODO(), "sardap", &github.RepositoryListOptions{
+		Visibility: "public",
+		ListOptions: github.ListOptions{
+			PerPage: 100,
+		},
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	result := make(map[string]*CompleteRepo)
+	for _, repo := range repos {
+		if *repo.Private {
+			continue
+		}
+
+		langs, _ := requestRepoLang(*repo.Name)
+		langsAry := make([]string, 0, len(langs))
+		for k, _ := range langs {
+			langsAry = append(langsAry, k)
+		}
+
+		contr, _ := requestRepoCont(*repo.Name)
+		commits := 0
+		for _, c := range contr {
+			if *c.Login == "sardap" {
+				commits = *c.Contributions
+			}
+		}
+
+		result[*repo.Name] = &CompleteRepo{
+			Repo: PublicRepo{
+				Name:            *repo.Name,
+				CreatedDate:     repo.CreatedAt.Time,
+				StargazersCount: *repo.StargazersCount,
+			},
+			Langs: langsAry,
+			Contr: commits,
+		}
+	}
+
+	return result, nil
+}
+
 func repoEndpoint(c *gin.Context) {
 	repoID := c.Param("id")
 
@@ -110,7 +167,7 @@ func repoContrEndpoint(c *gin.Context) {
 	c.JSON(200, repo)
 }
 
-func repoRelesesEndpoint(c *gin.Context) {
+func repoReleasesEndpoint(c *gin.Context) {
 	repoID := c.Param("id")
 
 	key := fmt.Sprintf("rele:%s", repoID)
@@ -122,6 +179,18 @@ func repoRelesesEndpoint(c *gin.Context) {
 	}
 
 	var repo = tmp.([]*github.RepositoryRelease)
+
+	c.JSON(200, repo)
+}
+
+func completeEndpoint(c *gin.Context) {
+	tmp, err := cache.Get("complete")
+	if err != nil {
+		c.JSON(500, gin.H{})
+		return
+	}
+
+	var repo = tmp.(map[string]*CompleteRepo)
 
 	c.JSON(200, repo)
 }
@@ -152,6 +221,8 @@ func loaderFunction(key string) (data interface{}, ttl time.Duration, err error)
 	case "rele":
 		result, resErr = requestRepoReleases(key[5:])
 		newTTL = time.Duration(15) * time.Minute
+	case "comp":
+		result, resErr = completeInfo(key[5:])
 	}
 
 	return result, newTTL, resErr
@@ -174,6 +245,13 @@ func main() {
 	cache.SetCheckExpirationCallback(checkExpirationCallback)
 	cache.SetCacheSizeLimit(50)
 
+	go func() {
+		for {
+			cache.Get("complete")
+			time.Sleep(time.Duration(1) * time.Hour)
+		}
+	}()
+
 	r := gin.Default()
 
 	r.Use(cors.Default())
@@ -181,7 +259,8 @@ func main() {
 	r.GET("/api/repo/:id", repoEndpoint)
 	r.GET("/api/repolang/:id", repoLangsEndpoint)
 	r.GET("/api/repocontr/:id", repoContrEndpoint)
-	r.GET("/api/reporele/:id", repoRelesesEndpoint)
+	r.GET("/api/reporele/:id", repoReleasesEndpoint)
+	r.GET("/api/complete", completeEndpoint)
 	r.StaticFS("/assets", http.Dir(os.Getenv("STATIC_FILES")))
 
 	r.Run()

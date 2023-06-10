@@ -2,6 +2,7 @@
 import { RouterView } from 'vue-router'
 import ResumeHeader from './components/ResumeHeader.vue'
 import ResumeFooter from './components/ResumeFooter.vue';
+import { onMounted } from 'vue';
 
 document.title = "PAUL SARDA";
 

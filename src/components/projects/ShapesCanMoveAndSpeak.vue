@@ -2,32 +2,28 @@
 import RepoInfo from '@/components/RepoInfo.vue';
 import { Technologies, type ProjectFilter } from '@/consts';
 import ProjectInfo from '../ProjectInfo.vue';
-import { ref, type PropType, onMounted } from 'vue';
-import { getLanguages } from '@/backend';
+import { type PropType } from 'vue';
+import { type CompleteRepo } from '@/backend';
 
-const repo = "ShapesCanMoveAndSpeak";
 const title = "Shapes can move and speak";
 const techs = [Technologies.SwinGame, Technologies.ECS];
 
 defineProps({
+    complete: {
+        type: Object as PropType<CompleteRepo>,
+        required: true
+    },
     filter: {
         type: Object as PropType<ProjectFilter>,
         required: true
     },
 });
 
-
-const languages = ref<string[]>([]);
-
-onMounted(async () => {
-    languages.value = await getLanguages(repo);
-});
-
 </script>
 
 <template>
-    <ProjectInfo :key="languages.length" :filter="filter" :good="false" :languages="languages" :technologies="techs">
-        <RepoInfo :repo="repo" :title="title" :techs="techs" :languages="languages" created-date="2017-04-04" />
+    <ProjectInfo :filter="filter" :good="true" :languages="complete.langs" :technologies="techs">
+        <RepoInfo :complete="complete" :title="title" :techs="techs" created-date="2017-04-04" />
         <h3>What is it?</h3>
         <p>
             The game is it spawns a bunch of shapes with gold mines. Each shape

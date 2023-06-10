@@ -2,33 +2,28 @@
 import RepoInfo from '@/components/RepoInfo.vue';
 import { Technologies, type ProjectFilter } from '@/consts';
 import ProjectInfo from '../ProjectInfo.vue';
-import { ref, type PropType, onMounted } from 'vue';
-import { getLanguages } from '@/backend';
+import { type PropType } from 'vue';
+import { type CompleteRepo } from '@/backend';
 
-const repo = "voting_systems";
 const title = "Election Systems";
 const techs = [Technologies.Rest, Technologies.Postgres, Technologies.Diesel];
 
 defineProps({
+    complete: {
+        type: Object as PropType<CompleteRepo>,
+        required: true
+    },
     filter: {
         type: Object as PropType<ProjectFilter>,
         required: true
     },
 });
 
-
-const languages = ref<string[]>([]);
-
-onMounted(async () => {
-    languages.value = await getLanguages(repo);
-});
-
-
 </script>
 
 <template>
-    <ProjectInfo :key="languages.length" :filter="filter" :good="true" :languages="languages" :technologies="techs">
-        <RepoInfo :repo="repo" :title="title" :techs="techs" :languages="languages" />
+    <ProjectInfo :filter="filter" :good="true" :languages="complete.langs" :technologies="techs">
+        <RepoInfo :complete="complete" :title="title" :techs="techs" />
         <h3>What is it?</h3>
         <p>
             It's a site which has 14 different voting systems.

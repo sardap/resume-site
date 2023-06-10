@@ -2,32 +2,28 @@
 import RepoInfo from '@/components/RepoInfo.vue';
 import { Technologies, type ProjectFilter } from '@/consts';
 import ProjectInfo from '../ProjectInfo.vue';
-import { ref, type PropType, onMounted } from 'vue';
-import { getLanguages } from '@/backend';
+import { type PropType } from 'vue';
+import { type CompleteRepo } from '@/backend';
 
-const repo = "Temptris";
 const title = "Temptris";
 const techs = [Technologies.OpenWeatherApi, Technologies.MonoGame];
 
 defineProps({
+    complete: {
+        type: Object as PropType<CompleteRepo>,
+        required: true
+    },
     filter: {
         type: Object as PropType<ProjectFilter>,
         required: true
     },
 });
 
-
-const languages = ref<string[]>([]);
-
-onMounted(async () => {
-    languages.value = await getLanguages(repo);
-});
-
 </script>
 
 <template>
-    <ProjectInfo :key="languages.length" :filter="filter" :good="true" :languages="languages" :technologies="techs">
-        <RepoInfo :repo="repo" :title="title" :techs="techs" :languages="languages" created-date="2018-11-07" />
+    <ProjectInfo :filter="filter" :good="true" :languages="complete.langs" :technologies="techs">
+        <RepoInfo :complete="complete" :title="title" :techs="techs" created-date="2018-11-07" />
         <h3>What is it?</h3>
         <p>
             Have you ever been playing a block puzzle game, there was lighting

@@ -1,33 +1,29 @@
 <script setup lang="ts">
-import { getLanguages } from '@/backend';
+import { type CompleteRepo } from '@/backend';
 import RepoInfo from '@/components/RepoInfo.vue';
 import { Technologies, type ProjectFilter } from '@/consts';
-import { onMounted, ref, type PropType } from 'vue';
+import { type PropType } from 'vue';
 import ProjectInfo from '../ProjectInfo.vue';
 
-
-const repo = "TIGTBIFHIMVA";
 const title = "Time It's Going To Be In Four Hours In Melbourne Victoria Australia";
 const techs = [Technologies.Docker, Technologies.Rest, Technologies.RestWarp];
 
 defineProps({
+    complete: {
+        type: Object as PropType<CompleteRepo>,
+        required: true
+    },
     filter: {
         type: Object as PropType<ProjectFilter>,
         required: true
     },
 });
 
-const languages = ref<string[]>([]);
-
-onMounted(async () => {
-    languages.value = await getLanguages(repo);
-});
-
 </script>
 
 <template>
-    <ProjectInfo :key="languages.length" :filter="filter" :good="false" :languages="languages" :technologies="techs">
-        <RepoInfo :repo="repo" :title="title" :techs="techs" :languages="languages" />
+    <ProjectInfo :filter="filter" :good="true" :languages="complete.langs" :technologies="techs">
+        <RepoInfo :complete="complete" :title="title" :techs="techs" />
         <h3>What is it?</h3>
         <p>
             An API which will return the time in Melbourne Victoria Australia in

@@ -22,7 +22,14 @@ import ShapesCanMoveAndSpeak from '@/components/projects/ShapesCanMoveAndSpeak.v
 import PascalBrainFuck from '@/components/projects/PascalBrainFuck.vue';
 import NumbersOrDie from '@/components/projects/NumbersOrDie.vue';
 import NoTotoAfrica from '@/components/projects/NoTotoAfrica.vue';
+import Voties from '@/components/projects/Voties.vue';
+import { getComplete, type Complete } from '@/backend';
 
+const complete = ref<Complete | null>(null);
+
+onMounted(async () => {
+  complete.value = await getComplete();
+});
 
 const languages = [
   "Rust",
@@ -30,7 +37,6 @@ const languages = [
   "JavaScript",
   "TypeScript",
   "Python",
-  "Java",
   "C#",
   "C++",
   "C",
@@ -80,55 +86,59 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
-    <h2>Filters</h2>
+  <p v-if="complete === null">Loading...</p>
+  <div v-else>
     <div>
-      <label>Even show the low quality stuff </label>
-      <input type="checkbox" v-model="filter.show_bad" @change="() => refresh++" />
+      <h2>Filters</h2>
+      <div>
+        <label>Even show the low quality stuff </label>
+        <input type="checkbox" v-model="filter.show_bad" @change="() => refresh++" />
+      </div>
+      <div>
+        <label>Language </label><br />
+        <select v-model="language" @change="updateFilter">
+          <option :value="null">No Filter</option>
+          <option v-for="language in languages" :value="language">{{ language }}</option>
+        </select>
+      </div>
+      <div>
+        <label>Technologies </label><br />
+        <select v-model="technology" @change="updateFilter">
+          <option :value="null">No Filter</option>
+          <option v-for="i in technologies" :value="i">{{ i }}</option>
+        </select>
+      </div>
+    </div>
+    <br />
+    <hr />
+    <br />
+    <div :key="refresh">
+      <Voties :filter="filter" :complete="complete.voties" />
+      <VotingSystems :filter="filter" :complete="complete.voting_systems" />
+      <KiryuevErywhere :filter="filter" :complete="complete.kiryueverywhere" />
+      <MarchGoodMaybe :filter="filter" :complete="complete.march_good_maybe" />
+      <StopTheMail :filter="filter" :complete="complete['stop-the-mail']" />
+      <TuneNeutral :filter="filter" :complete="complete.TuneNeutral" />
+      <tigtbifhimva :filter="filter" :complete="complete.TIGTBIFHIMVA" />
+      <WalkGoodMaybeHD :filter="filter" :complete="complete['go-walk-good-maybe-hd']" />
+      <ResumeSite :filter="filter" :complete="complete['resume-site']" />
+      <WalkGoodMaybe :filter="filter" :complete="complete['walk-good-maybe']" />
+      <ChessBot :filter="filter" :complete="complete.chessbot" />
+      <PickUpBot :filter="filter" :complete="complete.pickupbot" />
+      <MuhBot :filter="filter" :complete="complete.muhbot" />
+      <IsItSka :filter="filter" :complete="complete.IsItSka" />
+      <Vibes :filter="filter" :complete="complete.vibes" />
+      <HackathonThing :filter="filter" :complete="complete.HackathonThing" />
+      <NoTotoAfrica :filter="filter" :complete="complete.NoTotoAfrica" />
+      <Capstone :filter="filter" :complete="complete['Capstone-2019-Data-Sharing']" />
+      <Temptris :filter="filter" :complete="complete.Temptris" />
+      <ShapesCanMoveAndSpeak :filter="filter" :complete="complete.ShapesCanMoveAndSpeak" />
+      <PascalBrainFuck :filter="filter" :complete="complete.PascalBrainFuck" />
+      <NumbersOrDie :filter="filter" :complete="complete.NumbersOrDie" />
     </div>
     <div>
-      <label>Language </label><br />
-      <select v-model="language" @change="updateFilter">
-        <option :value="null">No Filter</option>
-        <option v-for="language in languages" :value="language">{{ language }}</option>
-      </select>
+      <h2>Wow look at all these high quality projects <span>Hire me</span></h2>
     </div>
-    <div>
-      <label>Technologies </label><br />
-      <select v-model="technology" @change="updateFilter">
-        <option :value="null">No Filter</option>
-        <option v-for="i in technologies" :value="i">{{ i }}</option>
-      </select>
-    </div>
-  </div>
-  <br />
-  <hr />
-  <br />
-  <div :key="refresh">
-    <VotingSystems :filter="filter" />
-    <KiryuevErywhere :filter="filter" />
-    <MarchGoodMaybe :filter="filter" />
-    <StopTheMail :filter="filter" />
-    <TuneNeutral :filter="filter" />
-    <tigtbifhimva :filter="filter" />
-    <WalkGoodMaybeHD :filter="filter" />
-    <ResumeSite :filter="filter" />
-    <WalkGoodMaybe :filter="filter" />
-    <ChessBot :filter="filter" />
-    <PickUpBot :filter="filter" />
-    <MuhBot :filter="filter" />
-    <IsItSka :filter="filter" />
-    <Vibes :filter="filter" />
-    <HackathonThing :filter="filter" />
-    <NoTotoAfrica :filter="filter" />
-    <Capstone :filter="filter" />
-    <Temptris :filter="filter" />
-    <ShapesCanMoveAndSpeak :filter="filter" />
-    <PascalBrainFuck :filter="filter" />
-    <NumbersOrDie :filter="filter" />
-  </div>
-  <div>
-    <h2>Wow look at all these high quality projects <span>Hire me</span></h2>
   </div>
 </template>
 
