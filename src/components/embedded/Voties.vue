@@ -18,7 +18,7 @@ const load = ref(false);
             <VersionSelector :versionUrl="versionUrl" :resourceUrl="resourceUrl" :fileName="fileName" v-model="targetUrl" />
             <br />
             <div v-if="targetUrl.length > 0" :key="targetUrl">
-                <iframe :src="targetUrl" width="640" height="450" allow="autoplay"></iframe>
+                <iframe :src="targetUrl" width="800" height="600" allow="autoplay"></iframe>
             </div>
             <p v-else>Loading...</p>
         </div>
