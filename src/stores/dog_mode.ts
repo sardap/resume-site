@@ -8,7 +8,7 @@ export const useDogModeStore = defineStore('dogMode', () => {
   function enableDogMode() {
     dogMode.value = true;
     backgroundMusic.value = new Audio('/audio/dogMode.mp3');
-    backgroundMusic.value.volume = 0.5;
+    backgroundMusic.value.volume = 0.25;
     backgroundMusic.value.play();
   }
 
