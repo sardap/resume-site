@@ -15,6 +15,12 @@ function bark() {
     });
 }
 
+function getRandomRotation() {
+    const rotations = ['0', '90deg', '180deg', '270deg'];
+    const result = rotations[Math.floor(Math.random() * rotations.length)];
+    return result;
+}
+
 </script>
 
 <template>
@@ -23,7 +29,7 @@ function bark() {
         <p v-if="barks > 0">Stop barking you have barked {{ barks }} times</p>
         <p v-else>Try 🐕barking🐕?</p>
         <div>
-            <img v-if="barking" src="/photos/dogLaughing.png" />
+            <img v-if="barking" :style="`transform: rotate(${getRandomRotation()})`" src="/photos/dogLaughing.png" />
             <img v-else src="/photos/dogNotLaughing.png" />
         </div>
     </div>
@@ -33,5 +39,22 @@ function bark() {
 <style scoped>
 img {
     width: 200px;
+    max-height: 150px;
+}
+
+.up {
+    transform: rotate(0);
+}
+
+.left {
+    transform: rotate(90deg);
+}
+
+.right {
+    transform: rotate(90deg);
+}
+
+.down {
+    transform: rotate(90deg);
 }
 </style>

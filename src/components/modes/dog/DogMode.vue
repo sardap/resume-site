@@ -13,8 +13,7 @@ const dogMode = "🐶 DOG MODE 🐶";
             <p>How many resume sites have a {{ dogMode }}?</p>
         </div>
         <div>
-            <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/y9K18CGEeiI"
-                title="YouTube video player" frameborder="0"
+            <iframe src="https://www.youtube-nocookie.com/embed/y9K18CGEeiI" title="YouTube video player" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen></iframe>
         </div>
@@ -23,4 +22,10 @@ const dogMode = "🐶 DOG MODE 🐶";
 </template>
 
 
-<style scoped></style>
+<style scoped>
+iframe {
+    max-width: 100%;
+    width: 560px;
+    height: 315px;
+}
+</style>

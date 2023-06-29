@@ -2,19 +2,28 @@
 import { RouterView } from 'vue-router';
 import ResumeHeader from './components/ResumeHeader.vue';
 import ResumeFooter from './components/ResumeFooter.vue';
-import { useDogModeStore } from '@/stores/dog_mode';
-import DogMode from './components/DogMode.vue'
+import { useModeStore, Mode as ModeEnum } from '@/stores/mode';
+import Mode from './components/modes/Mode.vue';
 
-const dogModeStore = useDogModeStore();
+const modeStore = useModeStore();
+
+function getClass() {
+  switch (modeStore.mode) {
+    case ModeEnum.Normal:
+      return '';
+    case ModeEnum.Dog:
+      return 'dog-mode';
+  }
+}
 
 </script>
 
 <template>
-  <div :class="dogModeStore.dogMode ? `dog-mode` : ``">
+  <div :class="getClass()">
     <ResumeHeader />
     <hr />
-    <DogMode v-if="dogModeStore.dogMode" />
-    <RouterView v-else />
+    <RouterView v-if="modeStore.mode === ModeEnum.Normal" />
+    <Mode v-else />
     <hr />
     <ResumeFooter />
   </div>
@@ -31,8 +40,5 @@ const dogModeStore = useDogModeStore();
   background-size: 100px;
   color: red;
 }
-
-/* .dog-mode p {
-  color: magenta;
-} */
 </style>
+@/stores/mode
