@@ -1,13 +1,18 @@
 <script setup lang="ts">
+import { useDogModeStore } from '@/stores/dog_mode';
 import { ref } from 'vue';
 
-const dogMode = ref(false);
+const dogModeStore = useDogModeStore();
 
-function toggleDogMode() {
-    dogMode.value = !dogMode.value;
+const modeInput = ref("");
 
-    if (dogMode.value) {
+
+function checkMode() {
+    console.log(`UPDATED TEXT ${modeInput.value}`)
+    if (modeInput.value.toLowerCase() === "dog") {
+        dogModeStore.enableDogMode();
     } else {
+        dogModeStore.disableDogMode();
     }
 }
 
@@ -16,7 +21,9 @@ function toggleDogMode() {
 <template>
     <footer>
         <div>
-            <!-- <button @click="toggleDogMode">{{ dogMode ? `Disable` : `Enable` }} Dog mode</button> -->
+            <p>Enter Mode</p>
+            <input type="text" v-model="modeInput" /><br />
+            <button @click="checkMode">Submit</button>
             <p><a href="mailto:paul@sarda.dev">paul@sarda.dev</a></p>
             <p><a href="https://github.com/sardap">www.github.com/sardap</a></p>
         </div>

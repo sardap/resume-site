@@ -19,11 +19,11 @@ const photoClickCount = ref(0);
 function PhotoClick() {
     photoClickCount.value++;
 
-    if (photoClickCount.value > 10) {
+    if (photoClickCount.value >= 9) {
         photoLink.value = paulPhotoReal;
-    } else if (photoClickCount.value > 5) {
+    } else if (photoClickCount.value >= 6) {
         photoLink.value = paulPhotoFunny;
-    } else if (photoClickCount.value > 3) {
+    } else if (photoClickCount.value >= 3) {
         photoLink.value = paulPhotoOld;
     } else {
         photoLink.value = paulPhotoFormal;
