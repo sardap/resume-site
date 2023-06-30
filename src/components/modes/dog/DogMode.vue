@@ -18,6 +18,14 @@ const dogMode = "🐶 DOG MODE 🐶";
                 allowfullscreen></iframe>
         </div>
         <BarkButton />
+        <div>
+            <h3>It's Photo gallery time!</h3>
+            <div>
+                <img src="/photos/dog/one.png" />
+                <img src="/photos/dog/two.png" />
+                <img src="/photos/dog/three.png" />
+            </div>
+        </div>
     </div>
 </template>
 

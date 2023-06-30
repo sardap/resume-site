@@ -65,3 +65,18 @@ h3 {
   background: #1e1e1e;
   color: #5394c4;
 }
+
+.dog-mode {
+  background-image: url("/photos/dogModeBackground.png");
+  background-size: 100px;
+  color: red;
+  background-color: darkmagenta;
+}
+
+.dog-mode a {
+  color: lightblue;
+}
+
+.dog-mode a:hover {
+  background-color: black;
+}

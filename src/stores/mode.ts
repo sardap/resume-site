@@ -3,7 +3,8 @@ import { defineStore } from 'pinia'
 
 export enum Mode {
   Normal = 'normal',
-  Dog = 'dog'
+  Dog = 'dog',
+  Dota = 'dota',
 }
 
 export const useModeStore = defineStore('mode', () => {
@@ -11,6 +12,9 @@ export const useModeStore = defineStore('mode', () => {
   const backgroundMusic = ref<HTMLAudioElement | null>(null);
 
   function changeMode(newModeStr: string) {
+    newModeStr = newModeStr.toLowerCase();
+    newModeStr = newModeStr.replace('mode', '');
+    newModeStr = newModeStr.trim();
     let newMode = Mode.Normal;
     // update mode value
     switch (newModeStr) {

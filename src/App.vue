@@ -29,16 +29,5 @@ function getClass() {
   </div>
 </template>
 
-<style scoped>
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-.dog-mode {
-  background-image: url("/photos/dogModeBackground.png");
-  background-size: 100px;
-  color: red;
-}
-</style>
+<style scoped></style>
 @/stores/mode
