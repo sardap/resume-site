@@ -4,7 +4,7 @@ import { defineStore } from 'pinia'
 export enum Mode {
   Normal = 'normal',
   Dog = 'dog',
-  Dota = 'dota',
+  QuizTime = 'quiz time',
 }
 
 export const useModeStore = defineStore('mode', () => {
@@ -24,6 +24,9 @@ export const useModeStore = defineStore('mode', () => {
       case Mode.Dog:
         newMode = Mode.Dog;
         break;
+      case Mode.QuizTime:
+        newMode = Mode.QuizTime;
+        break;
     }
 
     if (newMode === mode.value) {
@@ -37,6 +40,9 @@ export const useModeStore = defineStore('mode', () => {
       case Mode.Dog:
         disableDogMode();
         break;
+      case Mode.QuizTime:
+        disableQuizTimeMode();
+        break;
     }
 
     mode.value = newMode;
@@ -47,6 +53,9 @@ export const useModeStore = defineStore('mode', () => {
         break;
       case Mode.Dog:
         enableDogMode();
+        break;
+      case Mode.QuizTime:
+        enableQuizTimeMode();
         break;
     }
   }
@@ -62,6 +71,15 @@ export const useModeStore = defineStore('mode', () => {
     if (backgroundMusic.value) {
       backgroundMusic.value.pause();
     }
+  }
+
+  function enableQuizTimeMode() {
+    backgroundMusic.value = new Audio('/audio/quiz/quizTime.ogg');
+    backgroundMusic.value.volume = 1;
+    backgroundMusic.value.play();
+  }
+
+  function disableQuizTimeMode() {
   }
 
   return { mode, changeMode }

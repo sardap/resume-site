@@ -13,6 +13,8 @@ function getClass() {
       return '';
     case ModeEnum.Dog:
       return 'dog-mode';
+    case ModeEnum.QuizTime:
+      return 'quiz-time-mode';
   }
 }
 

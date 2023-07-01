@@ -80,3 +80,17 @@ h3 {
 .dog-mode a:hover {
   background-color: black;
 }
+
+.quiz-time-mode {
+  background-color: rgb(64, 192, 196);
+  color: darkmagenta;
+}
+
+.quiz-time-mode a {
+  color: lightgray;
+}
+
+
+.quiz-time-mode a:hover {
+  background-color: black;
+}
