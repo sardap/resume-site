@@ -22,7 +22,7 @@ const concurrentProgramming = "I will never forget when I took my first concurre
 const atlassian = "Then of course I work at atlassian which is a company that prides itself at making products" +
     " which are impossible to spell. We have the company name itself atlassian, then we have confluence, opsgenie" +
     " the company mascot is even called charlie and we use this tool called socrates. it is great instead of having" +
-    " short and easy to spell words we have long and impossible to spell words.";
+    " short and easy to spell words we have long and impossible to spell words. Just to be clear I love working at Atlassian!";
 
 const thanks = "thanks for reading this is obviously very rambly but i couldn't write it " +
     " then read it aloud then rewrite or that would poison the well.";
