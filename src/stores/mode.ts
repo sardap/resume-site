@@ -5,6 +5,7 @@ export enum Mode {
   Normal = 'normal',
   Dog = 'dog',
   QuizTime = 'quiz time',
+  Dyslexia = 'dyslexia',
 }
 
 export const useModeStore = defineStore('mode', () => {
@@ -27,6 +28,23 @@ export const useModeStore = defineStore('mode', () => {
       case Mode.QuizTime:
         newMode = Mode.QuizTime;
         break;
+      case Mode.Dyslexia:
+      case "disleixa":
+      case "dyslexic":
+      case "disxleixa":
+      case "dislexia":
+      case "dsyleixa":
+      case "disxliexa":
+      case "dislxisic":
+      case "disxleisc":
+      case "dislescic":
+      case "dislexsic":
+      case "dislexic":
+      case "dislxeic":
+      case "disxlesic":
+      case "dysxlisc":
+        newMode = Mode.Dyslexia;
+        break;
     }
 
     if (newMode === mode.value) {
@@ -41,7 +59,8 @@ export const useModeStore = defineStore('mode', () => {
         disableDogMode();
         break;
       case Mode.QuizTime:
-        disableQuizTimeMode();
+        break;
+      case Mode.Dyslexia:
         break;
     }
 
@@ -56,6 +75,8 @@ export const useModeStore = defineStore('mode', () => {
         break;
       case Mode.QuizTime:
         enableQuizTimeMode();
+        break;
+      case Mode.Dyslexia:
         break;
     }
   }
@@ -77,9 +98,6 @@ export const useModeStore = defineStore('mode', () => {
     backgroundMusic.value = new Audio('/audio/quiz/quizTime.ogg');
     backgroundMusic.value.volume = 1;
     backgroundMusic.value.play();
-  }
-
-  function disableQuizTimeMode() {
   }
 
   return { mode, changeMode }

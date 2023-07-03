@@ -15,6 +15,8 @@ function getClass() {
       return 'dog-mode';
     case ModeEnum.QuizTime:
       return 'quiz-time-mode';
+    case ModeEnum.Dyslexia:
+      return 'dyslexia-mode';
   }
 }
 

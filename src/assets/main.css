@@ -94,3 +94,10 @@ h3 {
 .quiz-time-mode a:hover {
   background-color: black;
 }
+
+.dyslexia-mode {
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  background-color: blanchedalmond;
+  padding-left: 5%;
+  padding-right: 5%;
+}
