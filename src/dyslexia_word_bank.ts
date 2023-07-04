@@ -8,6 +8,7 @@ const wordMap: Record<string, string[]> = {
         "dislexia",
         "dsyleixa",
         "disxliexa",
+        "dislexixa"
     ],
     "dyslexic": [
         "dislxisic",
@@ -33,7 +34,8 @@ const wordMap: Record<string, string[]> = {
     "written": ["written"],
     "is": ["is"],
     "i": ["i"],
-    "recorded": ["recoreded"],
+    "results": ["reulsts", "results"],
+    "recorded": ["recoreded", "recoreded"],
     "audio": ["aduio", "audio"],
     "sat": ["sat"],
     "down": ["down"],
@@ -48,7 +50,7 @@ const wordMap: Record<string, string[]> = {
     "facts": ["facts"],
     "different": ["diffrent", "differnet"],
     "spelling": ["spelling"],
-    "variations": ["varations"],
+    "variations": ["varations", "varatations"],
     "that": ["that"],
     "did": ["did"],
     "explanation": ["expliantion"],

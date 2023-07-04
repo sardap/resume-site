@@ -6,9 +6,9 @@ import { onMounted, ref } from "vue";
 const welcomeText = "Welcome to dyslexic mode!";
 
 const introParagraph = "The way this was written is I recorded audio, Then i wrote it down" +
-    " just by listening to the audio then transcribing the audio." +
+    " just by listening to the audio and transcribing it." +
     " I then took the different spelling variations that I did in each iteration," +
-    " put them in a big list. This page picks random different versions of each word. Every time you load it will be different!";
+    " and put them in a big list. This page picks random different versions of each word. Every time you load it will be different!";
 
 const dota2 = "Fun dota 2 facts!" +
     " Terminator is a new neutral creep in dota 2. When your team destroys it the poorest on the team gets an Aghanims shard.";
@@ -48,16 +48,16 @@ onMounted(async () => {
                 <p>{{ dyslexiafiy_block(introParagraph) }}</p>
             </div>
             <div>
+                <h3>{{ dyslexiafiy_block("Atlassian") }}</h3>
+                <p>{{ dyslexiafiy_block(atlassian) }}</p>
+            </div>
+            <div>
                 <h3>{{ dyslexiafiy_block("Dota 2") }}</h3>
                 <p>{{ dyslexiafiy_block(dota2) }}</p>
             </div>
             <div>
                 <h3>{{ dyslexiafiy_block("Concurrent programming") }}</h3>
                 <p>{{ dyslexiafiy_block(concurrentProgramming) }}</p>
-            </div>
-            <div>
-                <h3>{{ dyslexiafiy_block("Atlassian") }}</h3>
-                <p>{{ dyslexiafiy_block(atlassian) }}</p>
             </div>
             <div>
                 <h3>{{ dyslexiafiy_block("Thanks for reading") }}</h3>

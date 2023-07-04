@@ -43,6 +43,7 @@ export const useModeStore = defineStore('mode', () => {
       case "dislxeic":
       case "disxlesic":
       case "dysxlisc":
+      case "dislexixa":
         newMode = Mode.Dyslexia;
         break;
     }
