@@ -19,10 +19,11 @@ const concurrentProgramming = "I will never forget when I took my first concurre
     " two pieces of code running in parallel when they need to interact with the same code you" +
     " put a lock on it so only one can actually interact with the critical section.";
 
-const atlassian = "Then of course I work at atlassian which is a company that prides itself at making products" +
-    " which are impossible to spell. We have the company name itself atlassian, then we have confluence, opsgenie" +
+const atlassian = "Just as a preamble I love working at Atlassian. But Atlassian is a company that prides itself at making" +
+    " product names which are impossible to spell." +
+    " We have the company name itself atlassian, then we have confluence, opsgenie" +
     " the company mascot is even called charlie and we use this tool called socrates. it is great instead of having" +
-    " short and easy to spell words we have long and impossible to spell words. Just to be clear I love working at Atlassian!";
+    " short and easy to spell words we have long and impossible to spell words.";
 
 const thanks = "thanks for reading this is obviously very rambly but i couldn't write it " +
     " then read it aloud then rewrite or that would poison the well.";

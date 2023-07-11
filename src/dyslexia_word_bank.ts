@@ -8,7 +8,9 @@ const wordMap: Record<string, string[]> = {
         "dislexia",
         "dsyleixa",
         "disxliexa",
-        "dislexixa"
+        "dislexixa",
+        "dyslixila",
+        "dysleixa"
     ],
     "dyslexic": [
         "dislxisic",
@@ -20,6 +22,7 @@ const wordMap: Record<string, string[]> = {
         "dislxeic",
         "disxlesic",
         "dysxlisc",
+        "disyleixc",
     ],
     "your": ["your"],
     "team": ["team"],
@@ -223,6 +226,10 @@ const wordMap: Record<string, string[]> = {
     "meant": ["meant"],
     "transcribe": ["transscribpe", "transcribe"],
     "transcribing": ["transscribpeing", "transcribing"],
+    "clear": ["clear"],
+    "love": ["love"],
+    "working": ["working"],
+    "preamble": ["preamble"],
 };
 
 export function dyslexiafiy_word(word: string): string {
@@ -240,15 +247,14 @@ export function dyslexiafiy_word(word: string): string {
 
     // Check for null
     if (!matches) {
-        return `unknown word: ${word}`;
+        console.log(`"Unknown word ${word}`);
+        return word;
     }
 
     const [_, startPunctuation, coreWord, endPunctuation] = matches;
 
     let options = wordMap[coreWord.toLowerCase()] || [`unknown word: ${coreWord}`];
     let chosenOption = options[Math.floor(Math.random() * options.length)];
-
-    console.log(`core word ${coreWord}, ${word}`);
 
     if (coreWord[0] === coreWord[0].toUpperCase()) {
         chosenOption = chosenOption.charAt(0).toUpperCase() + chosenOption.slice(1);
