@@ -230,6 +230,13 @@ const wordMap: Record<string, string[]> = {
     "love": ["love"],
     "working": ["working"],
     "preamble": ["preamble"],
+    "deprecation": ["depcration", "deprecation"],
+    "probably": ["probably"],
+    "properly": ["properly", "propelry"],
+    "escalation": ["esclation", "exsclation", "escolation", "escalation"],
+    "happened": ["happend", "hapend", "happnd"],
+    "redundancy": ["redundency", "redudency"],
+    "multiregion": ["multiregion"],
 };
 
 export function dyslexiafiy_word(word: string): string {
