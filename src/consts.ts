@@ -36,4 +36,5 @@ export enum Technologies {
     Computers = "Computers",
     SwinGame = "SwinGame",
     CurseWords = "Curse words",
+    Bevy = "Bevy",
 }

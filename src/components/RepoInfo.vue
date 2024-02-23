@@ -73,7 +73,7 @@ const getRepoInfo = async () => {
         </div>
         <div>
           <p class="card-header" style="margin-top: 10px;">Commits</p>
-          <p>{{ commits }}</p>
+          <p>{{ complete.commits }}</p>
         </div>
       </div>
     </div>

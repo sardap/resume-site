@@ -22,7 +22,7 @@ defineProps({
 </script>
 
 <template>
-    <ProjectInfo :filter="filter" :good="true" :languages="complete.langs" :technologies="techs">
+    <ProjectInfo :filter="filter" :good="false" :languages="complete.langs" :technologies="techs">
         <RepoInfo :complete="complete" :title="title" :techs="techs" />
         <h3>What is it?</h3>
         <p>

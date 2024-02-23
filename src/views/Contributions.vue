@@ -3,6 +3,14 @@ import ProjectContribution from '@/components/ProjectContribution.vue';
 
 const contributions = [
   {
+    title: "Bevy Common Assets",
+    repo: "bevy_common_assets ",
+    languages: ["Rust"],
+    pull_requests: ['https://github.com/NiklasEi/bevy_common_assets/pull/26'],
+    contribution: "I added with_delimiter function to csvAssetLoader",
+    description: "A nice utility that let's you load text file assets in bevy.",
+  },
+  {
     title: "Bevy Enum Filter",
     repo: "bevy_enum_filter",
     languages: ["Rust"],
@@ -29,8 +37,9 @@ const contributions = [
       <p>I have done almost none of this i'm hoping by adding this page I will do it more.</p>
     </div>
     <br />
-    <ProjectContribution v-for="i in contributions" :title="i.title" :repo="i.repo" :contribution="i.contribution"
-      :description="i.description" :languages="i.languages" :pull_request="i.pull_requests" />
+    <ProjectContribution :key="i.repo" v-for="i in contributions" :title="i.title" :repo="i.repo"
+      :contribution="i.contribution" :description="i.description" :languages="i.languages"
+      :pull_request="i.pull_requests" />
     <div>
 
     </div>

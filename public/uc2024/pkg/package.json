@@ -1,0 +1,11 @@
+{
+  "name": "uc2024",
+  "version": "0.1.0",
+  "files": [
+    "uc2024_bg.wasm",
+    "uc2024.js",
+    "uc2024.d.ts"
+  ],
+  "browser": "uc2024.js",
+  "types": "uc2024.d.ts"
+}

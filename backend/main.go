@@ -12,6 +12,7 @@ import (
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/google/go-github/v50/github"
+	"github.com/sardap/ultimate-chess-2024/server/uc2024"
 	"golang.org/x/oauth2"
 )
 
@@ -93,7 +94,7 @@ func completeInfo(reposStr string) (map[string]*CompleteRepo, error) {
 
 		langs, _ := requestRepoLang(*repo.Name)
 		langsAry := make([]string, 0, len(langs))
-		for k, _ := range langs {
+		for k := range langs {
 			langsAry = append(langsAry, k)
 		}
 
@@ -228,6 +229,22 @@ func loaderFunction(key string) (data interface{}, ttl time.Duration, err error)
 	return result, newTTL, resErr
 }
 
+func CORSMiddleware() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+		c.Writer.Header().Set("Access-Control-Allow-Credentials", "true")
+		c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
+		c.Writer.Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS, GET, PUT")
+
+		if c.Request.Method == "OPTIONS" {
+			c.AbortWithStatus(204)
+			return
+		}
+
+		c.Next()
+	}
+}
+
 func main() {
 	ctx := context.Background()
 	ts := oauth2.StaticTokenSource(
@@ -254,6 +271,14 @@ func main() {
 
 	r := gin.Default()
 
+	r.Use(CORSMiddleware())
+
+	r.Use(func(c *gin.Context) {
+		c.Header("Cross-Origin-Opener-Policy", "same-origin")
+		c.Header("Cross-Origin-Embedder-Policy", "require-corp")
+		c.Next()
+	})
+
 	r.Use(cors.Default())
 
 	r.GET("/api/repo/:id", repoEndpoint)
@@ -262,6 +287,8 @@ func main() {
 	r.GET("/api/reporele/:id", repoReleasesEndpoint)
 	r.GET("/api/complete", completeEndpoint)
 	r.StaticFS("/assets", http.Dir(os.Getenv("STATIC_FILES")))
+
+	uc2024.AddChessServerGroup(r)
 
 	r.Run()
 }
