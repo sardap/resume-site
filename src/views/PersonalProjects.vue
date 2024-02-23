@@ -23,6 +23,7 @@ import PascalBrainFuck from '@/components/projects/PascalBrainFuck.vue';
 import NumbersOrDie from '@/components/projects/NumbersOrDie.vue';
 import NoTotoAfrica from '@/components/projects/NoTotoAfrica.vue';
 import Voties from '@/components/projects/Voties.vue';
+import Uc2024 from '@/components/projects/Uc2024.vue';
 import { getComplete, type Complete } from '@/backend';
 
 const complete = ref<Complete | null>(null);
@@ -53,7 +54,7 @@ const refresh = ref(0);
 const filter = ref<ProjectFilter>({
   languages: [],
   technologies: [],
-  show_bad: true
+  show_bad: false
 });
 
 const language = ref<string | null>(null);
@@ -98,14 +99,14 @@ onMounted(() => {
         <label>Language </label><br />
         <select v-model="language" @change="updateFilter">
           <option :value="null">No Filter</option>
-          <option v-for="language in languages" :value="language">{{ language }}</option>
+          <option :key="language" v-for="language in languages" :value="language">{{ language }}</option>
         </select>
       </div>
       <div>
         <label>Technologies </label><br />
         <select v-model="technology" @change="updateFilter">
           <option :value="null">No Filter</option>
-          <option v-for="i in technologies" :value="i">{{ i }}</option>
+          <option :key="i" v-for="i in technologies" :value="i">{{ i }}</option>
         </select>
       </div>
     </div>
@@ -113,6 +114,7 @@ onMounted(() => {
     <hr />
     <br />
     <div :key="refresh">
+      <Uc2024 :filter="filter" :complete="complete['ultimate-chess-2024']" />
       <Voties :filter="filter" :complete="complete.voties" />
       <VotingSystems :filter="filter" :complete="complete.voting_systems" />
       <KiryuevErywhere :filter="filter" :complete="complete.kiryueverywhere" />
