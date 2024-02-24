@@ -1,6 +1,6 @@
 {
   "name": "uc2024",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "files": [
     "uc2024_bg.wasm",
     "uc2024.js",
