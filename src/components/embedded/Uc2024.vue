@@ -10,6 +10,7 @@ const load = ref(false);
         <div v-if="load">
             <br />
             <iframe src="/uc2024/main.html" width="500" height="650" allow="autoplay"></iframe>
+            <p>NOTE: You can only use keyboard!</p>
         </div>
         <div v-else>
             <button @click="load = true">Play</button>

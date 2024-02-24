@@ -31,7 +31,8 @@ defineProps({
             to make a chess bot and have them fight. I opted for the worst control scheme possible only being able to use
             SAN.
         </p>
-        <p>Please note the AI is stronger on downloaded version.</p>
+        <p>Please note the AI is stronger on downloaded version can be found <a
+                href="https://github.com/sardap/ultimate-chess-2024/releases">here</a>.</p>
         <Uc2024 />
     </ProjectInfo>
 </template>
