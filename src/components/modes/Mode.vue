@@ -4,6 +4,7 @@ import Dog from './dog/DogMode.vue';
 import QuizTime from './quiz/QuizTime.vue';
 import Dyslexia from './dyslexia/Dyslexia.vue';
 import PhraseLearner from './phrase-learner/PhraseLearner.vue';
+import Ship from './ship/ShipMode.vue';
 
 const modeStore = useModeStore();
 
@@ -18,6 +19,7 @@ const modeStore = useModeStore();
         <QuizTime v-else-if="modeStore.mode == Mode.QuizTime" />
         <Dyslexia v-else-if="modeStore.mode == Mode.Dyslexia" />
         <PhraseLearner v-else-if="modeStore.mode == Mode.PhraseLearner" />
+        <Ship v-else-if="modeStore.mode == Mode.Ship" />
         <div v-else>
             <p>Missing mode else if</p>
         </div>

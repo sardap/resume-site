@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useModeStore } from '@/stores/mode';
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 
 const modeStore = useModeStore();
 
@@ -10,6 +10,16 @@ const modeInput = ref("");
 function changeMode() {
     modeStore.changeMode(modeInput.value);
 }
+
+onMounted(async () => {
+    const urlParams = new URLSearchParams(window.location.search);
+
+    if (urlParams.has("mode")) {
+        modeInput.value = urlParams.get("mode")!;
+        changeMode();
+    }
+});
+
 
 </script>
 
