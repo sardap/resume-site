@@ -7,7 +7,7 @@ require (
 	github.com/gin-contrib/cors v1.5.0
 	github.com/gin-gonic/gin v1.9.1
 	github.com/google/go-github/v50 v50.2.0
-	github.com/sardap/ultimate-chess-2024/server/uc2024 v0.0.0-20240218093508-49179a0aedfd
+	github.com/sardap/ultimate-chess-2024/server/uc2024 v0.0.0-20240224062657-50bc7873aeed
 	golang.org/x/oauth2 v0.17.0
 )
 
