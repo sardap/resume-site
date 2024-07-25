@@ -76,6 +76,7 @@ type CompleteRepo struct {
 }
 
 func completeInfo(reposStr string) (map[string]*CompleteRepo, error) {
+	log.Printf("Fetching complete info\n")
 	repos, _, err := client.Repositories.List(context.TODO(), "sardap", &github.RepositoryListOptions{
 		Visibility: "public",
 		ListOptions: github.ListOptions{
@@ -116,6 +117,7 @@ func completeInfo(reposStr string) (map[string]*CompleteRepo, error) {
 			Contr: commits,
 		}
 	}
+	log.Printf("Fetched complete info\n")
 
 	return result, nil
 }
@@ -263,10 +265,10 @@ func main() {
 
 	r.Use(cors.Default())
 
-	r.GET("/api/repo/:id", repoEndpoint)
-	r.GET("/api/repolang/:id", repoLangsEndpoint)
+	// r.GET("/api/repo/:id", repoEndpoint)
+	// r.GET("/api/repolang/:id", repoLangsEndpoint)
 	r.GET("/api/repocontr/:id", repoContrEndpoint)
-	r.GET("/api/reporele/:id", repoReleasesEndpoint)
+	// r.GET("/api/reporele/:id", repoReleasesEndpoint)
 	r.GET("/api/complete", completeEndpoint)
 	r.StaticFS("/assets", http.Dir(os.Getenv("STATIC_FILES")))
 
