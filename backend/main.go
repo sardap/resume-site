@@ -263,7 +263,14 @@ func main() {
 		c.Next()
 	})
 
-	r.Use(cors.Default())
+	r.Use(cors.New(cors.Config{
+		AllowOrigins:     []string{"https://sarda.dev"},
+		AllowMethods:     []string{"GET"},
+		AllowHeaders:     []string{"Origin"},
+		ExposeHeaders:    []string{"Content-Length"},
+		AllowCredentials: true,
+		MaxAge:           12 * time.Hour,
+	}))
 
 	// r.GET("/api/repo/:id", repoEndpoint)
 	// r.GET("/api/repolang/:id", repoLangsEndpoint)
