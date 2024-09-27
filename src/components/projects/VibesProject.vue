@@ -4,11 +4,12 @@ import { Technologies, type ProjectFilter } from '@/consts'
 import ProjectInfo from '../ProjectInfo.vue'
 import { type CompleteRepo } from '@/backend'
 
-const title = 'Chess Bot'
+const title = 'Vibes'
 const techs = [
+  Technologies.OpenWeatherApi,
   Technologies.DiscordAPI,
-  Technologies.ImageGeneration,
-  Technologies.Redis,
+  Technologies.React,
+  Technologies.Rest,
   Technologies.Docker
 ]
 
@@ -23,13 +24,24 @@ defineProps<{
     <RepoInfo :complete="complete" :title="title" :techs="techs" />
     <h3>What is it?</h3>
     <p>
-      Play Chess via a Discord bot via messages! Send move commands, Try playing vs the very bad AI,
-      Create a Gif of all the moves so far in your game! Do silly customisation stuff like change
-      the colours of the pieces to whatever you want hover over image to see.
+      A nice little site which can play different tracks for each hour of the day. Along with
+      weather modifiers such as Raining + 1700. The background also changes with the time of day and
+      cloud state. Now for legal reasons I can't allude to which music it should play. In a
+      unrelated not I love how animal crossing has music for each hour.
     </p>
+    <img
+      src="https://github.com/sardap/vibes/blob/master/examples/clear_skys.png?raw=true"
+      id="vibe-img"
+    />
   </ProjectInfo>
 </template>
 
 <style scoped>
 @import '@/assets/main.css';
+
+img {
+  width: 80%;
+  margin: 0 auto;
+  display: block;
+}
 </style>

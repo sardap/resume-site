@@ -6,7 +6,6 @@
   text-align: center;
 }
 
-
 hr {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -48,7 +47,6 @@ a,
   max-width: 35em;
 }
 
-
 h3 {
   font-weight: bold;
 }
@@ -60,14 +58,14 @@ h3 {
 }
 
 .code-block {
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
   text-align: left;
   background: #1e1e1e;
   color: #5394c4;
 }
 
 .dog-mode {
-  background-image: url("/photos/dogModeBackground.png");
+  background-image: url('/photos/dogModeBackground.png');
   background-size: 100px;
   color: red;
   background-color: darkmagenta;
@@ -90,13 +88,12 @@ h3 {
   color: lightgray;
 }
 
-
 .quiz-time-mode a:hover {
   background-color: black;
 }
 
 .dyslexia-mode {
-  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
   background-color: blanchedalmond;
   padding-left: 5%;
   padding-right: 5%;

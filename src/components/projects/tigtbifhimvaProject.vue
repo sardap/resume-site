@@ -1,13 +1,11 @@
 <script setup lang="ts">
+import { type CompleteRepo } from '@/backend'
 import RepoInfo from '@/components/RepoInfo.vue'
-import WgmHd from '../embedded/WgmHd.vue'
 import { Technologies, type ProjectFilter } from '@/consts'
 import ProjectInfo from '../ProjectInfo.vue'
-import { type PropType } from 'vue'
-import { type CompleteRepo } from '@/backend'
 
-const title = 'Go Walk Good Maybe HD'
-const techs = [Technologies.Docker, Technologies.ECS, Technologies.Jen]
+const title = "Time It's Going To Be In Four Hours In Melbourne Victoria Australia"
+const techs = [Technologies.Docker, Technologies.Rest, Technologies.RestWarp]
 
 defineProps<{
   complete?: CompleteRepo
@@ -19,8 +17,11 @@ defineProps<{
   <ProjectInfo :filter="filter" :good="false" :languages="complete?.langs" :technologies="techs">
     <RepoInfo :complete="complete" :title="title" :techs="techs" />
     <h3>What is it?</h3>
-    <p>Walk good maybe remade in golang using ECS.</p>
-    <WgmHd />
+    <p>
+      An API which will return the time in Melbourne Victoria Australia in four hours. Written in
+      Rust and
+      <a :href="`https://tigtbifhimva.sarda.dev/`">Featuring a website explaining the API.</a>
+    </p>
   </ProjectInfo>
 </template>
 

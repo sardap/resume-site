@@ -7,110 +7,110 @@ export enum Mode {
   QuizTime = 'quiz time',
   Dyslexia = 'dyslexia',
   PhraseLearner = 'phrase learner',
-  Ship = 'ship',
+  Ship = 'ship'
 }
 
 export const useModeStore = defineStore('mode', () => {
-  const mode = ref(Mode.Normal);
-  const backgroundMusic = ref<HTMLAudioElement | null>(null);
+  const mode = ref(Mode.Normal)
+  const backgroundMusic = ref<HTMLAudioElement | null>(null)
 
   function changeMode(newModeStr: string) {
-    newModeStr = newModeStr.toLowerCase();
-    newModeStr = newModeStr.replace('mode', '');
-    newModeStr = newModeStr.trim();
-    let newMode = Mode.Normal;
+    newModeStr = newModeStr.toLowerCase()
+    newModeStr = newModeStr.replace('mode', '')
+    newModeStr = newModeStr.trim()
+    let newMode = Mode.Normal
     // update mode value
     switch (newModeStr) {
       default:
-        newMode = Mode.Normal;
-        break;
+        newMode = Mode.Normal
+        break
       case Mode.Dog:
-        newMode = Mode.Dog;
-        break;
+        newMode = Mode.Dog
+        break
       case Mode.QuizTime:
-        newMode = Mode.QuizTime;
-        break;
+        newMode = Mode.QuizTime
+        break
       case Mode.PhraseLearner:
-        newMode = Mode.PhraseLearner;
-        break;
+        newMode = Mode.PhraseLearner
+        break
       case Mode.Ship:
-        newMode = Mode.Ship;
-        break;
+        newMode = Mode.Ship
+        break
       case Mode.Dyslexia:
-      case "disleixa":
-      case "dyslexic":
-      case "disxleixa":
-      case "dislexia":
-      case "dsyleixa":
-      case "disxliexa":
-      case "dislxisic":
-      case "disxleisc":
-      case "dislescic":
-      case "dislexsic":
-      case "dislexic":
-      case "dislxeic":
-      case "disxlesic":
-      case "dysxlisc":
-      case "dislexixa":
-      case "dyslixila":
-      case "disyleixc":
-      case "dysleixa":
-        newMode = Mode.Dyslexia;
-        break;
+      case 'disleixa':
+      case 'dyslexic':
+      case 'disxleixa':
+      case 'dislexia':
+      case 'dsyleixa':
+      case 'disxliexa':
+      case 'dislxisic':
+      case 'disxleisc':
+      case 'dislescic':
+      case 'dislexsic':
+      case 'dislexic':
+      case 'dislxeic':
+      case 'disxlesic':
+      case 'dysxlisc':
+      case 'dislexixa':
+      case 'dyslixila':
+      case 'disyleixc':
+      case 'dysleixa':
+        newMode = Mode.Dyslexia
+        break
     }
 
     if (newMode === mode.value) {
-      return;
+      return
     }
 
     // Disable old mode
     switch (mode.value) {
       case Mode.Normal:
-        break;
+        break
       case Mode.Dog:
-        disableDogMode();
-        break;
+        disableDogMode()
+        break
       case Mode.QuizTime:
-        break;
+        break
       case Mode.Dyslexia:
-        break;
+        break
     }
 
-    mode.value = newMode;
+    mode.value = newMode
 
     // call new mode function
     switch (newModeStr) {
       case Mode.Normal:
-        break;
+        break
       case Mode.Dog:
-        enableDogMode();
-        break;
+        enableDogMode()
+        break
       case Mode.QuizTime:
-        enableQuizTimeMode();
-        break;
+        enableQuizTimeMode()
+        break
       case Mode.Dyslexia:
-        break;
+        break
     }
   }
 
   function enableDogMode() {
-    backgroundMusic.value = new Audio('/audio/dogMode.ogg');
-    backgroundMusic.value.volume = 0.25;
-    backgroundMusic.value.play();
-    backgroundMusic.value.loop = true;
+    backgroundMusic.value = new Audio('/audio/dogMode.ogg')
+    backgroundMusic.value.volume = 0.25
+    backgroundMusic.value.play()
+    backgroundMusic.value.loop = true
   }
 
   function disableDogMode() {
     if (backgroundMusic.value) {
-      backgroundMusic.value.pause();
+      backgroundMusic.value.pause()
     }
   }
 
   function enableQuizTimeMode() {
-    backgroundMusic.value = new Audio('/audio/quiz/quizTime.ogg');
-    backgroundMusic.value.volume = 1;
-    backgroundMusic.value.play();
+    backgroundMusic.value = new Audio('/audio/quiz/quizTime.ogg')
+    backgroundMusic.value.volume = 1
+    backgroundMusic.value.play()
   }
 
   return { mode, changeMode }
-});
+})

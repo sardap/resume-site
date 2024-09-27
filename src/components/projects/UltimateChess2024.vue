@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import RepoInfo from '@/components/RepoInfo.vue'
 import { Technologies, type ProjectFilter } from '@/consts'
-import moment from 'moment'
 import ProjectInfo from '../ProjectInfo.vue'
 import { type CompleteRepo } from '@/backend'
+import Uc2024 from '../embedded/Uc2024.vue'
 
-const days = moment().diff(moment('2022-07-28'), 'days')
-const title = 'Kiryu Everywhere'
-const techs = [Technologies.Computers]
+const title = 'Ultimate Chess 2024'
+const techs = [Technologies.ECS, Technologies.Bevy]
 
 defineProps<{
   complete?: CompleteRepo
@@ -20,22 +19,18 @@ defineProps<{
     <RepoInfo :complete="complete" :title="title" :techs="techs" />
     <h3>What is it?</h3>
     <p>
-      It's a fun little Geo guesser for the Yakuza (Like a dragon) games. I wrote an insane amount
-      of scripts to help streamline the process. It was a lot of work to get the high quality maps.
+      Finally you can play Chess in your browser! This was meant to be a quick project because I
+      wanted to learn how to make a chess bot and have them fight. I opted for the worst control
+      scheme possible only being able to use SAN.
     </p>
-    <br />
     <p>
-      Already have <span>{{ days }}</span> days and counting
+      Please note the AI is stronger on downloaded version can be found
+      <a href="https://github.com/sardap/ultimate-chess-2024/releases">here</a>.
     </p>
-    <p><a href="https://sardap.github.io/kiryueverywhere/" target="_blank">Check it out here</a></p>
+    <Uc2024 />
   </ProjectInfo>
 </template>
 
 <style scoped>
 @import '@/assets/main.css';
-
-span {
-  font-weight: bold;
-  color: darkred;
-}
 </style>

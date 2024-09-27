@@ -1,25 +1,24 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router';
-import ResumeHeader from './components/ResumeHeader.vue';
-import ResumeFooter from './components/ResumeFooter.vue';
-import { useModeStore, Mode as ModeEnum } from '@/stores/mode';
-import Mode from './components/modes/Mode.vue';
+import { RouterView } from 'vue-router'
+import ResumeHeader from './components/ResumeHeader.vue'
+import ResumeFooter from './components/ResumeFooter.vue'
+import { useModeStore, Mode as ModeEnum } from '@/stores/mode'
+import Mode from './components/modes/Mode.vue'
 
-const modeStore = useModeStore();
+const modeStore = useModeStore()
 
 function getClass() {
   switch (modeStore.mode) {
     case ModeEnum.Normal:
-      return '';
+      return ''
     case ModeEnum.Dog:
-      return 'dog-mode';
+      return 'dog-mode'
     case ModeEnum.QuizTime:
-      return 'quiz-time-mode';
+      return 'quiz-time-mode'
     case ModeEnum.Dyslexia:
-      return 'dyslexia-mode';
+      return 'dyslexia-mode'
   }
 }
-
 </script>
 
 <template>

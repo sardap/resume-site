@@ -1,67 +1,65 @@
 <script setup lang="ts">
-import { useModeStore, Mode } from '@/stores/mode';
+import { useModeStore, Mode } from '@/stores/mode'
 import { RouterLink } from 'vue-router'
 
-const modeStore = useModeStore();
-
+const modeStore = useModeStore()
 </script>
 
 <template>
-    <header>
-        <div>
-            <h1>Paul Sarda</h1>
-            <p><a href="mailto:paul@sarda.dev">paul@sarda.dev</a></p>
-            <p><a href="https://github.com/sardap">www.github.com/sardap</a></p>
-            <nav v-if="modeStore.mode == Mode.Normal">
-                <RouterLink to="/">Work History</RouterLink>
-                <RouterLink to="/personal-projects">Personal Projects</RouterLink>
-                <RouterLink to="/contributions">Contributions</RouterLink>
-            </nav>
-        </div>
-    </header>
+  <header>
+    <div>
+      <h1>Paul Sarda</h1>
+      <p><a href="mailto:paul@sarda.dev">paul@sarda.dev</a></p>
+      <p><a href="https://github.com/sardap">www.github.com/sardap</a></p>
+      <nav v-if="modeStore.mode == Mode.Normal">
+        <RouterLink to="/">Work History</RouterLink>
+        <RouterLink to="/personal-projects">Personal Projects</RouterLink>
+        <RouterLink to="/contributions">Contributions</RouterLink>
+      </nav>
+    </div>
+  </header>
 </template>
-
 
 <style scoped>
 h1 {
-    font-size: xxx-large;
+  font-size: xxx-large;
 }
 
 a {
-    font-size: large;
+  font-size: large;
 }
 
 p {
-    margin-top: 8px;
+  margin-top: 8px;
 }
 
 header {
-    line-height: 1.5;
-    max-height: 100vh;
+  line-height: 1.5;
+  max-height: 100vh;
 }
 
 nav {
-    width: 100%;
-    font-size: 12px;
-    text-align: center;
-    margin-top: 1rem;
+  width: 100%;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 1rem;
 }
 
 nav a.router-link-exact-active {
-    color: var(--color-text);
+  color: var(--color-text);
 }
 
 nav a.router-link-exact-active:hover {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 nav a {
-    display: inline-block;
-    padding: 0 1rem;
-    border-left: 1px solid var(--color-border);
+  display: inline-block;
+  padding: 0 1rem;
+  border-left: 1px solid var(--color-border);
 }
 
 nav a:first-of-type {
-    border: 0;
+  border: 0;
 }
 </style>

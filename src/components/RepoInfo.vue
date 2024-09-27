@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import moment from "moment";
-import { onMounted, ref, type PropType } from "vue";
-import { Technologies } from "@/consts";
-import type { CompleteRepo } from "@/backend";
+import moment from 'moment'
+import { onMounted, ref, type PropType } from 'vue'
+import { Technologies } from '@/consts'
+import type { CompleteRepo } from '@/backend'
 
 const props = defineProps({
   complete: {
     type: Object as PropType<CompleteRepo>,
-    required: true
+    required: false
   },
   title: {
     type: String,
@@ -21,65 +21,71 @@ const props = defineProps({
     type: String,
     required: false
   }
-});
+})
 
 onMounted(async () => {
-  await getRepoInfo();
-});
+  getRepoInfo()
+})
 
-const createdDate = ref<string | null>(null);
-const starGazers = ref<number | null>(null);
-const commits = ref<number | null>(null);
+const sectionId = ref(props.title.replace(` `, `_`))
+const resolvedCreatedDate = ref<string | null>(getRepoInfo())
 
-const getRepoInfo = async () => {
-  let createdAt: string;
+function getRepoInfo() {
+  let createdAt: string
   if (!props.createdDate) {
-    createdAt = props.complete.repo.created_at;
+    if (props.complete) {
+      createdAt = props.complete.repo.created_at
+    } else {
+      return null
+    }
   } else {
-    createdAt = props.createdDate;
+    createdAt = props.createdDate
   }
 
-  createdDate.value = moment(createdAt)
-    .local()
-    .format("YYYY-MM-DD");
-
-  starGazers.value = props.complete.repo.stargazers_count;
+  return moment(createdAt).local().format('YYYY-MM-DD')
 }
 </script>
 
 <template>
-  <div :id="complete.repo.name.replace(` `, `_`)">
+  <div :id="sectionId">
     <div>
-      <h2><a :href="`https://github.com/sardap/${complete.repo.name}`" target="_blank">{{ title }}</a></h2>
-      <a :href="`#${complete.repo.name.replace(` `, `_`)}`">Copy Link to this section</a>
+      <h2>
+        <a
+          v-if="complete"
+          :href="`https://github.com/sardap/${complete.repo.name}`"
+          target="_blank"
+          >{{ title }}</a
+        >
+        <span v-else>{{ title }}</span>
+      </h2>
+      <a :href="`#${sectionId}`">Copy Link to this section</a>
     </div>
-    <table>
+    <table v-if="complete">
       <tr>
         <th>Created Date</th>
         <th>Languages</th>
         <th>Technologies</th>
       </tr>
       <tr>
-        <td>{{ createdDate }}</td>
-        <td>{{ complete.langs.join(", ") }}</td>
-        <td>{{ techs.map(i => i.toString()).join(", ") }}</td>
+        <td>{{ resolvedCreatedDate }}</td>
+        <td>{{ complete?.langs.join(', ') }}</td>
+        <td>{{ techs.map((i) => i.toString()).join(', ') }}</td>
       </tr>
     </table>
-    <div class="border">
+    <div class="border" v-if="complete">
       <div id="card">
-        <div v-if="starGazers && starGazers > 0">
+        <div v-if="complete && complete.repo.stargazers_count > 0">
           <p class="card-header">Stars</p>
-          <p>{{ starGazers }}</p>
+          <p>{{ complete.repo.stargazers_count }}</p>
         </div>
         <div>
-          <p class="card-header" style="margin-top: 10px;">Commits</p>
+          <p class="card-header" style="margin-top: 10px">Commits</p>
           <p>{{ complete.commits }}</p>
         </div>
       </div>
     </div>
   </div>
 </template>
-
 
 <style scoped>
 table {

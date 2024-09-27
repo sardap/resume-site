@@ -6,16 +6,14 @@ import router from './router'
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
+document.title = 'PAUL SARDA'
 
+const pina = createPinia()
+pina.use(piniaPluginPersistedstate)
 
-document.title = "PAUL SARDA";
+const app = createApp(App)
 
-const pina = createPinia();
-pina.use(piniaPluginPersistedstate);
+app.use(pina)
+app.use(router)
 
-const app = createApp(App);
-
-app.use(pina);
-app.use(router);
-
-app.mount('#app');
+app.mount('#app')
