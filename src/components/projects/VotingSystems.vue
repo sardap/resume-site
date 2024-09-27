@@ -2,7 +2,6 @@
 import RepoInfo from '@/components/RepoInfo.vue'
 import { Technologies, type ProjectFilter } from '@/consts'
 import ProjectInfo from '../ProjectInfo.vue'
-import { type PropType } from 'vue'
 import { type CompleteRepo } from '@/backend'
 
 const title = 'Election Systems'

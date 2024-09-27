@@ -1,6 +1,0 @@
-{
-  [
-    // Simple usage
-    "@nuxtjs/vuetify"
-  ];
-}

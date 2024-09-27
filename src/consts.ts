@@ -8,6 +8,7 @@ export interface ProjectFilter {
 }
 
 export enum Technologies {
+  WASM = 'WASM',
   Docker = 'Docker',
   Rest = 'Rest',
   ECS = 'Entity Component System',

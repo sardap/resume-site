@@ -16,7 +16,7 @@ const router = createRouter({
     {
       path: '/contributions',
       name: 'Contributions',
-      component: () => import('../views/Contributions.vue')
+      component: () => import('../views/RepoContributions.vue')
     }
   ]
 })

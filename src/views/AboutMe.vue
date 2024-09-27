@@ -59,7 +59,7 @@ const workHistories: WorkHistory[] = [
       ' Confluence API, Slack API and AWS.',
     startDate: moment('03-2022', 'MM-YYYY'),
     endDate: null,
-    languages: ['Python'],
+    languages: ['Python', 'GO'],
     technologies: [
       'AWS',
       'Jira API',

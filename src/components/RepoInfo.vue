@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import moment from 'moment'
-import { onMounted, ref, type PropType } from 'vue'
+import { computed, ref, type PropType } from 'vue'
 import { Technologies } from '@/consts'
 import type { CompleteRepo } from '@/backend'
 
@@ -23,14 +23,10 @@ const props = defineProps({
   }
 })
 
-onMounted(async () => {
-  getRepoInfo()
-})
-
 const sectionId = ref(props.title.replace(` `, `_`))
-const resolvedCreatedDate = ref<string | null>(getRepoInfo())
+const resolvedCreatedDate = computed(() => getCreatedDate())
 
-function getRepoInfo() {
+function getCreatedDate() {
   let createdAt: string
   if (!props.createdDate) {
     if (props.complete) {

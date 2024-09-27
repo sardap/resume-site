@@ -37,6 +37,7 @@ export interface CompleteRepo {
 }
 
 export interface Complete {
+  'mon-fs': CompleteRepo
   'ultimate-chess-2024': CompleteRepo
   voties: CompleteRepo
   voting_systems: CompleteRepo
