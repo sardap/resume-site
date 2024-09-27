@@ -237,6 +237,8 @@ const wordMap: Record<string, string[]> = {
     "happened": ["happend", "hapend", "happnd"],
     "redundancy": ["redundency", "redudency"],
     "multiregion": ["multiregion"],
+    "product": ['product'],
+    "names": ['names']  
 };
 
 export function dyslexiafiy_word(word: string): string {
