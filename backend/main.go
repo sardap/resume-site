@@ -75,8 +75,8 @@ type CompleteRepo struct {
 	Contr int        `json:"commits"`
 }
 
-func completeInfo(reposStr string) (map[string]*CompleteRepo, error) {
-	log.Printf("Fetching complete info\n")
+func completeInfo() (map[string]*CompleteRepo, error) {
+	fmt.Printf("Fetching complete info\n")
 	repos, _, err := client.Repositories.List(context.TODO(), "sardap", &github.RepositoryListOptions{
 		Visibility: "public",
 		ListOptions: github.ListOptions{
@@ -117,41 +117,9 @@ func completeInfo(reposStr string) (map[string]*CompleteRepo, error) {
 			Contr: commits,
 		}
 	}
-	log.Printf("Fetched complete info\n")
+	fmt.Printf("Fetched complete info\n")
 
 	return result, nil
-}
-
-func repoEndpoint(c *gin.Context) {
-	repoID := c.Param("id")
-
-	key := fmt.Sprintf("repo:%s", repoID)
-
-	tmp, err := cache.Get(key)
-	if err != nil {
-		c.JSON(500, gin.H{})
-		return
-	}
-
-	var repo = tmp.(*github.Repository)
-
-	c.JSON(200, repo)
-}
-
-func repoLangsEndpoint(c *gin.Context) {
-	repoID := c.Param("id")
-
-	key := fmt.Sprintf("lang:%s", repoID)
-
-	tmp, err := cache.Get(key)
-	if err != nil {
-		c.JSON(500, gin.H{})
-		return
-	}
-
-	var repo = tmp.(map[string]int)
-
-	c.JSON(200, repo)
 }
 
 func repoContrEndpoint(c *gin.Context) {
@@ -225,7 +193,10 @@ func loaderFunction(key string) (data interface{}, ttl time.Duration, err error)
 		result, resErr = requestRepoReleases(key[5:])
 		newTTL = time.Duration(15) * time.Minute
 	case "comp":
-		result, resErr = completeInfo(key[5:])
+		result, resErr = completeInfo()
+		if resErr != nil {
+			fmt.Printf("Error: %v\n", resErr)
+		}
 	}
 
 	return result, newTTL, resErr
@@ -257,25 +228,24 @@ func main() {
 
 	r := gin.Default()
 
-	r.Use(func(c *gin.Context) {
-		c.Header("Cross-Origin-Opener-Policy", "same-origin")
-		c.Header("Cross-Origin-Embedder-Policy", "require-corp")
-		c.Next()
-	})
+	// r.Use(func(c *gin.Context) {
+	// 	c.Header("Cross-Origin-Opener-Policy", "same-origin")
+	// 	c.Header("Cross-Origin-Embedder-Policy", "require-corp")
+	// 	c.Next()
+	// })
 
-	r.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"https://sarda.dev"},
-		AllowMethods:     []string{"GET"},
-		AllowHeaders:     []string{"Origin"},
-		ExposeHeaders:    []string{"Content-Length"},
-		AllowCredentials: true,
-		MaxAge:           12 * time.Hour,
-	}))
+	// r.Use(cors.New(cors.Config{
+	// 	AllowOrigins:     []string{"https://sarda.dev"},
+	// 	AllowMethods:     []string{"GET"},
+	// 	AllowHeaders:     []string{"Origin"},
+	// 	ExposeHeaders:    []string{"Content-Length"},
+	// 	AllowCredentials: true,
+	// 	MaxAge:           12 * time.Hour,
+	// }))
+	r.Use(cors.Default())
 
-	// r.GET("/api/repo/:id", repoEndpoint)
-	// r.GET("/api/repolang/:id", repoLangsEndpoint)
 	r.GET("/api/repocontr/:id", repoContrEndpoint)
-	// r.GET("/api/reporele/:id", repoReleasesEndpoint)
+	r.GET("/api/reporele/:id", repoReleasesEndpoint)
 	r.GET("/api/complete", completeEndpoint)
 	r.StaticFS("/assets", http.Dir(os.Getenv("STATIC_FILES")))
 
