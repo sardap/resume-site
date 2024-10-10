@@ -3,6 +3,18 @@ import ProjectContribution from '@/components/ProjectContribution.vue'
 
 const contributions = [
   {
+    title: 'Pokebot Gen3',
+    repo: 'pokebot-gen3 ',
+    languages: ['Python'],
+    pull_requests: [
+      'https://github.com/40Cakes/pokebot-gen3/pull/404',
+      'https://github.com/40Cakes/pokebot-gen3/pull/405',
+      'https://github.com/40Cakes/pokebot-gen3/pull/410'
+    ],
+    contribution: 'Added functionally I needed for mon-fs',
+    description: 'A bot for playing gen3 pokemon games.'
+  },
+  {
     title: 'Bevy Common Assets',
     repo: 'bevy_common_assets ',
     languages: ['Rust'],
