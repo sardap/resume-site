@@ -5,7 +5,7 @@ import ProjectInfo from '../ProjectInfo.vue'
 import { type CompleteRepo } from '@/backend'
 
 const title = 'Election Systems'
-const techs = [Technologies.Rest, Technologies.Postgres, Technologies.Diesel]
+const techs = [Technologies.Rest, Technologies.RDB, Technologies.Diesel]
 
 defineProps<{
   complete?: CompleteRepo

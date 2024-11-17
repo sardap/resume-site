@@ -98,3 +98,11 @@ h3 {
   padding-left: 5%;
   padding-right: 5%;
 }
+
+video {
+  max-width: 90%;
+}
+
+img {
+  max-width: 90%;
+}

@@ -26,6 +26,7 @@ import Voties from '@/components/projects/VotiesProject.vue'
 import UltimateChess2024 from '@/components/projects/UltimateChess2024.vue'
 import MonFs from '@/components/projects/MonFs.vue'
 import { getComplete, type Complete } from '@/backend'
+import AllBattle from '@/components/projects/AllBattle.vue'
 
 const complete = ref<Complete | undefined>(undefined)
 
@@ -116,6 +117,7 @@ onMounted(() => {
     <br />
     <div :key="refresh">
       <MonFs :filter="filter" :complete="complete?.['mon-fs']" />
+      <AllBattle :filter="filter" :complete="complete?.['all_battle']" />
       <UltimateChess2024 :filter="filter" :complete="complete?.['ultimate-chess-2024']" />
       <Voties :filter="filter" :complete="complete?.voties" />
       <VotingSystems :filter="filter" :complete="complete?.voting_systems" />

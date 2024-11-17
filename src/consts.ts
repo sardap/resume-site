@@ -12,7 +12,7 @@ export enum Technologies {
   Docker = 'Docker',
   Rest = 'Rest',
   ECS = 'Entity Component System',
-  Postgres = 'Postgres',
+  RDB = 'Relational Database',
   Diesel = 'diesel',
   Redis = 'Redis',
   Flask = 'Flask',
