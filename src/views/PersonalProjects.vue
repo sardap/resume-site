@@ -25,6 +25,7 @@ import NoTotoAfrica from '@/components/projects/NoTotoAfrica.vue'
 import Voties from '@/components/projects/VotiesProject.vue'
 import UltimateChess2024 from '@/components/projects/UltimateChess2024.vue'
 import MonFs from '@/components/projects/MonFs.vue'
+import BookClub from '@/components/projects/BookClub.vue'
 import { getComplete, type Complete } from '@/backend'
 import AllBattle from '@/components/projects/AllBattle.vue'
 
@@ -116,6 +117,7 @@ onMounted(() => {
     <hr />
     <br />
     <div :key="refresh">
+      <BookClub :filter="filter" :complete="complete?.['3ds-httpd']" />
       <MonFs :filter="filter" :complete="complete?.['mon-fs']" />
       <AllBattle :filter="filter" :complete="complete?.['all_battle']" />
       <UltimateChess2024 :filter="filter" :complete="complete?.['ultimate-chess-2024']" />

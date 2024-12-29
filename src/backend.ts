@@ -62,6 +62,7 @@ export interface Complete {
   ShapesCanMoveAndSpeak: CompleteRepo
   PascalBrainFuck: CompleteRepo
   NumbersOrDie: CompleteRepo
+  '3ds-httpd': CompleteRepo
 }
 
 export async function getComplete(): Promise<Complete> {

@@ -36,5 +36,6 @@ export enum Technologies {
   Computers = 'Computers',
   SwinGame = 'SwinGame',
   CurseWords = 'Curse words',
-  Bevy = 'Bevy'
+  Bevy = 'Bevy',
+  Three3DS = '3DS'
 }
