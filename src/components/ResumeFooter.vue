@@ -7,15 +7,23 @@ const modeStore = useModeStore()
 const modeInput = ref('')
 
 function changeMode() {
-  modeStore.changeMode(modeInput.value)
+  if ('URLSearchParams' in window) {
+    var searchParams = new URLSearchParams(window.location.search)
+    if (searchParams.has('mode')) {
+      searchParams.delete('mode')
+    }
+    if (modeInput.value) {
+      searchParams.set('mode', modeInput.value)
+    }
+    window.location.search = searchParams.toString()
+  }
 }
 
 onMounted(async () => {
   const urlParams = new URLSearchParams(window.location.search)
-
   if (urlParams.has('mode')) {
     modeInput.value = urlParams.get('mode')!
-    changeMode()
+    modeStore.changeMode(modeInput.value)
   }
 })
 </script>

@@ -5,6 +5,7 @@ import QuizTime from './quiz/QuizTime.vue'
 import Dyslexia from './dyslexia/Dyslexia.vue'
 import PhraseLearner from './phrase-learner/PhraseLearner.vue'
 import Ship from './ship/ShipMode.vue'
+import StutterMode from './stutter/StutterMode.vue'
 
 const modeStore = useModeStore()
 </script>
@@ -19,6 +20,7 @@ const modeStore = useModeStore()
     <Dyslexia v-else-if="modeStore.mode == Mode.Dyslexia" />
     <PhraseLearner v-else-if="modeStore.mode == Mode.PhraseLearner" />
     <Ship v-else-if="modeStore.mode == Mode.Ship" />
+    <StutterMode v-else-if="modeStore.mode == Mode.Stutter" />
     <div v-else>
       <p>Missing mode else if</p>
     </div>

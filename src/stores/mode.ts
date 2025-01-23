@@ -7,7 +7,8 @@ export enum Mode {
   QuizTime = 'quiz time',
   Dyslexia = 'dyslexia',
   PhraseLearner = 'phrase learner',
-  Ship = 'ship'
+  Ship = 'ship',
+  Stutter = 'stutter'
 }
 
 export const useModeStore = defineStore('mode', () => {
@@ -36,6 +37,9 @@ export const useModeStore = defineStore('mode', () => {
       case Mode.Ship:
         newMode = Mode.Ship
         break
+      case Mode.Stutter:
+        newMode = Mode.Stutter
+        break
       case Mode.Dyslexia:
       case 'disleixa':
       case 'dyslexic':
@@ -55,6 +59,7 @@ export const useModeStore = defineStore('mode', () => {
       case 'dyslixila':
       case 'disyleixc':
       case 'dysleixa':
+      case 'dislxiea':
         newMode = Mode.Dyslexia
         break
     }

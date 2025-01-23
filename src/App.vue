@@ -4,6 +4,7 @@ import ResumeHeader from './components/ResumeHeader.vue'
 import ResumeFooter from './components/ResumeFooter.vue'
 import { useModeStore, Mode as ModeEnum } from '@/stores/mode'
 import Mode from './components/modes/Mode.vue'
+import { onMounted } from 'vue'
 
 const modeStore = useModeStore()
 
@@ -19,6 +20,14 @@ function getClass() {
       return 'dyslexia-mode'
   }
 }
+
+onMounted(() => {
+  // const route = useRoute()
+  // const mode = route.query.mode
+  // if (mode) {
+  //   modeStore.changeMode(mode as string)
+  // }
+})
 </script>
 
 <template>
