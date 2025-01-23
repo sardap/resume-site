@@ -117,7 +117,7 @@ onMounted(() => {
     <hr />
     <br />
     <div :key="refresh">
-      <BookClub :filter="filter" :complete="complete?.['3ds-httpd']" />
+      <BookClub :filter="filter" :complete="complete?.['site-3ds']" />
       <MonFs :filter="filter" :complete="complete?.['mon-fs']" />
       <AllBattle :filter="filter" :complete="complete?.['all_battle']" />
       <UltimateChess2024 :filter="filter" :complete="complete?.['ultimate-chess-2024']" />
