@@ -28,6 +28,7 @@ import MonFs from '@/components/projects/MonFs.vue'
 import BookClub from '@/components/projects/BookClub.vue'
 import { getComplete, type Complete } from '@/backend'
 import AllBattle from '@/components/projects/AllBattle.vue'
+import WeddingPlanner from '@/components/projects/WeddingPlanner.vue'
 
 const complete = ref<Complete | undefined>(undefined)
 
@@ -121,6 +122,7 @@ onMounted(() => {
       <MonFs :filter="filter" :complete="complete?.['mon-fs']" />
       <AllBattle :filter="filter" :complete="complete?.['all_battle']" />
       <UltimateChess2024 :filter="filter" :complete="complete?.['ultimate-chess-2024']" />
+      <WeddingPlanner :filter="filter" :complete="complete?.['wedding-planner']" />
       <Voties :filter="filter" :complete="complete?.voties" />
       <VotingSystems :filter="filter" :complete="complete?.voting_systems" />
       <KiryuevErywhere :filter="filter" :complete="complete?.kiryueverywhere" />

@@ -63,6 +63,7 @@ export interface Complete {
   PascalBrainFuck: CompleteRepo
   NumbersOrDie: CompleteRepo
   'site-3ds': CompleteRepo
+  'wedding-planner': CompleteRepo
 }
 
 export async function getComplete(): Promise<Complete> {
