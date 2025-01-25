@@ -27,7 +27,7 @@ const load = ref(false)
       <p v-else>Loading...</p>
     </div>
     <div v-else>
-      <button @click="load = true">Play</button>
+      <button @click="load = true" class="play-button">Play</button>
     </div>
   </div>
 </template>

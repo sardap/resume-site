@@ -12,7 +12,7 @@ const load = ref(false)
       <p>NOTE: You can only use keyboard!</p>
     </div>
     <div v-else>
-      <button @click="load = true">Play</button>
+      <button @click="load = true" class="play-button">Play</button>
     </div>
   </div>
 </template>

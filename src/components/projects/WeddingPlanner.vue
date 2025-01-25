@@ -3,9 +3,12 @@ import { type CompleteRepo } from '@/backend'
 import RepoInfo from '@/components/RepoInfo.vue'
 import { Technologies, type ProjectFilter } from '@/consts'
 import ProjectInfo from '../ProjectInfo.vue'
+import { ref } from 'vue'
 
 const title = 'Wedding Planner'
 const techs = [Technologies.WASM]
+
+const playing = ref(false)
 
 defineProps<{
   complete?: CompleteRepo
@@ -22,16 +25,25 @@ defineProps<{
       the course of like 3 days. Im very happy with how it turned out.
     </p>
     <br />
-    <iframe src="/wedding_planner/main.html"></iframe>
+    <button v-if="!playing" @click="playing = true" class="play-button">Play!</button>
+    <div v-else class="game">
+      <p class="warning">Game may take quite a while to load</p>
+      <iframe src="/wedding_planner/main.html"></iframe>
+    </div>
   </ProjectInfo>
 </template>
 
 <style scoped>
 @import '@/assets/main.css';
 
+.warning {
+  color: #a79408;
+  font-size: large;
+}
+
 iframe {
   max-width: 310px;
-  height: 610px;
+  height: 600px;
   max-width: 100%;
   border: 4px solid var(--divider-border);
 }
