@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// import { RomanTime } from 'roman-clock'
+import { RomanTime } from 'roman-clock'
 import { onMounted, ref, watch } from 'vue'
 import WorldMap from './WorldMap.vue'
 import { find } from 'browser-geo-tz'
@@ -41,18 +41,18 @@ onMounted(() => {
     }
   }
 
-  // romanTime.value = new RomanTime(new Date(), selectedTimeZone.value, lat.value, lng.value)
+  romanTime.value = new RomanTime(new Date(), selectedTimeZone.value, lat.value, lng.value)
 })
 const validCountryCodes = ['AU', 'US']
 
-// const romanTime = ref(new RomanTime(new Date(), selectedTimeZone.value, lat.value, lng.value))
+const romanTime = ref(new RomanTime(new Date(), selectedTimeZone.value, lat.value, lng.value))
 
 watch([date, time, lat, lng], async () => {
   const timezones = await find(lat.value, lng.value)
   selectedTimeZone.value = timezones[0]
   const parsed_time = new Date(`${date.value}T${time.value}`)
 
-  // romanTime.value = new RomanTime(parsed_time, selectedTimeZone.value, lat.value, lng.value)
+  romanTime.value = new RomanTime(parsed_time, selectedTimeZone.value, lat.value, lng.value)
 
   if ('URLSearchParams' in window) {
     const url = new URL(window.location.href)
@@ -76,11 +76,11 @@ function updateLocation(new_lat: number, new_lng: number) {
 const copyDirty = ref(false)
 
 function copyTimeToClipboard() {
-  // navigator.clipboard.writeText(
-  //   `The time is ${romanTime.value.hour_string()} of ${romanTime.value.date_string()} in ${romanTime.value.year_string(
-  //     countryLeaderCode.value
-  //   )}`
-  // )
+  navigator.clipboard.writeText(
+    `The time is ${romanTime.value.hour_string()} of ${romanTime.value.date_string()} in ${romanTime.value.year_string(
+      countryLeaderCode.value
+    )}`
+  )
   copyDirty.value = true
 }
 </script>
@@ -89,8 +89,8 @@ function copyTimeToClipboard() {
   <div>
     <h3>The Time is</h3>
     <p class="current-time" :key="date.toString()">
-      <!-- {{ romanTime.hour_string() }} of {{ romanTime.date_string() }} in
-      {{ romanTime.year_string(countryLeaderCode) }} -->
+      {{ romanTime.hour_string() }} of {{ romanTime.date_string() }} in
+      {{ romanTime.year_string(countryLeaderCode) }}
     </p>
     <button @click="copyTimeToClipboard" :disabled="copyDirty">
       {{ !copyDirty ? `Copy time to clipboard` : `Copied` }}
@@ -100,11 +100,11 @@ function copyTimeToClipboard() {
     <p>On this day</p>
     <p>
       Each daylight hour is
-      <!-- {{ Math.ceil(Number(romanTime.daylight_length_seconds()) / 12 / 60) }} Minutes -->
+      {{ Math.ceil(Number(romanTime.daylight_length_seconds()) / 12 / 60) }} Minutes
     </p>
     <p>
       Each night hour is
-      <!-- {{ Math.floor(Number(romanTime.night_length_seconds()) / 12 / 60) }} Minutes -->
+      {{ Math.floor(Number(romanTime.night_length_seconds()) / 12 / 60) }} Minutes
     </p>
   </div>
   <hr />
