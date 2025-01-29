@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { RomanTime } from 'roman-clock'
+import { RomanTime } from 'modern-roman-clock'
 import { onMounted, ref, watch } from 'vue'
 import WorldMap from './WorldMap.vue'
 import { find } from 'browser-geo-tz'
@@ -43,7 +43,7 @@ onMounted(async () => {
 
   romanTime.value = new RomanTime(new Date(), selectedTimeZone.value, lat.value, lng.value)
 })
-const validCountryCodes = ['AU', 'US']
+const validCountryCodes = ['AU', 'US', 'UK', 'NZ']
 
 const romanTime = ref<RomanTime>()
 
