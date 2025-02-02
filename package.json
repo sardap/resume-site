@@ -12,13 +12,9 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "browser-geo-tz": "^0.2.0",
-    "leaflet": "^1.9.4",
-    "location-picker": "^1.1.1",
     "moment": "^2.29.4",
     "pinia": "^2.1.4",
     "pinia-plugin-persistedstate": "^3.1.0",
-    "modern-roman-clock": "^0.1.0",
     "vue": "^3.3.2",
     "vue-router": "^4.2.0"
   },

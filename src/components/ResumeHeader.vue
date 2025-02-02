@@ -1,8 +1,5 @@
 <script setup lang="ts">
-import { useModeStore, Mode } from '@/stores/mode'
 import { RouterLink } from 'vue-router'
-
-const modeStore = useModeStore()
 </script>
 
 <template>
@@ -11,7 +8,7 @@ const modeStore = useModeStore()
       <h1>Paul Sarda</h1>
       <p><a href="mailto:paul@sarda.dev">paul@sarda.dev</a></p>
       <p><a href="https://github.com/sardap">www.github.com/sardap</a></p>
-      <nav v-if="modeStore.mode == Mode.Normal">
+      <nav>
         <RouterLink to="/">Work History</RouterLink>
         <RouterLink to="/personal-projects">Personal Projects</RouterLink>
         <RouterLink to="/contributions">Contributions</RouterLink>

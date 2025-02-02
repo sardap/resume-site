@@ -64,41 +64,6 @@ h3 {
   color: #5394c4;
 }
 
-.dog-mode {
-  background-image: url('/photos/dogModeBackground.png');
-  background-size: 100px;
-  color: red;
-  background-color: darkmagenta;
-}
-
-.dog-mode a {
-  color: lightblue;
-}
-
-.dog-mode a:hover {
-  background-color: black;
-}
-
-.quiz-time-mode {
-  background-color: rgb(64, 192, 196);
-  color: darkmagenta;
-}
-
-.quiz-time-mode a {
-  color: lightgray;
-}
-
-.quiz-time-mode a:hover {
-  background-color: black;
-}
-
-.dyslexia-mode {
-  font-family: 'Comic Sans MS', 'Comic Sans', cursive;
-  background-color: blanchedalmond;
-  padding-left: 5%;
-  padding-right: 5%;
-}
-
 video {
   max-width: 90%;
 }
