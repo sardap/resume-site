@@ -17,6 +17,7 @@ import NumbersOrDie from '@/components/projects/NumbersOrDie.vue'
 import UltimateChess2024 from '@/components/projects/UltimateChess2024.vue'
 import MonFs from '@/components/projects/MonFs.vue'
 import BookClub from '@/components/projects/BookClub.vue'
+import Sardips from '@/components/projects/Sardips.vue'
 import { getComplete, type Complete } from '@/backend'
 import AllBattle from '@/components/projects/AllBattle.vue'
 import WeddingPlanner from '@/components/projects/WeddingPlanner.vue'
@@ -103,6 +104,7 @@ onMounted(() => {
     <hr />
     <br />
     <div :key="refresh">
+      <Sardips :filter="filter" :complete="complete?.['sardips']" />
       <BookClub :filter="filter" :complete="complete?.['site-3ds']" />
       <MonFs :filter="filter" :complete="complete?.['mon-fs']" />
       <AllBattle :filter="filter" :complete="complete?.['all_battle']" />

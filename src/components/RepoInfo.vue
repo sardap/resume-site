@@ -57,16 +57,18 @@ function getCreatedDate() {
       <a :href="`#${sectionId}`">Copy Link to this section</a>
     </div>
     <table v-if="complete">
-      <tr>
-        <th>Created Date</th>
-        <th>Languages</th>
-        <th>Technologies</th>
-      </tr>
-      <tr>
-        <td>{{ resolvedCreatedDate }}</td>
-        <td>{{ complete?.langs.join(', ') }}</td>
-        <td>{{ techs.map((i) => i.toString()).join(', ') }}</td>
-      </tr>
+      <tbody>
+        <tr>
+          <th>Created Date</th>
+          <th>Languages</th>
+          <th>Technologies</th>
+        </tr>
+        <tr>
+          <td>{{ resolvedCreatedDate }}</td>
+          <td>{{ complete?.langs.join(', ') }}</td>
+          <td>{{ techs.map((i) => i.toString()).join(', ') }}</td>
+        </tr>
+      </tbody>
     </table>
     <div class="border" v-if="complete">
       <div id="card">

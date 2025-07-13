@@ -64,6 +64,7 @@ export interface Complete {
   NumbersOrDie: CompleteRepo
   'site-3ds': CompleteRepo
   'wedding-planner': CompleteRepo
+  sardips: CompleteRepo
 }
 
 export async function getComplete(): Promise<Complete> {

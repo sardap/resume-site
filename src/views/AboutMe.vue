@@ -240,7 +240,7 @@ function getWorkingLength(work: WorkHistory): string {
         <ul>
           <li>AWS including but not limited to: SQS, EC2, ECS, Route53, S3 and Cloud formation.</li>
           <li>Docker and Kubernetes</li>
-          <li>Databases: (Redis, Mongo, Postgres and SQL)</li>
+          <li>Databases: (Redis, SQL (Postgres & SQLite3))</li>
           <li>Linux</li>
           <li>WSDL's and SOAP interfaces</li>
           <li>REST APIS</li>
@@ -268,29 +268,31 @@ function getWorkingLength(work: WorkHistory): string {
       <a :href="work.companyLink" target="_blank">{{ work.company }}</a>
     </h3>
     <table>
-      <tr>
-        <th>Role</th>
-        <th>Languages</th>
-        <th>Technologies</th>
-      </tr>
-      <tr>
-        <td>{{ work.role }}</td>
-        <td>{{ work.languages.join(', ') }}</td>
-        <td>{{ work.technologies.join(', ') }}</td>
-      </tr>
-      <tr>
-        <br />
-      </tr>
-      <tr>
-        <th>Start</th>
-        <th>End</th>
-        <th>Length</th>
-      </tr>
-      <tr>
-        <td>{{ work.startDate.format('YYYY-MM') }}</td>
-        <td>{{ work.endDate ? work.endDate.format('YYYY-MM') : `Current` }}</td>
-        <td>{{ getWorkingLength(work) }}</td>
-      </tr>
+      <tbody>
+        <tr>
+          <th>Role</th>
+          <th>Languages</th>
+          <th>Technologies</th>
+        </tr>
+        <tr>
+          <td>{{ work.role }}</td>
+          <td>{{ work.languages.join(', ') }}</td>
+          <td>{{ work.technologies.join(', ') }}</td>
+        </tr>
+        <tr>
+          <br />
+        </tr>
+        <tr>
+          <th>Start</th>
+          <th>End</th>
+          <th>Length</th>
+        </tr>
+        <tr>
+          <td>{{ work.startDate.format('YYYY-MM') }}</td>
+          <td>{{ work.endDate ? work.endDate.format('YYYY-MM') : `Current` }}</td>
+          <td>{{ getWorkingLength(work) }}</td>
+        </tr>
+      </tbody>
     </table>
     <br />
     <p>{{ work.description }}</p>
