@@ -20,8 +20,10 @@ defineProps<{
     <RepoInfo :complete="complete" :title="title" :techs="techs" />
     <h3>What is it?</h3>
     <p>
-      It's a half finshed virtual pet game. The readme covers everything in a fair amount of detail
-      <a target="_blank" href="https://github.com/sardap/sardips">here</a>.
+      It's a half finished virtual pet game. The readme covers everything in a fair amount of detail
+      <a target="_blank" href="https://github.com/sardap/sardips">here</a>. It doesn't work well in
+      wasm you can download
+      <a target="_blank" href="https://github.com/sardap/sardips/releases">here</a>
     </p>
     <br />
     <div v-if="load">
