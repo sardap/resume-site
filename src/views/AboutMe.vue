@@ -312,16 +312,18 @@ function getWorkingLength(work: WorkHistory): string {
       <h3>Swinburne University of Technology</h3>
       <div>
         <table>
-          <tr>
-            <th>Course</th>
-            <th>Awarded date</th>
-            <th>GPA</th>
-          </tr>
-          <tr>
-            <td>Bachelor of Computer Science</td>
-            <td>2019</td>
-            <td>3.76</td>
-          </tr>
+          <tbody>
+            <tr>
+              <th>Course</th>
+              <th>Awarded date</th>
+              <th>GPA</th>
+            </tr>
+            <tr>
+              <td>Bachelor of Computer Science</td>
+              <td>2019</td>
+              <td>3.76</td>
+            </tr>
+          </tbody>
         </table>
         <p>Other info please hire me</p>
         <div class="about-me">
